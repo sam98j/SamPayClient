@@ -1,0 +1,74 @@
+.MakeTransaction {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    h4 {
+      color: gray;
+    }
+    ul {
+      display: flex;
+      margin-top: 10px;
+      li {
+        flex-grow: 1;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
+        &:first-child {
+          border: 2px solid dodgerblue;
+          margin-right: 10px;
+        }
+      }
+    }
+    button {
+      border: 1px solid rgb(2, 105, 207);
+      border-bottom: 2px solid rgb(2, 105, 207);
+      background-color: dodgerblue;
+      color: white;
+      border-radius: 7px;
+      padding: 10px 0;
+      margin-top: 10px;
+    }
+    .TransferWithPhone {
+      border-bottom: 1px solid lightgray;
+      display: flex;
+      margin-top: 20px;
+      padding-bottom: 6px;
+      align-items: center;
+      .Country {
+        display: flex;
+        align-items: center;
+        margin-right: 2px;
+        span:first-child {
+          display: block;
+          height: 25px;
+          width: 40px;
+          background-color: lightskyblue;
+          margin-right: 5px;
+        }
+        border-right: 1px solid lightgray;
+        padding: 0 5px;
+      }
+      .Phone {
+        text-align: left;
+        flex-grow: 1;
+        height: 100%;
+        input {
+          display: block;
+          border: none;
+          height: 100%;
+          background: none;
+          border-bottom: 1px solid gray;
+          &:focus {
+            outline: none;
+            border-bottom-color: blue;
+          }
+        }
+      }
+      .Img {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        background-color: lightsalmon;
+      }
+    }
+  } 

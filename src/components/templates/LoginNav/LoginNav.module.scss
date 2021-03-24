@@ -1,0 +1,16 @@
+.LoginNav {
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  .NavLinks {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    font-weight: bold;
+    li {
+      margin: 0 5px;
+    }
+  }
+}

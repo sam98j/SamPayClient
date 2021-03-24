@@ -1,0 +1,52 @@
+.SideBar {
+  width: 250px;
+  height: 100%;
+  border-right: 2px solid rgba(247, 247, 247, 0.308);
+  padding: 20px 20px;
+  position: relative;
+  ul {
+    margin-top: 40px;
+    margin-left: -15px;
+  }
+  li {
+    margin: 10px 0;
+    padding: 5px 15px;
+    border-left: 3px solid transparent;
+    transition: all 0.01s ease-in-out;
+    a {
+      display: flex;
+      align-items: center;
+      color: gray;
+      span {
+        margin-left: 10px;
+      }
+    }
+  }
+  .profile {
+    position: absolute;
+    bottom: 30px;
+    left: 20px;
+    background-color: white;
+    height: 60px;
+    width: 80%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    color: black;
+    padding: 0px 10px;
+    h4 {
+      display: flex;
+      align-items: center;
+      span {
+        margin-right: 10px;
+      }
+    }
+    .img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: yellow;
+      margin-right: 10px;
+    }
+  }
+}

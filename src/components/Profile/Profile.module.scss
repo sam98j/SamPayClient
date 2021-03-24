@@ -1,0 +1,16 @@
+.Profile {
+  position: relative;
+  height: 100%;
+  .SignOut_Btn {
+    position: absolute;
+    bottom: 0px;
+    background: none;
+    border: none;
+    right: 20px;
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+}

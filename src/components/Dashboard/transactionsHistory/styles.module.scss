@@ -1,0 +1,25 @@
+.Transactions {
+    background: none;
+    overflow-y: scroll;
+    height: 400px;
+    padding: 10px 10px;
+    // transaction date
+    .TransactionsDate {
+      margin-top: 25px;
+    }
+    // remove margin-top from the first child
+    .TransactionsDate:first-child {
+      margin-top: 0px;
+    }
+    // redesign the scrollbar track
+    &::-webkit-scrollbar {
+      width: 5px;
+      position: absolute;
+      left: 90px;
+    }
+    // scrollbar itself
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(224, 224, 224);
+      border-radius: 20px;
+    }
+  }

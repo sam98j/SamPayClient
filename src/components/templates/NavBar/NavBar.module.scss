@@ -1,0 +1,21 @@
+.NavBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  .AppCenter {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    li {
+      margin: 0 5px;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 5px;
+      border-radius: 10px;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.SignUp {
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.295);
+  backdrop-filter: blur(20px);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // form
+  .Form {
+    height: 450px;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.473);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    section {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      &.ButtonSection {
+        margin-top: 50px;
+        button {
+          border: none;
+          height: 40px;
+          width: 90px;
+          background-color: rgb(21, 221, 21);
+          color: white;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      }
+      input {
+        border: none;
+        height: 30px;
+        border-radius: 5px;
+        margin-top: 5px;
+        padding: 10px;
+      }
+    }
+  }
+}
