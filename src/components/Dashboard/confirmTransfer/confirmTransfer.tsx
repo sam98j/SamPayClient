@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faPhone, faUniversity } from "@fortawesome/free-solid-svg-icons";
-import { Client } from "../../../Interfaces/Client";
+import { Client } from "../../../store/interface";
 import { connect } from "react-redux";
 import { submitTransfer } from "../../../store/actions/data/creators";
 

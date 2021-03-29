@@ -1,4 +1,4 @@
-import { Client } from "../../../Interfaces/Client";
+import { Client } from "../../interface";
 
 // body of post request to get receiver client
 export interface getReceiverBody {

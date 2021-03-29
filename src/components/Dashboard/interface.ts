@@ -1,4 +1,4 @@
-import { Client } from "../../Interfaces/Client";
+import { Client } from "../../store/interface";
 
 export interface propsInterface {
     setCurrentRoute: Function;

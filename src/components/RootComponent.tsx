@@ -10,7 +10,7 @@ import {
 } from "./root.interface";
 import Loading from "./templates/Loading/Loading";
 import styles from "./RootComponent.module.scss";
-import { AppState } from "../Interfaces/Store";
+import { AppState } from "../store/interface";
 import Welcome from "./Welcome/Welcome";
 import ConfirmTransfer from "./Dashboard/confirmTransfer/confirmTransfer";
 

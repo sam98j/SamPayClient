@@ -1,5 +1,4 @@
-import { Client } from "../../../Interfaces/Client";
-
+import { Client } from "../../interface";
 // is requir when client want to loggin
 export interface ClientCredentioal {
   name: string;
@@ -34,4 +33,14 @@ export interface LoginSuccess {
 export interface AuthReducerState {
   isLogged: boolean | null;
   client: Client | null;
+} 
+// is requir when client want to loggin
+export interface ClientCredentioal {
+  name: string;
+  password: string;
+}
+// requier data for new client whant to regster
+export interface ClientRegesterationData {
+  name: string;
+  password: string;
 }

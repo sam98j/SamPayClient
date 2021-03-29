@@ -1,4 +1,4 @@
-import { Client } from "../../../Interfaces/Client";
+import { Client } from "../../interface";
 import { getReceiverRes, submitTransferRes } from "./interface";
 import {getReceiverBody} from "./interface"
 import {set_current_route, submit_transfer, set_current_transfer} from "./types";

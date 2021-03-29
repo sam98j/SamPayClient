@@ -1,4 +1,4 @@
-import { Client } from "../../../Interfaces/Client";
+import { Client } from "../../interface";
 import {AuthReducerState, AuthFaild, AuthSuccess } from "./interfaces";
 import {sign_out} from "./types";
 
@@ -7,10 +7,7 @@ const initState = {
   client: null,
 } as AuthReducerState;
 
-export default (
-  state: AuthReducerState = initState,
-  action: {type: string, payload: {error: Boolean, data: any}}
-): AuthReducerState => {
+export default (state: AuthReducerState = initState,action: {type: string, payload: {error: Boolean, data: any}}): AuthReducerState => {
   switch (action.type) {
     // initate client procces is succeed
     case "authentecate":

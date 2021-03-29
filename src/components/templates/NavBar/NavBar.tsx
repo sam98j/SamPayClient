@@ -6,7 +6,7 @@ import { IconContext } from "react-icons/lib";
 import { FiSearch } from "react-icons/fi";
 import { RiNotification2Line } from "react-icons/ri";
 import { NavBarProps, NavBarMapState } from "./navbar.interface";
-import { AppState } from "../../../Interfaces/Store";
+import { AppState } from "../../../store/interface";
 
 const NavBar = (props: NavBarProps) => {
   const { currentRoute } = props;

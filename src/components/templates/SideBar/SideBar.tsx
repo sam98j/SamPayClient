@@ -11,7 +11,7 @@ import {
   IoIosArrowForward,
 } from "react-icons/all";
 import { connect } from "react-redux";
-import { AppState } from "../../../Interfaces/Store";
+import { AppState } from "../../../store/interface";
 
 const SideBar = (props: any) => {
   const { currentRoute } = props;

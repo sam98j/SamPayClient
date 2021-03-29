@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { SetCurrentRoute } from "../../store/actions/data/creators";
 import styles from "./Dashboard.module.scss";
-import { Client } from "../../Interfaces/Client";
+import { Client } from "../../store/interface";
 import TransferMoney from "./transferMoney/transferMoney";
 import TransactionsHistory from "./transactionsHistory/transHistory";
-import { AppState } from "../../Interfaces/Store";
+import { AppState } from "../../store/interface";
 
 const Dashboard = (props: any) => {
   const {client} = props as {client: Client, setCurrentRoute: Function};
@@ -31,8 +31,7 @@ const Dashboard = (props: any) => {
 
 const mapDispatch = (dispatch: Function) => {
   return {
-    setCurrentRoute: (routeName: string) =>
-      dispatch(SetCurrentRoute(routeName)),
+    setCurrentRoute: (routeName: string) => dispatch(SetCurrentRoute(routeName)),
   };
 };
 

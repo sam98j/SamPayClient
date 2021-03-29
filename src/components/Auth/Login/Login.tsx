@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import styles from "./Login.module.scss";
 import LoginNav from "../../templates/LoginNav/LoginNav";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/all";
-import { ClientCredentioal } from "../../../Interfaces/Auth";
+import { ClientCredentioal } from "../../../store/actions/auth/interfaces";
 import {LoginComponentProps, LoginComponentState} from "./login.interface";
 import { connect } from "react-redux";
 import { LoginClient, LoggingClient } from "../../../store/actions/auth/creators";
-import { AppState } from "../../../Interfaces/Store";
+import { AppState } from "../../../store/interface";
 
 class Login extends Component<
   LoginComponentProps,
