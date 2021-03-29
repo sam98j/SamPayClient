@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { DataActions } from "../../../store/actions/data.actions";
+import { getReceiver } from "../../../store/actions/data/creators";
 import styles from "./styles.module.scss"
 
 function TransferMoney(props: {getBenfier: Function}){
@@ -42,7 +42,7 @@ function TransferMoney(props: {getBenfier: Function}){
 
 const mapDispatch = (dispatch: Function) => {
   return {
-    getBenfier: (data: any) => dispatch(DataActions.getBenfier(data))
+    getBenfier: (data: any) => dispatch(getReceiver(data))
   }
 }
 

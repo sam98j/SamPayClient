@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { DataActions } from "../../store/actions/data.actions";
+import { SetCurrentRoute } from "../../store/actions/data/creators";
 import { connect } from "react-redux";
 
 const Support = (props: {setCurrentRoute: any}) => {
@@ -13,7 +13,7 @@ const Support = (props: {setCurrentRoute: any}) => {
 const mapDispatch = (dispatch: Function) => {
   return {
     setCurrentRoute: (routeName: string) =>
-      dispatch(DataActions.SetCurrentRoute(routeName)),
+      dispatch(SetCurrentRoute(routeName)),
   };
 };
 

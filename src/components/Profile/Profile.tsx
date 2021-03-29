@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { ProfileRoute_Props } from "./profile.interface";
 import { AuthActions } from "../../store/actions/auth.actions";
 import styles from "./Profile.module.scss";
-import { DataActions } from "../../store/actions/data.actions";
+import { SetCurrentRoute } from "../../store/actions/data/creators";
 
 const Profile = (props: ProfileRoute_Props) => {
   const SignOut = (): void => {
@@ -28,7 +28,7 @@ const Profile = (props: ProfileRoute_Props) => {
 const mapDispatch = (dispatch: Function): ProfileRoute_Props => {
   return {
     setCurrentRoute: (routeName: string) =>
-      dispatch(DataActions.SetCurrentRoute(routeName)),
+      dispatch(SetCurrentRoute(routeName)),
     signout_client: () => dispatch(AuthActions.SignOut()),
   };
 };

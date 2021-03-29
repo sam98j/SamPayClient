@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faPhone, faUniversity } from "@fortawesome/free-solid-svg-icons";
 import { Client } from "../../../Interfaces/Client";
 import { connect } from "react-redux";
-import { DataActions } from "../../../store/actions/data.actions";
+import { submitTransfer } from "../../../store/actions/data/creators";
 
 interface Props{
     currentTransfer: {receiver: Client}
@@ -58,7 +58,7 @@ function ConfirmTransfer(props: Props){
 
 const mapDispatch = (dispatch: Function) => {
     return {
-        submitTransfer: (data: {receiverPhone: string, amount: string}) => dispatch(DataActions.submitTransfer(data))
+        submitTransfer: (data: {receiverPhone: string, amount: string}) => dispatch(submitTransfer(data))
     }
 }
 

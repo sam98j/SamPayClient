@@ -1,8 +1,6 @@
-import { AuthSuccess, AuthFaild } from "../../Interfaces/Auth";
-import { Client } from "../../Interfaces/Client";
-import {AuthReducerState } from "../../Interfaces/Store";
-
-import {sign_out} from "../actions/types";
+import { Client } from "../../../Interfaces/Client";
+import {AuthReducerState, AuthFaild, AuthSuccess } from "./interfaces";
+import {sign_out} from "./types";
 
 const initState = {
   isLogged: null,

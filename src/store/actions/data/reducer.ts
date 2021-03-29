@@ -1,16 +1,13 @@
 import {} from "react-redux";
-import { set_current_route } from "../actions/types";
-import { DataReducerState } from "../../Interfaces/Store";
+import { set_current_route, set_current_transfer, submit_transfer } from "./types";
+import { DataReducerState } from "./interface";
 
 const initState = {
   currentTransfer: null,
   submitTransfer: false
 } as DataReducerState;
 
-export default (
-  state: DataReducerState = initState,
-  action: any
-): DataReducerState => {
+export default (state: DataReducerState = initState, action: any): DataReducerState => {
   switch (action.type) {
     // set the route name
     case set_current_route:
@@ -19,7 +16,7 @@ export default (
         currentRoute: action.payload,
       };
     // set current transfer
-    case 'set_current_transfer':
+    case set_current_transfer:
       if(action.payload.error) {
         return {
           ...state,
@@ -32,7 +29,7 @@ export default (
         }
       }
     // submit transfer
-    case "submit_transfer":
+    case submit_transfer:
       if(!action.payload.error) {
         return {
           ...state,

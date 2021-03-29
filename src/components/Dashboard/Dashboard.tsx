@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { DataActions } from "../../store/actions/data.actions";
+import { SetCurrentRoute } from "../../store/actions/data/creators";
 import styles from "./Dashboard.module.scss";
 import { Client } from "../../Interfaces/Client";
 import TransferMoney from "./transferMoney/transferMoney";
@@ -32,7 +32,7 @@ const Dashboard = (props: any) => {
 const mapDispatch = (dispatch: Function) => {
   return {
     setCurrentRoute: (routeName: string) =>
-      dispatch(DataActions.SetCurrentRoute(routeName)),
+      dispatch(SetCurrentRoute(routeName)),
   };
 };
 

@@ -1,4 +1,4 @@
-import { AuthSuccess, AuthFaild, ClientCredentioal, LoginSuccess } from "../../Interfaces/Auth";
+import { AuthSuccess, AuthFaild, ClientCredentioal, LoginSuccess } from "./interfaces";
 import {sign_out} from "./types";
 
 export class AuthActions {
