@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { ProfileRoute_Props } from "./profile.interface";
-import { AuthActions } from "../../store/actions/auth.actions";
+import { SignOut } from "../../store/actions/auth/creators";
 import styles from "./Profile.module.scss";
 import { SetCurrentRoute } from "../../store/actions/data/creators";
 
@@ -29,7 +29,7 @@ const mapDispatch = (dispatch: Function): ProfileRoute_Props => {
   return {
     setCurrentRoute: (routeName: string) =>
       dispatch(SetCurrentRoute(routeName)),
-    signout_client: () => dispatch(AuthActions.SignOut()),
+    signout_client: () => dispatch(SignOut()),
   };
 };
 

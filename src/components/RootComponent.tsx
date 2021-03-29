@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./Home/Home";
 import { connect } from "react-redux";
-import { AuthActions } from "../store/actions/auth.actions";
+import { InitateClient } from "../store/actions/auth/creators";
 import {
   RootComponentProps,
   RootComponentMapDispatchProps,
@@ -33,7 +33,7 @@ function RootComponent(props: RootComponentProps & RootComponentMapStateProps) {
 
 const mapDispatch = (dispatch: Function): RootComponentMapDispatchProps => {
   return {
-    initateClient: () => dispatch(AuthActions.InitateClient()),
+    initateClient: () => dispatch(InitateClient()),
   };
 };
 

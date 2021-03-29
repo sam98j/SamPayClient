@@ -3,12 +3,9 @@ import styles from "./Login.module.scss";
 import LoginNav from "../../templates/LoginNav/LoginNav";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/all";
 import { ClientCredentioal } from "../../../Interfaces/Auth";
-import {
-  LoginComponentProps,
-  LoginComponentState,
-} from "./login.interface";
+import {LoginComponentProps, LoginComponentState} from "./login.interface";
 import { connect } from "react-redux";
-import { AuthActions } from "../../../store/actions/auth.actions";
+import { LoginClient, LoggingClient } from "../../../store/actions/auth/creators";
 import { AppState } from "../../../Interfaces/Store";
 
 class Login extends Component<
@@ -123,8 +120,8 @@ class Login extends Component<
 const mapDispatch = (dispatch: Function) => {
   return {
     LoginClient: (ClientCredentioal: ClientCredentioal) =>
-      dispatch(AuthActions.LoginClient(ClientCredentioal)),
-    LogginClient: () => dispatch(AuthActions.LoggingClient()),
+      dispatch(LoginClient(ClientCredentioal)),
+    LogginClient: () => dispatch(LoggingClient()),
   };
 };
 
