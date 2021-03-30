@@ -21,11 +21,11 @@ export interface DataReducerState {
     submitTransfer: boolean
 }
 // current Transfer
-export interface currentTransfer {
-    receiver: Client | null
-}
+export type currentTransfer = {receiver: Client} | null;
 // submit Transfer method paramtars
 export interface SubmitTransParms {
     receiverPhone: string;
     amount: number
 }
+// getReceiverMethod Params
+export type getReceiverParms = string

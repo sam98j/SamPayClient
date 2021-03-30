@@ -11,7 +11,13 @@ export interface Client{
     _id: String;
     name: String;
     avatar: string;
-    transactionsHistory : [ ],
+    transactionsHistory : SingleTrans[],
     account : {balance: Number}
     phone?: any
+}
+// Single Transaction
+export interface SingleTrans {
+    amount: string;
+    date: string;
+    receiver: {name: string; avatar: string}
 }

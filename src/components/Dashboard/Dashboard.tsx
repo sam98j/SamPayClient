@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { SetCurrentRoute } from "../../store/actions/data/creators";
 import styles from "./Dashboard.module.scss";
 import { Client } from "../../store/interface";
-import TransferMoney from "./transferMoney/transferMoney";
-import TransactionsHistory from "./transactionsHistory/transHistory";
+import TransferMoney from "./transferMoney/component";
+import TransactionsHistory from "./transactionsHistory/component";
 import { AppState } from "../../store/interface";
 
 const Dashboard = (props: any) => {

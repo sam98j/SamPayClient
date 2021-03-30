@@ -18,9 +18,11 @@ export default (state: AuthReducerState = initState,action: {type: string, paylo
           client: null,
         };
       } else {
+        const currentClient: Client = action.payload.data.currentClient!;
+        currentClient.transactionsHistory.reverse()
         return {
           isLogged: true,
-          client: action.payload.data.currentClient!
+          client: currentClient
         }
       }
    

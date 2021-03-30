@@ -7,8 +7,8 @@ import { submitTransfer } from "../../../store/actions/data/creators";
 import { compProps, compState } from "./interface";
 import { SubmitTransParms } from "../../../store/actions/data/interface";
 
-function ConfirmTransfer(props: compProps){
-    const {currentTransfer, SubmitTransfer} = props;
+const ConfirmTransfer = (props: any) => {
+    const {currentTransfer, SubmitTransfer} = props as compProps;
     // the component state 
     const [state, setState] = useState<compState>({amount: 0})
     // handle user inputs

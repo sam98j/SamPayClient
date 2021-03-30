@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getReceiver } from "../../../store/actions/data/creators";
+import { getReceiverParms } from "../../../store/actions/data/interface";
 import { compProps, compState } from "./interface";
 import styles from "./styles.module.scss"
 
@@ -47,7 +48,7 @@ function TransferMoney(props: compProps){
 // map functions to component props
 const mapDispatch = (dispatch: Function): compProps => {
   return {
-    GetReceiver: (data: any) => dispatch(getReceiver(data))
+    GetReceiver: (data: getReceiverParms) => dispatch(getReceiver(data))
   }
 }
 // export component and connect it to the store
