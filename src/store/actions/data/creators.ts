@@ -1,5 +1,5 @@
 import { Client } from "../../interface";
-import { getReceiverRes, submitTransferRes } from "./interface";
+import { getReceiverRes, submitTransferRes, SubmitTransParms } from "./interface";
 import {getReceiverBody} from "./interface"
 import {set_current_route, submit_transfer, set_current_transfer} from "./types";
 
@@ -30,7 +30,7 @@ export const getReceiver = (phone: string) => async (dispatch: Function) => {
   }
 }
   // submit the transaction
-  export const submitTransfer = (data: {receiverPhone: string, amount: string}) => async (dispatch: Function) => {
+  export const submitTransfer = (data: SubmitTransParms) => async (dispatch: Function) => {
     // get the token from the local storage
     const token: string = localStorage.getItem("token")!;
     // req config obj

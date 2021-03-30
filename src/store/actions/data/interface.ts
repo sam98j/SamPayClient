@@ -17,6 +17,15 @@ export interface submitTransferRes {
 // data reducer state
 export interface DataReducerState {
     currentRoute: string;
-    currentTransfer: {receiver: Client} | null,
+    currentTransfer: currentTransfer,
     submitTransfer: boolean
+}
+// current Transfer
+export interface currentTransfer {
+    receiver: Client | null
+}
+// submit Transfer method paramtars
+export interface SubmitTransParms {
+    receiverPhone: string;
+    amount: number
 }

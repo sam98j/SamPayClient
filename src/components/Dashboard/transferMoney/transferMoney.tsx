@@ -1,24 +1,29 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { getReceiver } from "../../../store/actions/data/creators";
+import { compProps, compState } from "./interface";
 import styles from "./styles.module.scss"
 
-function TransferMoney(props: {getBenfier: Function}){
-  const [state, setState] = useState({
+function TransferMoney(props: compProps){
+  // local state of component
+  const [state, setState] = useState<compState>({
     receiverPhone: ""
   })
-
+  // handle inputs of user
   function inputHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    // update the state of component
     setState({
       ...state,
       [e.target.name]: e.target.value
     })
   }
-
+  // DO Transfer
   function Transfer(e: React.FormEvent) {
+    // prevent default action of form
     e.preventDefault()
     console.log(state)
-    props.getBenfier(state)
+    // get the receiver form the server
+    props.GetReceiver!(state.receiverPhone)
   }
     return (
         <section className={styles.MakeTransaction}>
@@ -39,12 +44,11 @@ function TransferMoney(props: {getBenfier: Function}){
       </section>
     )
 }
-
-const mapDispatch = (dispatch: Function) => {
+// map functions to component props
+const mapDispatch = (dispatch: Function): compProps => {
   return {
-    getBenfier: (data: any) => dispatch(getReceiver(data))
+    GetReceiver: (data: any) => dispatch(getReceiver(data))
   }
 }
-
-
+// export component and connect it to the store
 export default connect(null, mapDispatch)(TransferMoney)

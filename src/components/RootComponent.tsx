@@ -12,7 +12,7 @@ import Loading from "./templates/Loading/Loading";
 import styles from "./RootComponent.module.scss";
 import { AppState } from "../store/interface";
 import Welcome from "./Welcome/Welcome";
-import ConfirmTransfer from "./Dashboard/confirmTransfer/confirmTransfer";
+import ConfirmTransfer from "./Dashboard/SubmitTransfer/component";
 
 function RootComponent(props: RootComponentProps & RootComponentMapStateProps) {
   const { initateClient, isLogged, currentTransfer } = props;

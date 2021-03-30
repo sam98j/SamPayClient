@@ -2,20 +2,18 @@ import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faPhone, faUniversity } from "@fortawesome/free-solid-svg-icons";
-import { Client } from "../../../store/interface";
 import { connect } from "react-redux";
 import { submitTransfer } from "../../../store/actions/data/creators";
+import { compProps, compState } from "./interface";
+import { SubmitTransParms } from "../../../store/actions/data/interface";
 
-interface Props{
-    currentTransfer: {receiver: Client}
-}
-
-function ConfirmTransfer(props: Props){
-    const {currentTransfer, submitTransfer} = props as {currentTransfer: any, submitTransfer: Function};
+function ConfirmTransfer(props: compProps){
+    const {currentTransfer, SubmitTransfer} = props;
     // the component state 
-    const [state, setState] = useState({amount: 0})
-    // handle inpunt change
+    const [state, setState] = useState<compState>({amount: 0})
+    // handle user inputs
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        // update the state
         setState({
             ...state,
             [e.target.name]: e.target.value
@@ -25,7 +23,7 @@ function ConfirmTransfer(props: Props){
     const handleSubmition = (e: React.FormEvent) => {
         e.preventDefault();
         console.log(state)
-        submitTransfer({receiverPhone: currentTransfer.receiver.phone, amount: state.amount})
+        SubmitTransfer({receiverPhone: currentTransfer!.receiver!.phone, amount: state.amount})
     }
     return(
         <section className={styles.ConfirmTransfer}>
@@ -33,7 +31,7 @@ function ConfirmTransfer(props: Props){
                 <div className={styles.Header}>
                     <div className={styles.IMG}></div>
                     <h3 className={styles.Name}>
-                        <span className={styles.firstName}>{currentTransfer.receiver.name}</span>
+                        <span className={styles.firstName}>{currentTransfer!.receiver!.name}</span>
                         <span className={styles.lastName}>Mustafa</span>
                     </h3>
                 </div>
@@ -44,7 +42,7 @@ function ConfirmTransfer(props: Props){
                     </div>
                     <div className={styles.DetailsContainer}>
                         <span><FontAwesomeIcon icon={faPhone} /></span>
-                        <h4>{currentTransfer.receiver.phone}</h4>
+                        <h4>{currentTransfer!.receiver!.phone}</h4>
                     </div>
                 </div>
                 <div className={styles.Submit}>
@@ -55,11 +53,11 @@ function ConfirmTransfer(props: Props){
         </section>
     )
 }
-
-const mapDispatch = (dispatch: Function) => {
+// maps methods to component props
+const mapDispatch = (dispatch: Function): compProps => {
     return {
-        submitTransfer: (data: {receiverPhone: string, amount: string}) => dispatch(submitTransfer(data))
+        SubmitTransfer: (data: SubmitTransParms) => dispatch(submitTransfer(data))
     }
 }
-
+// export component and connect it to store
 export default connect(null, mapDispatch)(ConfirmTransfer)
