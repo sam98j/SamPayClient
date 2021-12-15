@@ -1,0 +1,82 @@
+.ConfirmTransfer {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.795);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .Container {
+    height: 400px;
+    width: 350px;
+    border-radius: 15px;
+    background-color: lightgray;
+    padding: 40px 30px;
+  }
+  .Container .Header {
+    display: flex;
+    align-items: center;
+    .Name {
+      flex-grow: 1;
+      span {
+        display: block;
+      }
+    }
+    .IMG {
+      height: 40px;
+      width: 40px;
+      background-color: cornsilk;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+  }
+  .Container .Details {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    padding-top: 10px;
+    .DetailsContainer {
+      display: flex;
+      margin-bottom: 5px;
+      align-items: center;
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        width: 40px;
+        margin-right: 5px;
+        background-color: white;
+        border-radius: 5px;
+      }
+    }
+  }
+  .Container .Submit {
+    display: flex;
+    flex-direction: column;
+    // background-color: coral;
+    input {
+      border: 2px solid blue;
+      padding: 10px 5px;
+      border-radius: 5px;
+      background: none;
+      margin-bottom: 10px;
+    }
+    button {
+      border: none;
+      height: 40px;
+      padding: 5px;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      background-color: green;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

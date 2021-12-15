@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
-import AuthReducer from "./actions/auth/reducer";
-import DataReducer from "./actions/data/reducer";
+import loginReducer from "./reducers/auth";
+import systemReducer from "./reducers/system";
+import transactionsReducer from "./reducers/transactions";
 
-export default combineReducers({
-  Auth: AuthReducer,
-  Data: DataReducer,
+const rootReducer = combineReducers({
+  auth: loginReducer,
+  system: systemReducer,
+  transactions: transactionsReducer
 });
+export default rootReducer

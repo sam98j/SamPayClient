@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import { SetCurrentRoute } from "../../apis/system";
+import { connect } from "react-redux";
 
-const Cards = (props: { setCurrentRoute: any }) => {
+const Reports = (props: { setCurrentRoute: any }) => {
   useEffect(() => {
     const { setCurrentRoute } = props;
-    setCurrentRoute("Cards");
+    setCurrentRoute("Reports");
   }, []);
-  return <div className="">cards</div>;
+  return <div className="">Reports</div>;
 };
 
 const mapDispatch = (dispatch: Function) => {
@@ -17,4 +17,4 @@ const mapDispatch = (dispatch: Function) => {
   };
 };
 
-export default connect(null, mapDispatch)(Cards);
+export default connect(null, mapDispatch)(Reports);

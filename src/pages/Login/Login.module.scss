@@ -1,0 +1,81 @@
+.Login {
+  height: 100%;
+  overflow: hidden;
+  padding-bottom: 30px;
+  background-color: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(20px);
+  .MainArea {
+    display: flex;
+    height: 100%;
+    .LoginForm {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      h2 {
+        position: absolute;
+        top: 50px;
+      }
+      form {
+        font-weight: bold;
+        width: 50%;
+        section {
+          margin-bottom: 20px;
+          label {
+            color: gray;
+          }
+        }
+        input {
+          border: none;
+          border-bottom: 2px solid lightgray;
+          background: none;
+          padding: 15px 10px;
+          display: block;
+          width: 100%;
+          margin-top: 10px;
+          &:focus {
+            outline: none;
+            border-bottom-color: dodgerblue;
+          }
+        }
+        button {
+          border: none;
+          background: none;
+          background-color: blue;
+          padding: 10px 20px;
+          color: white;
+          font-weight: bold;
+          border-radius: 10px;
+          outline: none;
+          cursor: pointer;
+        }
+      }
+      .ForgetPassword {
+        display: block;
+        width: 50%;
+        text-align: right;
+      }
+      .SocialMedia {
+        width: 50%;
+        position: absolute;
+        bottom: 100px;
+        display: flex;
+        align-items: center;
+        a {
+          font-size: 20px;
+          margin: 10px;
+          color: black;
+        }
+      }
+    }
+    .VectorsArea {
+      width: 50%;
+      height: 100%;
+      background-image: url("../../assets/BGs/bg1.jpg");
+      background-size: cover;
+    }
+  }
+}
