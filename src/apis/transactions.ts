@@ -6,8 +6,9 @@ import { GetReceiverBody,
     } from "../types/interfaces/trans_apis";
 import { TransTypes } from "../types/enums/transactions";
 import { Client } from "../types/interfaces/store";
+const api_url = process.env.REACT_APP_API_URL!;
 
- // make Transaction
+// make Transaction
 export const getReceiver = (phone: GetReceiverParms) => async (dispatch: Function) => {
     const {RECEIVER_NOT_FOUND, SET_TRANSACTION} = TransTypes;
     // get receiver request body
@@ -19,7 +20,7 @@ export const getReceiver = (phone: GetReceiverParms) => async (dispatch: Functio
         body: JSON.stringify(reqBody)
     }
     // init request
-    const response = await fetch("http://localhost:2000/transfer/get_receiver", ReqConfig);
+    const response = await fetch(`${api_url}/transfer/get_receiver`, ReqConfig);
     // check if an error found
     if(response.status !== 200) {
         dispatch({type: RECEIVER_NOT_FOUND})
@@ -44,7 +45,7 @@ export const submitTransfer = (data: SubmitTransParms) => async (dispatch: Funct
     body: JSON.stringify(data)
   }
   // init request 
-  const response = await fetch("http://localhost:2000/transfer/submit_transfer", ReqConfig);
+  const response = await fetch(`${api_url}/transfer/submit_transfer`, ReqConfig);
   // check if an error
   if(response.status !== 200) {
       dispatch({type: SUBMIT_TRANSFER_ERR})
