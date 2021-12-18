@@ -1,7 +1,7 @@
 import { ClientCredentioal, LoginSuccess } from "../types/interfaces/auth_apis";
-// import {sign_out} from "./types";
 import {AuthTypes} from '../types/enums/auth'
 import { Client } from "../types/interfaces/store";
+const api_url = process.env.REACT_APP_API_URL!;
 
 // login client method
 export const LoginClient = (Credentioal: ClientCredentioal) => async (dispatch: Function) => {
@@ -16,7 +16,7 @@ export const LoginClient = (Credentioal: ClientCredentioal) => async (dispatch: 
   };
 
   // sending data to the server
-  const response = await fetch("http://localhost:2000/auth/login", config);
+  const response = await fetch(`${api_url}/auth/login`, config);
   // check for status code
   if(response.status !== 200) {
     dispatch({type: LOGIN_FAILD})
@@ -42,7 +42,7 @@ export const InitateClient = () => async (dispatch: Function) => {
       },
     };
     // // send request to the server
-    const response = await fetch("http://localhost:2000/auth/initate_client",config);
+    const response = await fetch(`${api_url}/auth/initate_client`,config);
     // check for the res status
     if(response.status != 200){
       dispatch({type: AUTH_FAILD})

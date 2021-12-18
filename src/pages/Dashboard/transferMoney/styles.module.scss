@@ -2,58 +2,66 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  h4 {
-    color: gray;
-  }
-  ul {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.514);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  // the styles of the section that user can select transfer type
+  .transferTypesContainer {
     display: flex;
     margin-top: 10px;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.822);
+    background-color: rgba(228, 228, 228, 0.822);
     border-radius: 10px;
     padding: 5px;
+    // Single Transfer type
     li {
       flex-grow: 1;
       padding: 10px;
       text-align: center;
       border-radius: 10px;
+      // First Transfer Type
       &:first-child {
-        // border: 2px solid dodgerblue;
         background-color: dodgerblue;
         margin-right: 10px;
         color: white;
       }
     }
   }
-  button {
-    border: 1px solid rgb(2, 105, 207);
-    border-bottom: 2px solid rgb(2, 105, 207);
+  .transferBtn {
+    border: none;
     background-color: dodgerblue;
     color: white;
     border-radius: 7px;
     padding: 10px 0;
-    margin-top: 10px;
+    cursor: pointer;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: rgba(30, 143, 255, 0.74);
+    }
   }
   .TransferWithPhone {
-    border-bottom: 1px solid lightgray;
+    background-color: rgba(228, 228, 228, 0.822);
+    margin: 10px 0;
+    border-radius: 10px;
     display: flex;
-    margin-top: 20px;
-    padding-bottom: 6px;
+    padding: 10px 5px;
+    gap: 5px;
     align-items: center;
+    // here the user can select the country of the his receiver
     .Country {
       display: flex;
       align-items: center;
-      margin-right: 2px;
+      // styles of the country flag
       span:first-child {
         display: block;
-        height: 25px;
-        width: 40px;
+        height: 15px;
+        width: 25px;
         background-color: lightskyblue;
         margin-right: 5px;
       }
-      border-right: 1px solid lightgray;
-      padding: 0 5px;
     }
+    // user enter his receiver phone number
     .Phone {
       text-align: left;
       flex-grow: 1;
@@ -62,17 +70,19 @@
         display: block;
         border: none;
         height: 100%;
-        background: none;
-        border-bottom: 1px solid gray;
+        background-color: rgb(255, 255, 255);
+        border-radius: 5px;
+        padding: 0 2px;
         &:focus {
           outline: none;
-          border-bottom-color: blue;
         }
       }
     }
+    // receiver image or avatar
     .Img {
-      height: 30px;
-      width: 30px;
+      height: 25px;
+      display: inline-block;
+      min-width: 25px;
       border-radius: 50%;
       background-color: lightsalmon;
     }

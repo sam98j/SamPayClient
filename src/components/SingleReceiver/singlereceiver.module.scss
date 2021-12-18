@@ -1,0 +1,35 @@
+.singleReceiver {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  // img
+  .img {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: dodgerblue;
+  }
+  // name
+  .details {
+    flex-grow: 1;
+    padding: 0 10px;
+    // date
+    .date {
+      font-size: 0.8rem;
+      color: gray;
+    }
+  }
+  // send again btn
+  .sendBtn {
+    border: none;
+    padding: 10px;
+    background: none;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+  }
+}

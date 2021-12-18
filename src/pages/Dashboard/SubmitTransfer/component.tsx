@@ -9,6 +9,7 @@ import { AppState, Client } from "../../../types/interfaces/store";
 import { TransferStatus } from "../../../types/enums/transactions";
 import { SubmitTransParms } from "../../../types/interfaces/trans_apis";
 import TransLoading from "../../../components/TransLoading/TransLoading";
+import { addReceiverToHistory } from "../../../apis/system";
 
 const SubmitTrans = () => {
   // the component state
@@ -47,6 +48,7 @@ const SubmitTrans = () => {
     } as SubmitTransParms;
     // call the api and dispatch an action to the redux store
     dispatch(submitTransfer(transaction));
+    dispatch(addReceiverToHistory());
   };
   return (
     <section className={styles.ConfirmTransfer}>

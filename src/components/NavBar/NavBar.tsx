@@ -4,16 +4,15 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons/lib";
 import { FiSearch } from "react-icons/fi";
-import { RiNotification2Line } from "react-icons/ri";
 import { NavBarProps } from "./navbar.interface";
 import { AppState } from "../../types/interfaces/store";
+import Notifications from "../Notifications/Notifications";
 
 const NavBar = () => {
   // get state from store
   const { currentRoute } = useSelector<AppState, NavBarProps>((state) => ({
     currentRoute: state.system.currentRoute,
   }));
-  console.log(currentRoute);
   return (
     <nav className={styles.NavBar}>
       {/* <h2>{currentRoute}</h2> */}
@@ -27,9 +26,7 @@ const NavBar = () => {
         </li>
         <li>
           <Link to="">
-            <IconContext.Provider value={{ color: "black" }}>
-              <RiNotification2Line />
-            </IconContext.Provider>
+            <Notifications />
           </Link>
         </li>
       </ul>

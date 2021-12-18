@@ -19,3 +19,9 @@ export interface GetReceiverRes {
 }
 // getReceiverMethod Params
 export type GetReceiverParms = string
+// receive money notification
+export interface ReceiveMoneyNotification {
+    sender: string;
+    transAmount: number,
+    updatedBalance?: number
+}

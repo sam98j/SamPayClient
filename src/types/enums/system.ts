@@ -1,3 +1,4 @@
 export enum SystemActionsTypes {
     SET_CURRENT_ROUTE = "SET_CURRENT_ROUTE",
+    ADD_RECEIVER_TO_HISTORY = "ADD_RECEIVER_TO_HISTORY"
 }

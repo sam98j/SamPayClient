@@ -10,7 +10,7 @@ export interface AppState {
 }
 // 
 export interface Client{
-    _id: String;
+    _id: string;
     name: String;
     avatar: string;
     transactionsHistory : SingleTrans[],

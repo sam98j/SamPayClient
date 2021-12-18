@@ -3,7 +3,7 @@ import { TransTypes } from '../../types/enums/transactions';
 import { LoginSuccess } from "../../types/interfaces/auth_apis";
 import { AuthReducerState } from '../../types/interfaces/auth_reducer';
 import { Client } from '../../types/interfaces/store';
-import { SubmitTransferRes } from '../../types/interfaces/trans_apis';
+import { ReceiveMoneyNotification, SubmitTransferRes } from '../../types/interfaces/trans_apis';
 
 const initState = {
   isLogged: null,
@@ -12,7 +12,7 @@ const initState = {
 
 const loginReducer = (state = initState,action: {type: string, payload: any}): AuthReducerState => {
   const {LOGIN_SUCCESS, LOGIN_FAILD, SIGN_OUT, AUTH_FAILD, AUTH_SUCCESS} = AuthTypes;
-  const {SUBMIT_TRANSFER} = TransTypes;
+  const {SUBMIT_TRANSFER, RECEIVE_MONEY} = TransTypes;
   switch (action.type) {
     // initate client procces is succeed
     case LOGIN_SUCCESS: {
@@ -60,6 +60,19 @@ const loginReducer = (state = initState,action: {type: string, payload: any}): A
       return {
         ...state,
         client: {...state.client!, account: {balance: newBalance}, transactionsHistory: transHistory }
+      }
+    }
+    // Receive Money
+    case RECEIVE_MONEY: {
+      const {updatedBalance} = action.payload as ReceiveMoneyNotification
+      return {
+        ...state,
+        client: {
+          ...state.client!,
+          account: {
+            balance: updatedBalance!
+          }
+        }
       }
     }
     default:

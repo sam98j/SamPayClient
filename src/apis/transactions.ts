@@ -1,5 +1,6 @@
 import { GetReceiverBody, 
         GetReceiverParms, 
+        ReceiveMoneyNotification, 
         SubmitTransferRes, 
         SubmitTransParms 
     } from "../types/interfaces/trans_apis";
@@ -7,7 +8,7 @@ import { TransTypes } from "../types/enums/transactions";
 import { Client } from "../types/interfaces/store";
 
  // make Transaction
- export const getReceiver = (phone: GetReceiverParms) => async (dispatch: Function) => {
+export const getReceiver = (phone: GetReceiverParms) => async (dispatch: Function) => {
     const {RECEIVER_NOT_FOUND, SET_TRANSACTION} = TransTypes;
     // get receiver request body
     const reqBody: GetReceiverBody = {receiverPhone: phone}
@@ -54,3 +55,8 @@ export const submitTransfer = (data: SubmitTransParms) => async (dispatch: Funct
   // if it done
   dispatch({type: SUBMIT_TRANSFER, payload: submitTransRes})
 }
+// 
+export const receiveMoney = (notification: ReceiveMoneyNotification) => (dispatch: Function) => {
+  const {RECEIVE_MONEY} = TransTypes;
+  dispatch({type: RECEIVE_MONEY, payload: notification})
+} 

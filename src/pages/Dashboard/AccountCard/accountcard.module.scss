@@ -1,0 +1,22 @@
+.accountCard {
+  padding: 30px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.514);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  h6 {
+    color: gray;
+  }
+  p.Balance {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  p.Account {
+    margin-top: 20px;
+  }
+}
