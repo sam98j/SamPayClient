@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && rm -r ../bank_back-end/build ; mv build ../bank_back-end",
+    "build": "react-scripts build && mv build ../bank_back-end",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
