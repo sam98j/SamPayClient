@@ -48,7 +48,8 @@ const SubmitTrans = () => {
     } as SubmitTransParms;
     // call the api and dispatch an action to the redux store
     dispatch(submitTransfer(transaction));
-    dispatch(addReceiverToHistory());
+    // add receiver to receivers history
+    dispatch(addReceiverToHistory(currentTransfer.name));
   };
   return (
     <section className={styles.ConfirmTransfer}>

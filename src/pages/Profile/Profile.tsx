@@ -1,36 +1,40 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { ProfileRoute_Props } from "./profile.interface";
+import { useDispatch } from "react-redux";
 import { SignOut } from "../../apis/auth";
 import styles from "./Profile.module.scss";
 import { SetCurrentRoute } from "../../apis/system";
+import { useHistory } from "react-router";
 
-const Profile = (props: ProfileRoute_Props) => {
-  const SignOut = (): void => {
-    const { signout_client } = props;
-    signout_client();
-    console.log("sign out");
+const Profile = () => {
+  // use dispatch
+  const dispatch = useDispatch();
+  // redirect the user
+  const { push } = useHistory();
+  // sign out the user
+  const signOut = (): void => {
+    // dispatch an action to the redux store
+    dispatch(SignOut());
   };
-
+  // when component mount
   useEffect(() => {
-    const { setCurrentRoute } = props;
-    setCurrentRoute("Profile");
+    // dispatch an action to redux store
+    dispatch(SetCurrentRoute("Profile"));
   }, []);
+  // component did update
+  useEffect(() => {
+    return () => {
+      // check if the user is logged in
+      push("/");
+    };
+  }, []);
+  // return template
   return (
     <div className={styles.Profile}>
-      <button className={styles.SignOut_Btn} onClick={SignOut}>
+      <button className={styles.SignOut_Btn} onClick={signOut}>
         Sign Out
       </button>
     </div>
   );
 };
 
-const mapDispatch = (dispatch: Function): ProfileRoute_Props => {
-  return {
-    setCurrentRoute: (routeName: string) =>
-      dispatch(SetCurrentRoute(routeName)),
-    signout_client: () => dispatch(SignOut()),
-  };
-};
-
-export default connect(null, mapDispatch)(Profile);
+export default Profile;

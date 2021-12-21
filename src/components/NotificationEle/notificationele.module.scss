@@ -1,0 +1,15 @@
+.notification {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  // avatar
+  .avatar {
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background-color: dodgerblue;
+  }
+}

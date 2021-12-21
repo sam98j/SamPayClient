@@ -23,5 +23,6 @@ export type GetReceiverParms = string
 export interface ReceiveMoneyNotification {
     sender: string;
     transAmount: number,
-    updatedBalance?: number
+    updatedBalance?: number,
+    seen: boolean
 }

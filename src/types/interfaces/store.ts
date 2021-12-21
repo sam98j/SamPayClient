@@ -11,7 +11,7 @@ export interface AppState {
 // 
 export interface Client{
     _id: string;
-    name: String;
+    name: string;
     avatar: string;
     transactionsHistory : SingleTrans[],
     account : {balance: Number}
@@ -21,5 +21,6 @@ export interface Client{
 export interface SingleTrans {
     amount: string;
     date: string;
-    receiver: {name: string; avatar: string}
+    receiver: {name: string; avatar: string},
+    note: string
 }

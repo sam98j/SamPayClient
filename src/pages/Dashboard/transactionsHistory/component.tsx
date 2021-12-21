@@ -4,10 +4,15 @@ import { AppState } from "../../../types/interfaces/store";
 import SingleTransaction from "../../../components/SingleTransaction/component";
 import { TransHisProps } from "./interface";
 import styles from "./styles.module.scss";
+import DetailedSingleTrans from "../../../components/DetailedSingleTrans/DetailedSingleTrans";
 
 function TransactionsHistory() {
-  const { transHistory } = useSelector<AppState, TransHisProps>(({ auth }) => ({
+  const { transHistory, detailedsingletrans } = useSelector<
+    AppState,
+    TransHisProps
+  >(({ auth, system }) => ({
     transHistory: auth.client?.transactionsHistory!,
+    detailedsingletrans: system.detailedSingleTrans,
   }));
   // transactions History
   return (

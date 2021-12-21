@@ -59,5 +59,26 @@ export const submitTransfer = (data: SubmitTransParms) => async (dispatch: Funct
 // 
 export const receiveMoney = (notification: ReceiveMoneyNotification) => (dispatch: Function) => {
   const {RECEIVE_MONEY} = TransTypes;
-  dispatch({type: RECEIVE_MONEY, payload: notification})
-} 
+  // add receivers Histroy to localstorage
+  const addToLocalStorage = (data: ReceiveMoneyNotification) => {
+    // receiver history
+    const notificationsRecord = localStorage.getItem("notifications");
+    // check if true
+    if(notificationsRecord) {
+      // update receivers His
+      const updatedNotificationsRecord = [data, ...JSON.parse(notificationsRecord) as []];
+      localStorage.setItem("notifications", JSON.stringify(updatedNotificationsRecord));
+      return
+    }
+    // if receiver His is empty
+    localStorage.setItem("notifications", JSON.stringify([data]))
+  }
+  // set notification unseen
+  const modifiedNotification = {
+    ...notification,
+    seen: false
+  } as ReceiveMoneyNotification;
+  // add notification to localhistory
+  addToLocalStorage(modifiedNotification);
+  dispatch({type: RECEIVE_MONEY, payload: modifiedNotification})
+}

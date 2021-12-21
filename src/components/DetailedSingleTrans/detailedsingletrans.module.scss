@@ -1,0 +1,60 @@
+.detailedsingletrans {
+  height: 200px;
+  width: 500px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.74);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 5;
+  color: white;
+  transition: all 2s ease;
+  // header
+  .header {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    // avatar
+    .avatar {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: white;
+    }
+    // name and date
+    .name_date {
+      flex-grow: 1;
+      p:last-child {
+        font-size: 0.8rem;
+      }
+    }
+    // amount
+    .amount {
+      display: flex;
+      align-items: center;
+    }
+  }
+  // body
+  .body {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    // transaction note
+    .note {
+      display: flex;
+      gap: 10px;
+      // icon
+      // text
+    }
+    // transId
+    .transId {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      // icon
+      // text
+    }
+  }
+}

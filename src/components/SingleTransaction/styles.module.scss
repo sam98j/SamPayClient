@@ -1,4 +1,4 @@
-.SingleTransaction {
+.singleTransaction {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -6,8 +6,9 @@
   background-color: rgb(235, 235, 235);
   padding: 5px 10px;
   border-radius: 10px;
+  border: 1px solid lightgray;
   // the image
-  .Img {
+  .img {
     height: 40px;
     width: 40px;
     background-color: greenyellow;
@@ -17,5 +18,10 @@
   // transaction details container
   .container {
     flex-grow: 1;
+    // trans discription
+    .discription {
+      color: gray;
+      font-size: 0.9rem;
+    }
   }
 }

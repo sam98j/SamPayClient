@@ -13,19 +13,24 @@ import { TransferStatus } from "./types/enums/transactions";
 import { connect } from "socket.io-client";
 import { receiveMoney } from "./apis/transactions";
 import { ReceiveMoneyNotification } from "./types/interfaces/trans_apis";
+import { useLocation, useHistory } from "react-router-dom";
+import DetailedSingleTransaction from "./components/DetailedSingleTrans/DetailedSingleTrans";
 
 function App() {
   // use dispatch to send action to the store, change the state of the store
   const dispatch = useDispatch();
+  // redirect user
+  const { push } = useHistory();
+  // the current route
+  const { pathname } = useLocation();
   // get state from redux store
-  const { isLogged, currentTransfer, client_id } = useSelector<
-    AppState,
-    CompoProps
-  >((state) => ({
-    isLogged: state.auth.isLogged,
-    currentTransfer: state.transactions.currentTransfer,
-    client_id: state.auth.client?._id!,
-  }));
+  const { isLogged, currentTransfer, client_id, detailedSingleTrans } =
+    useSelector<AppState, CompoProps>((state) => ({
+      isLogged: state.auth.isLogged,
+      currentTransfer: state.transactions.currentTransfer,
+      client_id: state.auth.client?._id!,
+      detailedSingleTrans: state.system.detailedSingleTrans,
+    }));
   // play notification sound
   const playNotificationSound = () => {
     const tone = new Audio("/sounds/swiftly-610.mp3");
@@ -33,6 +38,10 @@ function App() {
   };
   // componet did update
   useEffect(() => {
+    // listen for isLoggedIn to redirect the user
+    if (isLogged && pathname === "/") {
+      push("/dashboard");
+    }
     // quit if the client id dosnot ready
     if (!client_id) {
       return;
@@ -51,7 +60,7 @@ function App() {
       // play notification sound
       playNotificationSound();
     });
-  }, [client_id]);
+  }, [client_id, isLogged]);
   // component did mount
   useEffect(() => {
     // apis call to decide if user is logged in or not
@@ -71,6 +80,7 @@ function App() {
     );
   return (
     <div className={styles.App}>
+      {detailedSingleTrans ? <DetailedSingleTransaction /> : ""}
       {/* submit transfer modal */}
       {SubmitTransferModal}
       {/* render Home page or Welcome page */}

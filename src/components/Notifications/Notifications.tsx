@@ -7,7 +7,10 @@ import { AppState } from "../../types/interfaces/store";
 
 const Notifications = () => {
   const { notifications } = useSelector<AppState, { notifications: number }>(
-    ({ system }) => ({ notifications: system.notifications.length })
+    ({ system }) => ({
+      notifications: system.notifications.filter((ele) => ele.seen === false)
+        .length,
+    })
   );
   return (
     <span className={styles.notifications}>
