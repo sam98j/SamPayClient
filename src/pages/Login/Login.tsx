@@ -6,6 +6,8 @@ import { LoginState, LoginProps } from "./login.interface";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginClient } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
+import vectorsImg from "../../assets/vectors/bgOne.jpg";
+import TransLoading from "../../components/TransLoading/TransLoading";
 
 const Login = () => {
   const [state, setState] = useState<LoginState>({
@@ -53,56 +55,58 @@ const Login = () => {
   };
   return (
     <section className={styles.Login}>
-      <LoginNav />
-      <section className={styles.MainArea}>
-        <section className={styles.LoginForm}>
-          <h2>Login To Your Account !!</h2>
-          <form onSubmit={handleSubmition}>
-            <section>
-              <label htmlFor="">E-mail</label>
-              <input
-                type="text"
-                onChange={handleChange}
-                value={state.clientCredentioal!.name!}
-                name="name"
-              />
-            </section>
-            <section>
-              <label htmlFor="">Password</label>
-              <input
-                type="password"
-                onChange={handleChange}
-                name="password"
-                value={state.clientCredentioal!.password}
-              />
-            </section>
-            <button
-              type="submit"
-              style={{
-                backgroundColor: state.isLoading ? "dodgerblue" : "blue",
-              }}
-            >
-              {state.isLoading ? "authentacting" : "Login"}
+      {/* login form */}
+      <section className={styles.LoginForm}>
+        <h2>Login To Your Account !!</h2>
+        <form onSubmit={handleSubmition}>
+          {/* input field */}
+          <section>
+            <label htmlFor="">E-mail</label>
+            <input
+              type="text"
+              onChange={handleChange}
+              value={state.clientCredentioal!.name!}
+              name="name"
+            />
+          </section>
+          {/* input field */}
+          <section>
+            <label htmlFor="">Password</label>
+            <input
+              type="password"
+              onChange={handleChange}
+              name="password"
+              value={state.clientCredentioal!.password}
+            />
+          </section>
+          {/* bottom are */}
+          <section className={styles.bottomArea}>
+            {/* button */}
+            <button type="submit">
+              {state.isLoading ? <TransLoading /> : "Login"}
             </button>
-          </form>
-          <a href="" className={styles.ForgetPassword}>
-            Forget Password
-          </a>
-          <section className={styles.SocialMedia}>
-            <a href="">
-              <FaInstagram />
-            </a>
-            <a href="">
-              <FaTwitter />
-            </a>
-            <a href="">
-              <FaFacebook />
+            {/* forget password link */}
+            <a href="" className={styles.ForgetPassword}>
+              Forget Password
             </a>
           </section>
+        </form>
+        {/* social media links */}
+        <section className={styles.SocialMedia}>
+          <a href="">
+            <FaInstagram />
+          </a>
+          <a href="">
+            <FaTwitter />
+          </a>
+          <a href="">
+            <FaFacebook />
+          </a>
         </section>
-        <section className={styles.VectorsArea}>
-          <img src="" alt="" />
-        </section>
+      </section>
+      {/* vecotr */}
+      <section className={styles.VectorsArea}>
+        <img src={vectorsImg} alt="" />
       </section>
     </section>
   );
