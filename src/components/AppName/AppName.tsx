@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./AppName.module.scss";
-import Logo from "../../assets/vectors/wallet.svg";
+import Logo from "../../assets/vectors/wallet.png";
 
 const AppName = () => {
   return (
