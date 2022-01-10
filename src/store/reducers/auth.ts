@@ -51,7 +51,10 @@ const loginReducer = (state = initState,action: {type: string, payload: any}): A
       const client = action.payload as Client
       return {
         isLogged: true,
-        client,
+        client: {
+          ...client,
+          transactionsHistory: client.transactionsHistory.reverse()
+        },
       }
     }
     case SUBMIT_TRANSFER: {

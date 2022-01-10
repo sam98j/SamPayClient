@@ -8,7 +8,14 @@ const initState = {
 } as TransState
 
 const transactionsReducer = (state = initState, action: {type: string, payload: any}): TransState => {
-    const {SET_TRANSACTION, SUBMIT_TRANSFER, RECEIVER_NOT_FOUND, SUBMIT_TRANSFER_ERR} = TransTypes;
+    const {
+        SET_TRANSACTION, 
+        SUBMIT_TRANSFER, 
+        RECEIVER_NOT_FOUND, 
+        SUBMIT_TRANSFER_ERR,
+        HIDE_SUBMIT_TRANS_MODAL,
+        CLEAR_CURRENT_TRANSFER
+    } = TransTypes;
     switch(action.type){
         // an error when submit the transaction
         case SUBMIT_TRANSFER_ERR: {
@@ -32,8 +39,22 @@ const transactionsReducer = (state = initState, action: {type: string, payload: 
         case SUBMIT_TRANSFER: {
             return {
                 ...state,
-                currentTransfer: TransferStatus.TRANS_LOADING,
                 submitTransfer: true
+            }
+        }
+        // hide modal
+        case HIDE_SUBMIT_TRANS_MODAL: {
+            return {
+                ...state,
+                currentTransfer: TransferStatus.TRANS_LOADING
+            }
+        }
+        // Clear Current Transfer to hide submitTransfer Modal
+        case CLEAR_CURRENT_TRANSFER: {
+            return {
+                ...state,
+                currentTransfer: TransferStatus.TRANS_LOADING,
+                submitTransfer: false
             }
         }
         default: {

@@ -8,6 +8,7 @@ import { LoginClient } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
 import vectorsImg from "../../assets/vectors/bgOne.jpg";
 import TransLoading from "../../components/TransLoading/TransLoading";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [state, setState] = useState<LoginState>({
@@ -89,6 +90,9 @@ const Login = () => {
             <a href="" className={styles.ForgetPassword}>
               Forget Password
             </a>
+            <Link to="/signup" className={styles.signupLink}>
+              Don't have an account signup
+            </Link>
           </section>
         </form>
         {/* social media links */}

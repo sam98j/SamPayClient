@@ -1,9 +1,21 @@
-import React from "react";
+import moment from "moment";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getReceiver } from "../../apis/transactions";
 import { SingleReceiverProps } from "./interface";
 import styles from "./singlereceiver.module.scss";
 
 const SingleReceiver: React.FC<SingleReceiverProps> = (props) => {
-  const { date, name } = props.element;
+  const { date: oldDate, name, phoneNo } = props.element;
+  const dispatch = useDispatch();
+  // state
+  const [newDate, setNewDate] = useState<{ date: string }>({
+    date: moment(oldDate!).format("YYYY-MMM-DD"),
+  });
+  // send money
+  const sendMoney = () => {
+    dispatch(getReceiver(phoneNo as unknown as string));
+  };
   return (
     <div className={styles.singleReceiver}>
       {/* receiver img */}
@@ -11,10 +23,12 @@ const SingleReceiver: React.FC<SingleReceiverProps> = (props) => {
       {/* receiver name and date*/}
       <span className={styles.details}>
         <p className={styles.name}>{name}</p>
-        <p className={styles.date}>{date}</p>
+        <p className={styles.date}>last paid on {newDate.date}</p>
       </span>
       {/* send again button */}
-      <button className={styles.sendBtn}>send</button>
+      <button className={styles.sendBtn} onClick={sendMoney}>
+        send
+      </button>
     </div>
   );
 };

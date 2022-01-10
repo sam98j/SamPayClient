@@ -11,6 +11,7 @@ const NotificationsMenu = () => {
   );
   return (
     <div className={styles.notifications}>
+      <p>Notifications</p>
       {/* if no notifications */}
       {notifications.length ? "" : <p>No notifications right now</p>}
       {notifications.map((ele) => (

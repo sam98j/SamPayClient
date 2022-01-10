@@ -13,10 +13,24 @@ import {
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/interfaces/store";
 
+interface SideBarProps {
+  currentRoute: string;
+  client: {
+    name: string;
+    avatar: string;
+  };
+}
+
 const SideBar = () => {
-  const { currentRoute } = useSelector<AppState, any>((state) => ({
-    currentRoute: state.system.currentRoute,
-  }));
+  const { currentRoute, client } = useSelector<AppState, SideBarProps>(
+    ({ system, auth }) => ({
+      currentRoute: system.currentRoute,
+      client: {
+        name: auth.client?.name!,
+        avatar: auth.client?.avatar!,
+      },
+    })
+  );
   return (
     <aside className={styles.SideBar}>
       <AppName />
@@ -109,9 +123,11 @@ const SideBar = () => {
       </ul>
       <Link to="/profile">
         <div className={styles.profile}>
-          <div className={styles.img}></div>
+          <div className={styles.img}>
+            <img src={client.avatar} alt="" />
+          </div>
           <h4>
-            <span>Hossam Alden</span>
+            <span>{client.name}</span>
             <IconContext.Provider value={{ color: "gray" }}>
               <IoIosArrowForward />
             </IconContext.Provider>

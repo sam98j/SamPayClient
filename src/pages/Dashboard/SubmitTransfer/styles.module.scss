@@ -10,11 +10,26 @@
   justify-content: center;
   align-items: center;
   .Container {
-    height: 400px;
-    width: 350px;
+    height: 450px;
+    width: 330px;
     border-radius: 15px;
-    background-color: lightgray;
+    background-color: white;
     padding: 40px 30px;
+    position: relative;
+  }
+  .doneIcon {
+    position: absolute;
+    border-radius: 15px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.747);
+    backdrop-filter: blur(6px);
   }
   .Container .Header {
     display: flex;
@@ -28,7 +43,7 @@
     .IMG {
       height: 40px;
       width: 40px;
-      background-color: cornsilk;
+      background-color: dodgerblue;
       border-radius: 50%;
       margin-right: 5px;
     }
@@ -57,15 +72,23 @@
   .Container .Submit {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    // background-color: dodgerblue;
     // background-color: coral;
     input {
-      border: 2px solid blue;
+      width: 100%;
+      border: none;
       padding: 10px 5px;
       border-radius: 5px;
-      background: none;
+      background-color: lightgray;
       margin-bottom: 10px;
     }
+    .doneIcon {
+      width: 10rem;
+      height: 10rem;
+    }
     button {
+      width: 100%;
       border: none;
       height: 40px;
       padding: 5px;

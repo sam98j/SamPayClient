@@ -10,7 +10,8 @@ const initState = {
     currentRoute: "",
     notifications: notificationRecord ? [...JSON.parse(notificationRecord)] : [],
     receiversHistory: receiversHis ? [...JSON.parse(receiversHis)] : [],
-    detailedSingleTrans: null
+    detailedSingleTrans: null,
+    incomingTransAlert: null
 } as SystemReducerState
 
 const systemReducer = (state = initState, action: {type: string, payload: any}): SystemReducerState => {
@@ -19,9 +20,11 @@ const systemReducer = (state = initState, action: {type: string, payload: any}):
         ADD_RECEIVER_TO_HISTORY, 
         SHOW_DETAILED_SINGLE_TRANS,
         HIDE__DETAILED_SINGLE_TRANS,
-        SHOW_NOTIFICATIONS
+        SHOW_NOTIFICATIONS,
+        INCOMING_TRANS_ALERT,
+        HIDE_INCOMING_TRANS_ALERT
     } = SystemActionsTypes;
-    const {RECEIVE_MONEY} = TransTypes;
+    const {RECEIVE_MONEY, } = TransTypes;
     switch (action.type) {
         // set the route name
         case SET_CURRENT_ROUTE: {
@@ -41,10 +44,10 @@ const systemReducer = (state = initState, action: {type: string, payload: any}):
         }
         // add receiversHistory ele
         case ADD_RECEIVER_TO_HISTORY: {
-            const receiverEle = action.payload as ReceiversHistoryEle
+            const receiversHistory = action.payload as ReceiversHistoryEle[]
             return {
                 ...state,
-                receiversHistory: [receiverEle, ...state.receiversHistory]
+                receiversHistory
             }
         }
         // show detailed single trans
@@ -70,6 +73,22 @@ const systemReducer = (state = initState, action: {type: string, payload: any}):
                 notifications: notificationSeened
             }
         };
+        // show income trans alert
+        case INCOMING_TRANS_ALERT: {
+            const notification = action.payload as ReceiveMoneyNotification;
+            console.log(notification);
+            return {
+                ...state,
+                incomingTransAlert: notification
+            }
+        }
+        case HIDE_INCOMING_TRANS_ALERT: {
+            return {
+                ...state,
+                incomingTransAlert: null
+            }
+        }
+        // hide submit transfer modal
         default:
         return state;
     }

@@ -4,6 +4,10 @@
   padding: 10px;
   position: relative;
   overflow-y: scroll;
+  // beneficiaries
+  .recentBeneficiaries {
+    margin-bottom: 1rem;
+  }
   // redesign the scrollbar track
   &::-webkit-scrollbar {
     width: 3px;

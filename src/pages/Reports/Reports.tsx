@@ -7,7 +7,14 @@ const Reports = (props: { setCurrentRoute: any }) => {
     const { setCurrentRoute } = props;
     setCurrentRoute("Reports");
   }, []);
-  return <div className="">Reports</div>;
+  return (
+    <div className="">
+      <form action="/" method="POST">
+        <input type="text" />
+        <button type="submit">send</button>
+      </form>
+    </div>
+  );
 };
 
 const mapDispatch = (dispatch: Function) => {

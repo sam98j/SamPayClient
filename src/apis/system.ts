@@ -2,38 +2,27 @@ import { SystemActionsTypes } from "../types/enums/system";
 import { DetailedSingleTrans, ReceiversHistoryEle } from "../types/interfaces/system_api";
 import moment from "moment";
 import { ReceiveMoneyNotification } from "../types/interfaces/trans_apis";
+import { addReceiverToLocalStorage } from "../utils/system";
 
 export const SetCurrentRoute = (routeName: string) => (dispatch: Function) => {
   const {SET_CURRENT_ROUTE} = SystemActionsTypes;
   dispatch({ type: SET_CURRENT_ROUTE, payload: routeName });
 };
 // add receiver to the history
-export const addReceiverToHistory = (name: string) => (dispatch: Function) => {
+export const addReceiverToHistory = ({name, phoneNo, _id, img}: ReceiversHistoryEle) => (dispatch: Function) => {
   const { ADD_RECEIVER_TO_HISTORY} = SystemActionsTypes;
-  // add receivers Histroy to localstorage
-  const addToLocalStorage = (data: ReceiversHistoryEle) => {
-    // receiver history
-    const receiversHis = localStorage.getItem("receiverHis");
-    // check if true
-    if(receiversHis) {
-      // update receivers His
-      const updatedReceiversHis = [data, ...JSON.parse(receiversHis) as []];
-      localStorage.setItem("receiverHis", JSON.stringify(updatedReceiversHis));
-      return
-    }
-    // if receiver His is empty
-    localStorage.setItem("receiverHis", JSON.stringify([data]))
-  }
   // history ele date
   const date = moment().format("YYYY-MMM-DD, h:mm a")
   const historyEle = {
-    img: "",
+    img,
     date,
-    name
+    name,
+    phoneNo,
+    _id
   } as ReceiversHistoryEle;
   // add history ele to local storage
-  addToLocalStorage(historyEle)
-  dispatch({ type: ADD_RECEIVER_TO_HISTORY, payload: historyEle });
+  const updatedReceiversHis = addReceiverToLocalStorage(historyEle);
+  dispatch({ type: ADD_RECEIVER_TO_HISTORY, payload: updatedReceiversHis });
 };
 // show detailed single trans component
 export const showDetailedSingleTrans = (data: DetailedSingleTrans) => (dispatch: Function) => {
@@ -67,4 +56,9 @@ export const seeNotifications = () => (dispatch: Function) => {
   localStorage.setItem("notifications", JSON.stringify(updatedNotificationsRecord));
   const {NOTIFICATION_SEENED} = SystemActionsTypes;
   dispatch({type: NOTIFICATION_SEENED, payload: updatedNotificationsRecord})
+}
+// hide incoming trans alert
+export const hideIncomingTransAlert = () => (dispatch: Function) => {
+  const {HIDE_INCOMING_TRANS_ALERT} = SystemActionsTypes
+  dispatch({type: HIDE_INCOMING_TRANS_ALERT})
 }

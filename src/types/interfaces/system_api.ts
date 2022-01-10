@@ -1,7 +1,9 @@
 export interface ReceiversHistoryEle {
     img: string;
-    date: string;
-    name: string
+    date?: string;
+    name: string,
+    phoneNo: number,
+    _id: string
 }
 // Detailed single trans
 export interface DetailedSingleTrans {
@@ -11,4 +13,10 @@ export interface DetailedSingleTrans {
     name: string;
     note: string;
     transId: string
+}
+// add receiver to history params
+export interface AddReceiverToHisParams {
+    name: string, 
+    phoneNo: number,
+    _id: string
 }

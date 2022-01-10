@@ -1,10 +1,7 @@
 @font-face {
   font-family: "Arabic UI Text";
   src: url("./assets/sf_web/sfprotext-medium-webfont.woff"),
-    url("./assets/sf_web/sfprotext-medium-webfont.woff2"),
-    url("./assets/sf_web/stylesheet.css"),
-    url("./assets/sf_web/specimen_stylesheet.css"),
-    url("./assets/sf_web/grid_12-825-55-15.css");
+    url("./assets/sf_web/sfprotext-medium-webfont.woff2");
   font-weight: normal;
 }
 

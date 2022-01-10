@@ -61,3 +61,24 @@ export const SignOut = () => (dispatch: Function) => {
   const {SIGN_OUT} = AuthTypes;
   dispatch({ type: SIGN_OUT});
 };
+// Sign UP With Google
+export const signUpWithGoogle = (data: {googleTokenId: string}) => async (dispatch: Function) => {
+  const {LOGIN_SUCCESS, LOGIN_FAILD} = AuthTypes;
+  const reqInit = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json"
+    }
+  } as RequestInit
+  // fetch
+  const response = await fetch(`${api_url}/auth/signup_with_google`, reqInit);
+  // check for status code
+  if(response.status !== 200) {
+    dispatch({type: LOGIN_FAILD})
+    return
+  }
+  const loginData = await response.json() as LoginSuccess;
+  // response data
+  dispatch({type: LOGIN_SUCCESS, payload: loginData})
+}

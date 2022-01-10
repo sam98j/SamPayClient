@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -52,7 +53,7 @@ const SingleTransaction: React.FC<SingleTransProps> = (props) => {
       <div className={styles.img}></div>
       <div className={styles.container}>
         <h3>Transfer To {receiver.name}</h3>
-        <p className={styles.discription}>Some Discription</p>
+        <p className={styles.discription}>{moment(date).format("h:mm a")}</p>
       </div>
       <h4>${amount}</h4>
     </div>

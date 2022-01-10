@@ -31,7 +31,7 @@ const DetailedSingleTransaction = () => {
         {/* transaction note */}
         <p className={styles.note}>
           <span className={styles.icon}>
-            <IconContext.Provider value={{ color: "white" }}>
+            <IconContext.Provider value={{ color: "black" }}>
               <BiCommentDetail />
             </IconContext.Provider>
           </span>
@@ -41,7 +41,7 @@ const DetailedSingleTransaction = () => {
         <p className={styles.transId}>
           {/* icon */}
           <span className={styles.icon}>
-            <IconContext.Provider value={{ color: "white" }}>
+            <IconContext.Provider value={{ color: "black" }}>
               <AiOutlineNumber />
             </IconContext.Provider>
           </span>

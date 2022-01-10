@@ -1,0 +1,148 @@
+.signUp {
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.973);
+  backdrop-filter: blur(15px);
+  display: flex;
+  font-size: 0.7rem;
+  // form container
+  .signUpForm {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    // background-color: turquoise;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  // form
+  .signUpForm form {
+    border: 1px solid gray;
+    font-weight: bold;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+    color: black;
+    // logo
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    h2 {
+      text-align: center;
+    }
+    // sign up with google button
+    .googleLogin {
+      border-radius: 10px !important;
+      margin-top: 20px !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: black !important;
+      box-shadow: none !important;
+      border: 2px solid black !important;
+      div {
+        border-radius: 20px !important;
+      }
+    }
+    // seperator
+    .seperator {
+      // background-color: yellowgreen;
+      text-align: center;
+      line-height: 100%;
+      &::before,
+      &::after {
+        content: "";
+        height: 1px;
+        width: 45%;
+        display: inline-block;
+        background-color: black;
+      }
+    }
+    label {
+      color: black;
+    }
+    input {
+      border: none;
+      background-color: rgb(224, 224, 224);
+      padding: 10px;
+      border-radius: 10px;
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      &:focus {
+        outline: none;
+        border-color: white;
+      }
+    }
+  }
+  // form footer
+  form .formFooter {
+    // background-color: violet;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    // forget password link
+    .ForgetPassword {
+      color: black;
+      flex-grow: 1;
+      text-align: right;
+    }
+    // botton
+    button {
+      border: none;
+      background: none;
+      background-color: blue;
+      padding: 10px 20px;
+      color: white;
+      font-weight: bold;
+      border-radius: 10px;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+  // social links
+  form .SocialMedia {
+    margin-top: 20px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    a {
+      display: inline-block;
+      font-size: 20px;
+      color: black;
+    }
+  }
+  // copy rights
+  form .copyRight {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  // vector area
+  .VectorsArea {
+    flex-grow: 1;
+    height: 100%;
+    // background-image: url("../../assets/BGs/bg1.jpg");
+    background-size: cover;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

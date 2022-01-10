@@ -6,5 +6,6 @@ export interface SystemReducerState {
     currentRoute: string;
     notifications: ReceiveMoneyNotification[];
     receiversHistory: ReceiversHistoryEle[];
-    detailedSingleTrans: null | DetailedSingleTrans
+    detailedSingleTrans: null | DetailedSingleTrans,
+    incomingTransAlert: ReceiveMoneyNotification | null
 }

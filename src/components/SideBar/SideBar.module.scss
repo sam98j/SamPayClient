@@ -43,10 +43,15 @@
     }
     .img {
       height: 40px;
-      width: 40px;
+      min-width: 40px;
       border-radius: 50%;
       background-color: yellow;
       margin-right: 10px;
+      img {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+      }
     }
   }
 }

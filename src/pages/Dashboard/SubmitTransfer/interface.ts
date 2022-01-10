@@ -7,5 +7,6 @@ export interface SubmitTransState {
 }
 // component props
 export interface SubmitTransProps {
-    currentTransfer: Client
+    currentTransfer: Client,
+    isTransaferSubmited: boolean
 }
