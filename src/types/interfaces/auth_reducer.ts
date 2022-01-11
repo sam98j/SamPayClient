@@ -4,4 +4,5 @@ import { Client } from "./store";
 export interface AuthReducerState {
     isLogged: boolean | null;
     client: Client | null;
+    errMsg: null | string
 } 

@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Login.module.scss";
-import LoginNav from "../../components/LoginNav/LoginNav";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/all";
 import { LoginState, LoginProps } from "./login.interface";
 import { useDispatch, useSelector } from "react-redux";
-import { LoginClient } from "../../apis/auth";
+import { LoginClient, LoginWithGoogle } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
 import vectorsImg from "../../assets/vectors/bgOne.jpg";
 import TransLoading from "../../components/TransLoading/TransLoading";
 import { Link } from "react-router-dom";
+import GoogleLogin, {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from "react-google-login";
+import Wallet from "../../assets/vectors/wallet.png";
+import { AnimatePresence } from "framer-motion";
+import AuthErrAlert from "../SignUp/AuthErrAlert/AuthErrAlert";
 
 const Login = () => {
   const [state, setState] = useState<LoginState>({
@@ -20,8 +26,13 @@ const Login = () => {
   });
   // dispatch
   const dispatch = useDispatch();
-  const { isAuthorized } = useSelector<AppState, LoginProps>(({ auth }) => ({
+  const { isAuthorized, errMsg, isLoggedIn } = useSelector<
+    AppState,
+    LoginProps
+  >(({ auth }) => ({
     isAuthorized: Boolean(auth.client),
+    isLoggedIn: auth.isLogged,
+    errMsg: auth.errMsg,
   }));
   // component did mount
   useEffect(() => {
@@ -32,7 +43,13 @@ const Login = () => {
       });
       // LogginClient();
     }
-  }, [isAuthorized]);
+    if (Boolean(errMsg)) {
+      setState({
+        ...state,
+        isLoading: false,
+      });
+    }
+  }, [isAuthorized, errMsg]);
   // handle from change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setState({
@@ -54,14 +71,55 @@ const Login = () => {
       });
     }
   };
+  // handleLogin
+  const handleLoginWithGoogle = (
+    googleData: GoogleLoginResponse | GoogleLoginResponseOffline
+  ) => {
+    const googleOauthData = googleData as GoogleLoginResponse;
+    // send the tokenId to api to handle SignUpWithGoogle
+    dispatch(LoginWithGoogle({ googleTokenId: googleOauthData.tokenId }));
+  };
   return (
     <section className={styles.Login}>
       {/* login form */}
       <section className={styles.LoginForm}>
-        <h2>Login To Your Account !!</h2>
+        {/* signUp Link */}
+        <Link to="/signup" className={styles.signupLink}>
+          Don't have an account? signup
+        </Link>
         <form onSubmit={handleSubmition}>
+          {/* error message */}
+          <AnimatePresence>
+            {isLoggedIn === false ? (
+              errMsg ? (
+                <AuthErrAlert msg={errMsg} />
+              ) : (
+                ""
+              )
+            ) : (
+              ""
+            )}
+          </AnimatePresence>
+          {/* logo */}
+          <div className={styles.logo}>
+            <img src={Wallet} alt="" />
+          </div>
+          {/* form name */}
+          <h2>Login To Your Account !!</h2>
+          {/* google login */}
+          <GoogleLogin
+            clientId={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID!}
+            buttonText="Login With Google"
+            onSuccess={handleLoginWithGoogle}
+            onFailure={handleLoginWithGoogle}
+            cookiePolicy={"single_host_origin"}
+            className={styles.googleLogin}
+          />
+          {/* seperator */}
+          <p className={styles.seperator}>Or</p>
           {/* input field */}
-          <section>
+          {/* input field */}
+          <div>
             <label htmlFor="">E-mail</label>
             <input
               type="text"
@@ -69,9 +127,9 @@ const Login = () => {
               value={state.clientCredentioal!.name!}
               name="name"
             />
-          </section>
+          </div>
           {/* input field */}
-          <section>
+          <div>
             <label htmlFor="">Password</label>
             <input
               type="password"
@@ -79,9 +137,9 @@ const Login = () => {
               name="password"
               value={state.clientCredentioal!.password}
             />
-          </section>
+          </div>
           {/* bottom are */}
-          <section className={styles.bottomArea}>
+          <div className={styles.formFooter}>
             {/* button */}
             <button type="submit">
               {state.isLoading ? <TransLoading /> : "Login"}
@@ -90,23 +148,27 @@ const Login = () => {
             <a href="" className={styles.ForgetPassword}>
               Forget Password
             </a>
-            <Link to="/signup" className={styles.signupLink}>
-              Don't have an account signup
-            </Link>
-          </section>
+          </div>
+          {/* social media links */}
+          <div className={styles.SocialMedia}>
+            <a href="">
+              <FaInstagram />
+            </a>
+            <a href="">
+              <FaTwitter />
+            </a>
+            <a href="">
+              <FaFacebook />
+            </a>
+          </div>
+          {/* end of social media */}
+          {/* compy rights */}
+          <p className={styles.copyRight}>
+            <span className="">2022</span>
+            <span className="">samPay - All Right Reserved</span>
+          </p>
+          {/* end of copy rights section */}
         </form>
-        {/* social media links */}
-        <section className={styles.SocialMedia}>
-          <a href="">
-            <FaInstagram />
-          </a>
-          <a href="">
-            <FaTwitter />
-          </a>
-          <a href="">
-            <FaFacebook />
-          </a>
-        </section>
       </section>
       {/* vecotr */}
       <section className={styles.VectorsArea}>

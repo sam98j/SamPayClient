@@ -8,10 +8,11 @@ import { ReceiveMoneyNotification, SubmitTransferRes } from '../../types/interfa
 const initState = {
   isLogged: null,
   client: null,
+  errMsg: null
 } as AuthReducerState;
 
 const loginReducer = (state = initState,action: {type: string, payload: any}): AuthReducerState => {
-  const {LOGIN_SUCCESS, LOGIN_FAILD, SIGN_OUT, AUTH_FAILD, AUTH_SUCCESS} = AuthTypes;
+  const {LOGIN_SUCCESS, LOGIN_FAILD, SIGN_OUT, AUTH_FAILD, AUTH_SUCCESS, CLEAR_AUTH_Err_MSG} = AuthTypes;
   const {SUBMIT_TRANSFER, RECEIVE_MONEY} = TransTypes;
   switch (action.type) {
     // initate client procces is succeed
@@ -20,21 +21,28 @@ const loginReducer = (state = initState,action: {type: string, payload: any}): A
       // store token in the local storage
       localStorage.setItem("token", `Bearer ${token}`)
       return {
+        ...state,
         isLogged: true,
         client
       }
     }
     // in case of login faild
     case LOGIN_FAILD: {
+      const errMsg = action.payload as string;
       return {
+        ...state,
         isLogged: false,
         client: null,
+        errMsg
       };
     }
     // client sign out
     case SIGN_OUT: {
       localStorage.setItem("token", "");
+      localStorage.removeItem("receiverHis");
+      localStorage.removeItem("notifications");
       return {
+        ...state,
         isLogged: false,
         client: null,
       };
@@ -50,6 +58,7 @@ const loginReducer = (state = initState,action: {type: string, payload: any}): A
     case AUTH_SUCCESS: {
       const client = action.payload as Client
       return {
+        ...state,
         isLogged: true,
         client: {
           ...client,
@@ -76,6 +85,13 @@ const loginReducer = (state = initState,action: {type: string, payload: any}): A
             balance: updatedBalance!
           }
         }
+      }
+    }
+    // clear auth error message
+    case CLEAR_AUTH_Err_MSG: {
+      return {
+        ...state,
+        errMsg: null
       }
     }
     default:

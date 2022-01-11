@@ -1,90 +1,131 @@
 .Login {
   height: 100%;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.541);
-  backdrop-filter: blur(20px);
   display: flex;
-  height: 100%;
+  font-size: 0.7rem;
   .LoginForm {
     width: 50%;
     height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
-    h2 {
-      position: absolute;
-      top: 50px;
-    }
-    form {
-      font-weight: bold;
-      width: 50%;
-      label {
-        color: white;
-      }
-      section {
-        margin-bottom: 20px;
-      }
-      input {
-        border: 1px solid lightgray;
-        background: none;
-        padding: 10px;
-        border-radius: 10px;
-        display: block;
-        width: 100%;
-        margin-top: 10px;
-        &:focus {
-          outline: none;
-          border-color: white;
-        }
-      }
-    }
-    // bottom area
-    .bottomArea {
-      display: flex;
-      align-items: center;
-      margin-top: 50px;
-      flex-wrap: wrap;
-      // forget password link
-      .ForgetPassword {
-        color: white;
-        flex-grow: 1;
-        text-align: right;
-      }
-      // botton
-      button {
-        border: none;
-        background: none;
-        background-color: blue;
-        padding: 10px 20px;
-        color: white;
-        font-weight: bold;
-        border-radius: 10px;
+  }
+  // signUp Link
+  .LoginForm .signupLink {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  // form
+  .LoginForm form {
+    font-weight: bold;
+    width: 350px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow-y: hidden;
+    input {
+      border: none;
+      background-color: rgb(224, 224, 224);
+      padding: 10px;
+      border-radius: 10px;
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      &:focus {
         outline: none;
-        cursor: pointer;
-      }
-      .signup {
-        width: 100%;
-        margin: 10px 0;
-        a {
-          color: white !important;
-        }
+        border-color: white;
       }
     }
-    // social links
-    .SocialMedia {
-      width: 50%;
-      position: absolute;
-      bottom: 100px;
-      display: flex;
-      align-items: center;
-      a {
-        font-size: 20px;
-        margin: 10px;
-        color: black;
-      }
+  }
+  // app logo
+  form .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 40px;
+      height: 40px;
     }
+  }
+  form h2 {
+    text-align: center;
+  }
+  // sign up with google button
+  .googleLogin {
+    border-radius: 10px !important;
+    margin-top: 20px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: 2px solid black !important;
+    div {
+      border-radius: 20px !important;
+    }
+  }
+  // seperator
+  .seperator {
+    // background-color: yellowgreen;
+    text-align: center;
+    line-height: 100%;
+    &::before,
+    &::after {
+      content: "";
+      height: 1px;
+      width: 45%;
+      display: inline-block;
+      background-color: black;
+    }
+  }
+  // form footer
+  form .formFooter {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    // forget password link
+    .ForgetPassword {
+      flex-grow: 1;
+      text-align: right;
+    }
+    // botton
+    button {
+      border: none;
+      background: none;
+      background-color: green;
+      height: 40px;
+      width: 80px;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+  // social media links
+  form .SocialMedia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+      font-size: 20px;
+      margin: 10px;
+      color: black;
+    }
+  }
+  // copy rights
+  form .copyRight {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
   }
   .VectorsArea {
     width: 50%;

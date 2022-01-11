@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./signup.module.scss";
-import LoginNav from "../../components/LoginNav/LoginNav";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/all";
 import { LoginState, LoginProps } from "./login.interface";
 import { useDispatch, useSelector } from "react-redux";
-import { LoginClient, signUpWithGoogle } from "../../apis/auth";
+import { signUp, signUpWithGoogle } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
 import vectorsImg from "../../assets/vectors/bgOne.jpg";
 import TransLoading from "../../components/TransLoading/TransLoading";
@@ -14,6 +13,8 @@ import GoogleLogin, {
   GoogleLoginResponseOffline,
 } from "react-google-login";
 import Wallet from "../../assets/vectors/wallet.png";
+import AuthErrAlert from "./AuthErrAlert/AuthErrAlert";
+import { AnimatePresence } from "framer-motion";
 
 const SignUp = () => {
   // react router hooks
@@ -29,22 +30,31 @@ const SignUp = () => {
   // dispatch
   const dispatch = useDispatch();
   // Component Props
-  const { isAuthorized } = useSelector<AppState, LoginProps>(({ auth }) => ({
+  const { isAuthorized, errMsg, isLoggedIn } = useSelector<
+    AppState,
+    LoginProps
+  >(({ auth }) => ({
     isAuthorized: Boolean(auth.client),
+    errMsg: auth.errMsg,
+    isLoggedIn: auth.isLogged,
   }));
   // component did mount
   useEffect(() => {
+    console.log(errMsg);
     if (isAuthorized) {
       setState({
         ...state,
         isLoading: false,
       });
-      return () => {
-        push("/dashboard");
-      };
       // LogginClient();
+      if (Boolean(errMsg)) {
+        setState({
+          ...state,
+          isLoading: false,
+        });
+      }
     }
-  }, [isAuthorized]);
+  }, [isAuthorized, errMsg]);
   // handle from change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setState({
@@ -60,7 +70,7 @@ const SignUp = () => {
     e.preventDefault();
     // form falidation
     if (state.clientCredentioal!.name && state.clientCredentioal!.password) {
-      dispatch(LoginClient(state.clientCredentioal!));
+      dispatch(signUp(state.clientCredentioal!));
       setState({
         ...state,
         isLoading: true,
@@ -80,6 +90,18 @@ const SignUp = () => {
       {/* signUp form */}
       <section className={styles.signUpForm}>
         <form onSubmit={handleSubmition}>
+          {/* error message */}
+          <AnimatePresence>
+            {isLoggedIn === false ? (
+              errMsg ? (
+                <AuthErrAlert msg={errMsg} />
+              ) : (
+                ""
+              )
+            ) : (
+              ""
+            )}
+          </AnimatePresence>
           {/* logo */}
           <div className={styles.logo}>
             <img src={Wallet} alt="" />
@@ -123,10 +145,6 @@ const SignUp = () => {
             <button type="submit">
               {state.isLoading ? <TransLoading /> : "Sign Up"}
             </button>
-            {/* forget password link */}
-            <a href="" className={styles.ForgetPassword}>
-              Forget Password
-            </a>
           </div>
           {/* end of buttom area */}
           {/* social media links */}

@@ -18,14 +18,45 @@ export const LoginClient = (Credentioal: ClientCredentioal) => async (dispatch: 
   // sending data to the server
   const response = await fetch(`${api_url}/auth/login`, config);
   // check for status code
-  if(response.status !== 200) {
-    dispatch({type: LOGIN_FAILD})
+  if(response.status === 400) {
+    dispatch({type: LOGIN_FAILD, payload: "Client Not Exist"})
+    return
+  }
+  // server error
+  if(response.status >= 500){
+    dispatch({type: LOGIN_FAILD, payload: "Server Error!!!"})
     return
   }
   const loginData = await response.json() as LoginSuccess;
   // response data
   dispatch({type: LOGIN_SUCCESS, payload: loginData})
 };
+// Login With Google
+export const LoginWithGoogle = (data: {googleTokenId: string}) => async (dispatch: Function) => {
+  const {LOGIN_SUCCESS, LOGIN_FAILD} = AuthTypes;
+  const reqInit = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-type": "application/json"
+    }
+  } as RequestInit
+  // fetch
+  const response = await fetch(`${api_url}/auth/login_with_google`, reqInit);
+  // check for status code
+  if(response.status === 400) {
+    dispatch({type: LOGIN_FAILD, payload: "Sorry, No Account Acosieated With Email!!"})
+    return
+  }
+  // handleing server error
+  if(response.status >= 500) {
+    console.log("unHundiled server error");
+    return
+  }
+  const loginData = await response.json() as LoginSuccess;
+  // response data
+  dispatch({type: LOGIN_SUCCESS, payload: loginData})
+}
 // initate client function
 export const InitateClient = () => async (dispatch: Function) => {
   // Auth cases
@@ -74,11 +105,48 @@ export const signUpWithGoogle = (data: {googleTokenId: string}) => async (dispat
   // fetch
   const response = await fetch(`${api_url}/auth/signup_with_google`, reqInit);
   // check for status code
-  if(response.status !== 200) {
-    dispatch({type: LOGIN_FAILD})
+  if(response.status === 400) {
+    dispatch({type: LOGIN_FAILD, payload: "Sorry, User is Already Exist!!"})
+    return
+  }
+  // handleing server error
+  if(response.status >= 500) {
+    console.log("unHundiled server error");
     return
   }
   const loginData = await response.json() as LoginSuccess;
   // response data
   dispatch({type: LOGIN_SUCCESS, payload: loginData})
 }
+// clear auth error message
+export const clearAuthErrMsg = () => (dispatch: Function) => {
+  dispatch({type: AuthTypes.CLEAR_AUTH_Err_MSG})
+}
+// login client method
+export const signUp = (Credentioal: ClientCredentioal) => async (dispatch: Function) => {
+  const {LOGIN_SUCCESS, LOGIN_FAILD} = AuthTypes;
+  // request configuration 
+  const config = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(Credentioal),
+  };
+
+  // sending data to the server
+  const response = await fetch(`${api_url}/auth/signup`, config);
+  // check for status code
+  if(response.status === 400) {
+    dispatch({type: LOGIN_FAILD, payload: "Client Exist"})
+    return
+  }
+  // server error
+  if(response.status >= 500){
+    dispatch({type: LOGIN_FAILD, payload: "Server Error!!!"})
+    return
+  }
+  const loginData = await response.json() as LoginSuccess;
+  // response data
+  dispatch({type: LOGIN_SUCCESS, payload: loginData})
+};
