@@ -1,15 +1,19 @@
 .Home {
   height: 100%;
-  padding: 10px;
-  background-color: rgb(241, 241, 241);
-  height: 100%;
+  background-color: rgb(250, 250, 250);
   padding: 5px;
   display: flex;
   overflow: hidden;
+  gap: 10px;
   .RoutesArea {
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 5px 2px lightgray;
+    border-radius: 10px;
     flex-grow: 1;
-    padding: 30px 50px;
+    background-color: white;
+    padding: 10px 50px;
+    overflow-y: hidden;
+    // margin: 10px;
   }
 }

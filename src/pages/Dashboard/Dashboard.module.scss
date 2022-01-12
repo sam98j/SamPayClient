@@ -1,8 +1,10 @@
 .DashBoard {
-  display: grid;
-  grid-template-columns: 60% 35%;
-  grid-template-rows: auto auto;
   height: 100%;
-  grid-column-gap: 5%;
-  grid-row-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  // grid-template-columns: 60% 35%;
+  // grid-template-rows: auto auto;
+  // grid-column-gap: 5%;
+  // grid-row-gap: 10px;
 }

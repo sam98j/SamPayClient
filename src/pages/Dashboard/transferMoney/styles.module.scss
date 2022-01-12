@@ -2,11 +2,12 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  width: 100%;
   background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 3px 2px lightgray;
   // box-shadow: 0 0 2px 2px lightgrey;
   backdrop-filter: blur(10px);
   border-radius: 10px;
+  width: 35% !important;
   // the styles of the section that user can select transfer type
   .transferTypesContainer {
     display: flex;

@@ -1,7 +1,9 @@
 .SideBar {
   width: 250px;
   height: 100%;
-  border-right: 1px solid lightgrey;
+  background-color: white;
+  box-shadow: 0 0 5px 2px lightgray;
+  border-radius: 10px;
   padding: 20px 20px;
   position: relative;
   ul {
@@ -24,15 +26,16 @@
   .profile {
     position: absolute;
     bottom: 30px;
-    left: 20px;
     background-color: white;
+    box-shadow: 0 0 5px 2px lightgray;
     height: 60px;
     width: 80%;
     border-radius: 20px;
     display: flex;
     align-items: center;
+    justify-content: center;
     color: black;
-    padding: 0px 10px;
+    padding: 0px 20px;
     h4 {
       display: flex;
       align-items: center;
@@ -41,8 +44,8 @@
       }
     }
     .img {
-      height: 40px;
-      min-width: 40px;
+      height: 35px;
+      min-width: 35px;
       border-radius: 50%;
       background-color: yellow;
       margin-right: 10px;

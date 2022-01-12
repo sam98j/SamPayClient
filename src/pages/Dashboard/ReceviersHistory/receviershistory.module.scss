@@ -1,10 +1,11 @@
 .receviershistory {
   background-color: white;
-  // box-shadow: 0 0 2px 2px lightgrey;
+  box-shadow: 0 0 3px 2px lightgray;
   border-radius: 10px;
   padding: 10px;
   position: relative;
   overflow-y: scroll;
+  width: 35%;
   // beneficiaries
   .recentBeneficiaries {
     margin-bottom: 1rem;

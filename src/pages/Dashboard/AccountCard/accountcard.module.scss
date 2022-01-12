@@ -1,22 +1,22 @@
 .accountCard {
   padding: 30px;
-  height: 100%;
+  width: 60% !important;
   display: flex;
+  height: 200px;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
+  // width: 100%;
   background-color: white;
+  box-shadow: 0 0 3px 2px lightgray;
   // box-shadow: 0 0 2px 2px lightgrey;
   // border: 2px solid black;
   border-radius: 10px;
   backdrop-filter: blur(10px);
-  h6 {
-    color: gray;
-  }
   p.Balance {
     font-size: 30px;
     font-weight: bold;
     margin-top: 20px;
+    color: green;
   }
   p.Account {
     margin-top: 20px;
