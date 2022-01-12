@@ -55,6 +55,13 @@ const SignUp = () => {
       });
     }
   }, [isAuthorized, errMsg]);
+  // useEffect
+  useEffect(() => {
+    return function cleanUp() {
+      console.log("compoent un mount");
+      push("/dashboard");
+    };
+  }, []);
   // handle from change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setState({
