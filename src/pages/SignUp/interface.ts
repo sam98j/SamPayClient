@@ -1,6 +1,6 @@
 import { ClientCredentioal } from "../../types/interfaces/auth_apis";
 // data come to component from outside
-export interface LoginProps  {
+export interface SignUpProps  {
   isAuthorized: Boolean,
   errMsg: string | null,
   isLoggedIn: Boolean | null

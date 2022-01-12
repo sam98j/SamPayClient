@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./signup.module.scss";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/all";
-import { LoginState, LoginProps } from "./login.interface";
+import { LoginState, SignUpProps } from "./interface";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp, signUpWithGoogle } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
@@ -32,7 +32,7 @@ const SignUp = () => {
   // Component Props
   const { isAuthorized, errMsg, isLoggedIn } = useSelector<
     AppState,
-    LoginProps
+    SignUpProps
   >(({ auth }) => ({
     isAuthorized: Boolean(auth.client),
     errMsg: auth.errMsg,
@@ -40,19 +40,19 @@ const SignUp = () => {
   }));
   // component did mount
   useEffect(() => {
-    console.log(errMsg);
     if (isAuthorized) {
       setState({
         ...state,
         isLoading: false,
       });
-      // LogginClient();
-      if (Boolean(errMsg)) {
-        setState({
-          ...state,
-          isLoading: false,
-        });
-      }
+    }
+    // LogginClient();
+    if (Boolean(errMsg)) {
+      console.log(errMsg);
+      setState({
+        ...state,
+        isLoading: false,
+      });
     }
   }, [isAuthorized, errMsg]);
   // handle from change
