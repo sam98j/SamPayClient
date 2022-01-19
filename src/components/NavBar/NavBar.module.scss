@@ -4,6 +4,9 @@
   align-items: center;
   margin-bottom: 20px;
   position: relative;
+  @media (max-width: 500px) {
+    display: none !important;
+  }
   .AppCenter {
     flex-grow: 1;
     display: flex;

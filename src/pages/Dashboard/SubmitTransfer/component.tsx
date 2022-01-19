@@ -14,9 +14,11 @@ import { TransferStatus } from "../../../types/enums/transactions";
 import { SubmitTransParms } from "../../../types/interfaces/trans_apis";
 import TransLoading from "../../../components/TransLoading/TransLoading";
 import { addReceiverToHistory } from "../../../apis/system";
+import { useHistory } from "react-router";
 // import DoneIcon from "../../../../public/icons/ok-1.1s-200px.svg";
 
 const SubmitTrans = () => {
+  const { push } = useHistory();
   // the component state
   const [state, setState] = useState<SubmitTransState>({
     amount: 0,
@@ -77,6 +79,7 @@ const SubmitTrans = () => {
       });
       setTimeout(() => {
         dispatch(clearCurrentTransfer());
+        push("/dashboard");
       }, 1500);
     }
   }, [isTransaferSubmited]);

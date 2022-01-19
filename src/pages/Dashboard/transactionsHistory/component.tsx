@@ -26,11 +26,9 @@ function TransactionsHistory() {
   }>({ sortiedByDate: [] });
   // transactions dates
   const sortTrxsHisByDate = () => {
-    const dates = new Set(
-      transHistory.map((trx) => moment(trx.date).format("YYYY-MMM-DD"))
+    const datesArray = Array.from(
+      new Set(transHistory.map((trx) => moment(trx.date).format("YYYY-MMM-DD")))
     );
-    const datesArray = Array.from(dates);
-
     let sections: Section[] = datesArray.map((date) => ({
       title: date,
       trxs: transHistory.filter((trx) => {

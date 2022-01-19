@@ -1,4 +1,4 @@
-import { SystemActionsTypes } from "../../types/enums/system";
+import { Devices, SystemActionsTypes } from "../../types/enums/system";
 import { TransTypes } from "../../types/enums/transactions";
 import { DetailedSingleTrans, ReceiversHistoryEle } from "../../types/interfaces/system_api";
 import { SystemReducerState } from "../../types/interfaces/system_reducer";
@@ -11,7 +11,8 @@ const initState = {
     notifications: notificationRecord ? [...JSON.parse(notificationRecord)] : [],
     receiversHistory: receiversHis ? [...JSON.parse(receiversHis)] : [],
     detailedSingleTrans: null,
-    incomingTransAlert: null
+    incomingTransAlert: null,
+    device: Devices.DESKTOP
 } as SystemReducerState
 
 const systemReducer = (state = initState, action: {type: string, payload: any}): SystemReducerState => {
@@ -22,10 +23,19 @@ const systemReducer = (state = initState, action: {type: string, payload: any}):
         HIDE__DETAILED_SINGLE_TRANS,
         SHOW_NOTIFICATIONS,
         INCOMING_TRANS_ALERT,
-        HIDE_INCOMING_TRANS_ALERT
+        HIDE_INCOMING_TRANS_ALERT,
+        SET_DEVICE_TYPE
     } = SystemActionsTypes;
     const {RECEIVE_MONEY, } = TransTypes;
     switch (action.type) {
+        // set device type
+        case SET_DEVICE_TYPE: {
+            const deviceType = action.payload as Devices;
+            return {
+                ...state,
+                device: deviceType
+            }
+        }
         // set the route name
         case SET_CURRENT_ROUTE: {
             return {

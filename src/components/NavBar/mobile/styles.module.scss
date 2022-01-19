@@ -1,0 +1,20 @@
+.navBarMobile {
+  display: none;
+  @media (max-width: 500px) {
+    background-color: #f7f7f7;
+    height: 57px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    p {
+      flex-grow: 1;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    img {
+      width: 37px;
+    }
+  }
+}

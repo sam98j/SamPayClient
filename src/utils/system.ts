@@ -1,3 +1,4 @@
+import { Devices } from "../types/enums/system";
 import { ReceiversHistoryEle } from "../types/interfaces/system_api";
 
 // add receivers Histroy to localstorage
@@ -27,4 +28,12 @@ export const addReceiverToLocalStorage = (receiver: ReceiversHistoryEle) => {
     const updatedReceiversHis = JSON.stringify([receiver]);
     localStorage.setItem("receiverHis", updatedReceiversHis);
     return updatedReceiversHis
+}
+// check for device screen
+export const checkDeviceScreen = () => {
+  if(window.screen.width <= Devices.MOBILE) {
+    console.log("it's mobile")
+    return Devices.MOBILE
+  }
+  return Devices.DESKTOP
 }

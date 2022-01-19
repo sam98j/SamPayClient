@@ -8,6 +8,9 @@
   backdrop-filter: blur(10px);
   border-radius: 10px;
   width: 35% !important;
+  @media (max-width: 500px) {
+    display: none;
+  }
   // the styles of the section that user can select transfer type
   .transferTypesContainer {
     display: flex;

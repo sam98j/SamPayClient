@@ -3,7 +3,13 @@
   overflow: hidden;
   display: flex;
   font-size: 0.7rem;
+  @media (min-width: 300px) {
+    padding: 0 20px;
+  }
   .LoginForm {
+    @media (min-width: 300px) {
+      width: 100%;
+    }
     width: 50%;
     height: 100%;
     display: flex;
@@ -130,7 +136,9 @@
   .VectorsArea {
     width: 50%;
     height: 100%;
-    // background-image: url("../../assets/BGs/bg1.jpg");
+    @media (min-width: 300px) {
+      display: none;
+    }
     background-size: cover;
     img {
       height: 100%;

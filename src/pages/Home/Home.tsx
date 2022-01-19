@@ -12,6 +12,7 @@ import Profile from "../Profile/Profile";
 import { AppState } from "../../types/interfaces/store";
 import { HomeProps } from "./interface";
 import InComeTransAlert from "../../components/InComeTransAlert/InComeTransAlert";
+import NavBarMobile from "../../components/NavBar/mobile/NavBar";
 
 const Home = () => {
   const { incomingTransAlert } = useSelector<AppState, HomeProps>(
@@ -20,7 +21,10 @@ const Home = () => {
   return (
     <section className={styles.Home}>
       {incomingTransAlert ? <InComeTransAlert /> : ""}
+      {/* <InComeTransAlert /> */}
       <SideBar />
+      {/* mobile NavBar  */}
+      <NavBarMobile />
       <section className={styles.RoutesArea}>
         <NavBar />
         <Route component={Dashboard} path="/dashboard" />

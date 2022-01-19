@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useParams } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { InitateClient } from "./apis/auth";
@@ -15,8 +15,14 @@ import { receiveMoney } from "./apis/transactions";
 import { ReceiveMoneyNotification } from "./types/interfaces/trans_apis";
 import { useLocation, useHistory } from "react-router-dom";
 import DetailedSingleTransaction from "./components/DetailedSingleTrans/DetailedSingleTrans";
+import SendMoneyMobile from "./components/SendMoneyMobile/SendMoneyMobile";
+import SendMoneyPanel from "./components/SendMoneyPanel/SendMoneyPanel";
+import { checkDeviceScreen } from "./utils/system";
+import { setDeviceType } from "./apis/system";
+import { Devices } from "./types/enums/system";
 
 function App() {
+  const { search } = useLocation();
   // use dispatch to send action to the store, change the state of the store
   const dispatch = useDispatch();
   // redirect user
@@ -24,12 +30,13 @@ function App() {
   // the current route
   const { pathname } = useLocation();
   // get state from redux store
-  const { isLogged, currentTransfer, client_id, detailedSingleTrans } =
+  const { isLogged, currentTransfer, client_id, detailedSingleTrans, device } =
     useSelector<AppState, CompoProps>((state) => ({
       isLogged: state.auth.isLogged,
       currentTransfer: state.transactions.currentTransfer,
       client_id: state.auth.client?._id!,
       detailedSingleTrans: state.system.detailedSingleTrans,
+      device: state.system.device,
     }));
   // play notification sound
   const playNotificationSound = () => {
@@ -63,6 +70,7 @@ function App() {
   }, [client_id, isLogged]);
   // component did mount
   useEffect(() => {
+    dispatch(setDeviceType(checkDeviceScreen()));
     // apis call to decide if user is logged in or not
     dispatch(InitateClient());
   }, []);
@@ -82,7 +90,10 @@ function App() {
     <div className={styles.App}>
       {detailedSingleTrans ? <DetailedSingleTransaction /> : ""}
       {/* submit transfer modal */}
-      {SubmitTransferModal}
+      {device === Devices.DESKTOP ? SubmitTransferModal : ""}
+      {/* send money mobile */}
+      {/* SendMoney Mobile Pannel */}
+      {Boolean(search) ? <SendMoneyPanel /> : ""}
       {/* render Home page or Welcome page */}
       <Switch>
         <Route component={component} path="/" />

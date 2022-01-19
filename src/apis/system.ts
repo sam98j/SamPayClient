@@ -1,4 +1,4 @@
-import { SystemActionsTypes } from "../types/enums/system";
+import { Devices, SystemActionsTypes } from "../types/enums/system";
 import { DetailedSingleTrans, ReceiversHistoryEle } from "../types/interfaces/system_api";
 import moment from "moment";
 import { ReceiveMoneyNotification } from "../types/interfaces/trans_apis";
@@ -61,4 +61,8 @@ export const seeNotifications = () => (dispatch: Function) => {
 export const hideIncomingTransAlert = () => (dispatch: Function) => {
   const {HIDE_INCOMING_TRANS_ALERT} = SystemActionsTypes
   dispatch({type: HIDE_INCOMING_TRANS_ALERT})
+}
+// set device type api
+export const setDeviceType = (deviceType: Devices) => (dispatch: Function) => {
+  dispatch({type: SystemActionsTypes.SET_DEVICE_TYPE, payload: deviceType})
 }
