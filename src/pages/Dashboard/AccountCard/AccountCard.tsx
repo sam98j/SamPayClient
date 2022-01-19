@@ -24,8 +24,7 @@ const AccountCard = () => {
       <div
         className={styles.sendMoneyBtn}
         onClick={() => {
-          console.log("done");
-          params.append("name", "true");
+          params.append("trx", "true");
           push({ search: params.toString() });
         }}
       >

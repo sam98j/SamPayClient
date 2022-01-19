@@ -21,7 +21,6 @@ const Home = () => {
   return (
     <section className={styles.Home}>
       {incomingTransAlert ? <InComeTransAlert /> : ""}
-      {/* <InComeTransAlert /> */}
       <SideBar />
       {/* mobile NavBar  */}
       <NavBarMobile />
