@@ -1,4 +1,3 @@
-import { ClientCredentioal } from "../../types/interfaces/auth_apis";
 // data come to component from outside
 export interface SignUpProps  {
   isAuthorized: Boolean,
@@ -6,7 +5,13 @@ export interface SignUpProps  {
   isLoggedIn: Boolean | null
 }
 // local state of component memebers
-export interface LoginState {
-  clientCredentioal: ClientCredentioal | null;
+export interface SignUpState {
+  clientCredentioal: NewClientRegestrationData | null;
   isLoading: boolean;
+}
+// NewClientRegestrationData
+export interface NewClientRegestrationData {
+  email: string;
+  username: string;
+  password: string
 }

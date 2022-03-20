@@ -13,6 +13,7 @@ import { AppState } from "../../types/interfaces/store";
 import { HomeProps } from "./interface";
 import InComeTransAlert from "../../components/InComeTransAlert/InComeTransAlert";
 import NavBarMobile from "../../components/NavBar/mobile/NavBar";
+import SystemErr from "../../components/SystemErr/SystemErr";
 
 const Home = () => {
   const { incomingTransAlert } = useSelector<AppState, HomeProps>(
@@ -20,7 +21,11 @@ const Home = () => {
   );
   return (
     <section className={styles.Home}>
+      {/* show incoming money alert */}
       {incomingTransAlert ? <InComeTransAlert /> : ""}
+      {/* System Error Notification */}
+      <SystemErr />
+      {/* side navbar */}
       <SideBar />
       {/* mobile NavBar  */}
       <NavBarMobile />

@@ -1,21 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { selectTransferMehod } from "../../../apis/system";
 import { getReceiver } from "../../../apis/transactions";
 import TransLoading from "../../../components/TransLoading/TransLoading";
+import { TransferMethods } from "../../../types/enums/system";
 import { TransferStatus } from "../../../types/enums/transactions";
 import { AppState } from "../../../types/interfaces/store";
 import { CurrentTransfer } from "../../../types/interfaces/trans_reducer";
 import { GetReceiverComState } from "./interface";
 import styles from "./styles.module.scss";
+import ViaEmail from "./ViaEmail/ViaEmail";
+import ViaPhoneNo from "./ViaPhoneNo/ViaPhoneNo";
 
 function TransferMoney() {
   // local state of component
   const [state, setState] = useState<GetReceiverComState>({
     receiverPhone: "",
     isLoading: false,
+    receiverEmail: "",
   });
   // ref
   const btnRef = useRef<HTMLButtonElement>(null);
+  // get TransferMethod from the store
+  const transferMethod = useSelector<AppState, TransferMethods>(
+    (state) => state.system.transferMethod
+  );
   // get data from the store
   const currentTransfer = useSelector<AppState, CurrentTransfer>(
     ({ transactions }) => transactions.currentTransfer
@@ -32,7 +41,7 @@ function TransferMoney() {
   }
   // component update and mount
   useEffect(() => {
-    if (!state.receiverPhone) {
+    if (!state.receiverPhone && !state.receiverEmail) {
       btnRef.current!.disabled = true;
       return;
     }
@@ -43,17 +52,26 @@ function TransferMoney() {
     // prevent default action of form
     e.preventDefault();
     // check
-    if (!state.receiverPhone) {
+    if (!state.receiverPhone && !state.receiverEmail) {
       console.log(new Error("no phone entered"));
       return;
     }
+    const receiverContact =
+      transferMethod === TransferMethods.VIA_EMAIL
+        ? state.receiverEmail
+        : state.receiverPhone;
     // get the receiver form the server
-    dispatch(getReceiver(state.receiverPhone));
+    dispatch(getReceiver(receiverContact));
     // run the loading
     setState({
       ...state,
       isLoading: true,
     });
+  }
+  // select transferMethod Handler
+  function selectTransferMethodHandler(e: React.MouseEvent<HTMLLIElement>) {
+    const transferMethod = e.currentTarget.value as TransferMethods;
+    dispatch(selectTransferMehod(transferMethod));
   }
   // whatch currentTransfer changes
   useEffect(() => {
@@ -70,32 +88,28 @@ function TransferMoney() {
       <h4 className={styles.sectionName}>Quick Transfer</h4>
       {/* select transfer type */}
       <ul className={styles.transferTypesContainer}>
-        <li>Via Account No</li>
-        <li>Via Mobile No</li>
+        <li
+          onClick={selectTransferMethodHandler}
+          value={TransferMethods.VIA_EMAIL}
+        >
+          Via Email
+        </li>
+        <li
+          onClick={selectTransferMethodHandler}
+          value={TransferMethods.VIA_MOBILE_NO}
+        >
+          Via Mobile No
+        </li>
       </ul>
-      {/* Transfer with phone number */}
-      <div className={styles.TransferWithPhone}>
-        {/* select country */}
-        <div className={styles.Country}>
-          <span></span>
-          <span>+249</span>
-        </div>
-        {/* phone numbrer input */}
-        <div className={styles.Phone}>
-          <input
-            type="number"
-            name="receiverPhone"
-            value={state.receiverPhone}
-            placeholder="Enter receiver phone"
-            onChange={inputHandler}
-          />
-        </div>
-        {/* client image */}
-        <div className={styles.Img}></div>
-      </div>
+      {/* determine transferMethod */}
+      {transferMethod === TransferMethods.VIA_EMAIL ? (
+        <ViaEmail transferMoneyState={state} onChangeHandler={inputHandler} />
+      ) : (
+        <ViaPhoneNo transferMoneyState={state} onChangeHandler={inputHandler} />
+      )}
       {/* Do tranfer btn */}
       <button onClick={Transfer} ref={btnRef} className={styles.transferBtn}>
-        {state.isLoading ? <TransLoading /> : "Transfer"}
+        {state.isLoading ? <TransLoading /> : "Make Transfer"}
       </button>
     </div>
   );

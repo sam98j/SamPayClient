@@ -1,5 +1,6 @@
 // state of component
 export interface GetReceiverComState {
     receiverPhone: string,
-    isLoading: boolean
+    isLoading: boolean,
+    receiverEmail: string
 }

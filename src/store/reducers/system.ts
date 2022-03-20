@@ -1,4 +1,5 @@
-import { Devices, SystemActionsTypes } from "../../types/enums/system";
+import { AuthTypes } from "../../types/enums/auth";
+import { Devices, SystemActionsTypes, TransferMethods } from "../../types/enums/system";
 import { TransTypes } from "../../types/enums/transactions";
 import { DetailedSingleTrans, ReceiversHistoryEle } from "../../types/interfaces/system_api";
 import { SystemReducerState } from "../../types/interfaces/system_reducer";
@@ -12,6 +13,8 @@ const initState = {
     receiversHistory: receiversHis ? [...JSON.parse(receiversHis)] : [],
     detailedSingleTrans: null,
     incomingTransAlert: null,
+    transferMethod: TransferMethods.VIA_EMAIL,
+    getReceiverErr: null,
     device: Devices.DESKTOP
 } as SystemReducerState
 
@@ -24,9 +27,13 @@ const systemReducer = (state = initState, action: {type: string, payload: any}):
         SHOW_NOTIFICATIONS,
         INCOMING_TRANS_ALERT,
         HIDE_INCOMING_TRANS_ALERT,
-        SET_DEVICE_TYPE
+        SET_DEVICE_TYPE,
+        SELECT_TRANSFER_METHOD,
+        HIDE_GET_RECEIVER_ERR_MSG
     } = SystemActionsTypes;
-    const {RECEIVE_MONEY, } = TransTypes;
+    // transactions actions types
+    const {RECEIVE_MONEY, SERVER_ERR, GET_RECEIVER_ERR} = TransTypes;
+    const {SIGN_OUT} = AuthTypes
     switch (action.type) {
         // set device type
         case SET_DEVICE_TYPE: {
@@ -96,6 +103,45 @@ const systemReducer = (state = initState, action: {type: string, payload: any}):
             return {
                 ...state,
                 incomingTransAlert: null
+            }
+        }
+        // when user sign out
+        case SIGN_OUT: {
+            return {
+                ...state,
+                notifications: [],
+                receiversHistory: []
+            }
+        }
+        // select transfer method
+        case SELECT_TRANSFER_METHOD: {
+            const transferMethod = action.payload as TransferMethods;
+            return {
+                ...state,
+                transferMethod
+            }
+        }
+        // in case of get receiver error
+        case GET_RECEIVER_ERR: {
+            const getReceiverErrMsg = action.payload as string;
+            return {
+                ...state,
+                getReceiverErr: getReceiverErrMsg
+            }
+        }
+        // in case of get receiver server error
+        case SERVER_ERR: {
+            const serverErrMsg = action.payload as string;
+            return {
+                ...state,
+                getReceiverErr: serverErrMsg
+            }
+        }
+        // hide getReceiverErr Message
+        case HIDE_GET_RECEIVER_ERR_MSG: {
+            return {
+                ...state,
+                getReceiverErr: null
             }
         }
         // hide submit transfer modal

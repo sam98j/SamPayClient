@@ -1,6 +1,7 @@
 import { ClientCredentioal, LoginSuccess } from "../types/interfaces/auth_apis";
 import {AuthTypes} from '../types/enums/auth'
 import { Client } from "../types/interfaces/store";
+import { NewClientRegestrationData } from "../pages/SignUp/interface";
 const api_url = process.env.REACT_APP_API_URL!;
 
 // login client method
@@ -123,7 +124,7 @@ export const clearAuthErrMsg = () => (dispatch: Function) => {
   dispatch({type: AuthTypes.CLEAR_AUTH_Err_MSG})
 }
 // login client method
-export const signUp = (Credentioal: ClientCredentioal) => async (dispatch: Function) => {
+export const signUp = (data: NewClientRegestrationData) => async (dispatch: Function) => {
   const {LOGIN_SUCCESS, LOGIN_FAILD} = AuthTypes;
   // request configuration 
   const config = {
@@ -131,7 +132,7 @@ export const signUp = (Credentioal: ClientCredentioal) => async (dispatch: Funct
     headers: {
       "Content-type": "application/json",
     },
-    body: JSON.stringify(Credentioal),
+    body: JSON.stringify(data),
   };
 
   // sending data to the server

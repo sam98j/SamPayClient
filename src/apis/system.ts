@@ -1,9 +1,10 @@
-import { Devices, SystemActionsTypes } from "../types/enums/system";
+import { Devices, SystemActionsTypes, TransferMethods } from "../types/enums/system";
 import { DetailedSingleTrans, ReceiversHistoryEle } from "../types/interfaces/system_api";
 import moment from "moment";
 import { ReceiveMoneyNotification } from "../types/interfaces/trans_apis";
 import { addReceiverToLocalStorage } from "../utils/system";
 
+const {SELECT_TRANSFER_METHOD} = SystemActionsTypes;
 export const SetCurrentRoute = (routeName: string) => (dispatch: Function) => {
   const {SET_CURRENT_ROUTE} = SystemActionsTypes;
   dispatch({ type: SET_CURRENT_ROUTE, payload: routeName });
@@ -65,4 +66,12 @@ export const hideIncomingTransAlert = () => (dispatch: Function) => {
 // set device type api
 export const setDeviceType = (deviceType: Devices) => (dispatch: Function) => {
   dispatch({type: SystemActionsTypes.SET_DEVICE_TYPE, payload: deviceType})
+}
+// change TransferMehod
+export const selectTransferMehod = (method: TransferMethods) => (dispatch: Function) => {
+  dispatch({type: SELECT_TRANSFER_METHOD, payload: method})
+}
+// hide getReceiverErr Message
+export const hideGetReceiverErrMsg = () => (dispatch: Function) => {
+  dispatch({type: SystemActionsTypes.HIDE_GET_RECEIVER_ERR_MSG})
 }

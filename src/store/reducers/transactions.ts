@@ -11,7 +11,8 @@ const transactionsReducer = (state = initState, action: {type: string, payload: 
     const {
         SET_TRANSACTION, 
         SUBMIT_TRANSFER, 
-        RECEIVER_NOT_FOUND, 
+        GET_RECEIVER_ERR,
+        SERVER_ERR, 
         SUBMIT_TRANSFER_ERR,
         HIDE_SUBMIT_TRANS_MODAL,
         CLEAR_CURRENT_TRANSFER
@@ -22,10 +23,17 @@ const transactionsReducer = (state = initState, action: {type: string, payload: 
             return state
         }
         // an error when get the receiver client
-        case RECEIVER_NOT_FOUND: {
+        case GET_RECEIVER_ERR: {
             return {
                 ...state,
                 currentTransfer: TransferStatus.TRANS_ERR,
+            }
+        }
+        // in case of server error
+        case SERVER_ERR: {
+            return {
+                ...state,
+                currentTransfer: TransferStatus.TRANS_ERR
             }
         }
         // after successfuly geting the client 

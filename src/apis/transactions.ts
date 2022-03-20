@@ -4,28 +4,50 @@ import { GetReceiverBody,
         SubmitTransferRes, 
         SubmitTransParms 
     } from "../types/interfaces/trans_apis";
-import { TransTypes } from "../types/enums/transactions";
+import { GetReceiverErr, TransTypes } from "../types/enums/transactions";
 import { Client } from "../types/interfaces/store";
 import { SystemActionsTypes } from "../types/enums/system";
 const api_url = process.env.REACT_APP_API_URL!;
 
 // make Transaction
-export const getReceiver = (phone: GetReceiverParms) => async (dispatch: Function) => {
-    const {RECEIVER_NOT_FOUND, SET_TRANSACTION} = TransTypes;
+export const getReceiver = (receiverContact: GetReceiverParms) => async (dispatch: Function) => {
+    const {SET_TRANSACTION, GET_RECEIVER_ERR, SERVER_ERR} = TransTypes;
     // get receiver request body
-    const reqBody: GetReceiverBody = {receiverPhone: phone}
+    const reqBody = {receiverContact} as GetReceiverBody;
+    // token
+    const token = localStorage.getItem("token") as string
     // request config object
     const ReqConfig: RequestInit = {
         method: "POST",
-        headers: {"Content-type": "application/json"},
+        headers: {
+          "Content-type": "application/json", 
+          "authorization": token
+        },
         body: JSON.stringify(reqBody)
     }
     // init request
     const response = await fetch(`${api_url}/transfer/get_receiver`, ReqConfig);
     // check if an error found
     if(response.status !== 200) {
-        dispatch({type: RECEIVER_NOT_FOUND})
-        return
+      // if status = 400
+      if(response.status === 400){
+        // get receiver errors
+        const {CLIENT_DOSNOT_EXIST, YOU_CANT_SEND_TO_YOUR_SELF} = GetReceiverErr;
+        const {err} = await response.json() as {err: string}
+        // if receiver dosnot exist
+        if(err === CLIENT_DOSNOT_EXIST) {
+          dispatch({type: GET_RECEIVER_ERR, payload: "Receiver Dosnot Exist"});
+          return
+        }
+        // if receiver dosnot exist
+        if(err === YOU_CANT_SEND_TO_YOUR_SELF) {
+          dispatch({type: GET_RECEIVER_ERR, payload: "You Can't Send to Your Self"});
+          return
+        }
+      }
+      // internal server error
+      dispatch({type: SERVER_ERR, payload: "Internal Server Error"})
+      return
     }
     // Parse the Response
     const receiver = await response.json() as Client;

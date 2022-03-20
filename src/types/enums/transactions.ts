@@ -1,7 +1,8 @@
 export enum TransTypes {
     SUBMIT_TRANSFER = "SUBMIT_TRANSFER",
     SUBMIT_TRANSFER_ERR = "SUBMIT_TRANSFER_ERR",
-    RECEIVER_NOT_FOUND = "RECEIVER_NOT_FOUND",
+    GET_RECEIVER_ERR = "GET_RECEIVER_ERR",
+    SERVER_ERR = "SERVER_ERR",
     SET_TRANSACTION = "SET_TRANSACTION",
     RECEIVE_MONEY = "RECEIVE_MONEY",
     HIDE_SUBMIT_TRANS_MODAL = "HIDE_SUBMIT_TRANS_MODAL",
@@ -10,4 +11,9 @@ export enum TransTypes {
 export enum TransferStatus {
     TRANS_LOADING = "TRANS_LOADING",
     TRANS_ERR = "TRANS_ERR",
+}
+// GetReceiver Error
+export enum GetReceiverErr {
+    YOU_CANT_SEND_TO_YOUR_SELF = "You Can't send to your self",
+    CLIENT_DOSNOT_EXIST = "client dosnot exist"
 }

@@ -11,7 +11,7 @@ export interface SubmitTransferRes {
 }
 // body of post request to get receiver client
 export interface GetReceiverBody {
-    receiverPhone: string
+    receiverContact: string
 }
 // response of post request to get receiver client
 export interface GetReceiverRes {

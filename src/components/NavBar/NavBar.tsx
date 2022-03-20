@@ -37,10 +37,12 @@ const NavBar = () => {
   };
   return (
     <nav className={styles.NavBar}>
+      <p style={{ fontWeight: "bold", fontSize: "1.5rem" }}>DashBoard</p>
       {/* notifications menu */}
       {state.isOpen ? <NotificationsMenu /> : ""}
       {/* navbar search and notification icons */}
       <ul className={styles.AppCenter}>
+        {/* search bar */}
         <li>
           <Link to="">
             <IconContext.Provider value={{ color: "black" }}>
@@ -48,6 +50,7 @@ const NavBar = () => {
             </IconContext.Provider>
           </Link>
         </li>
+        {/* notification bill */}
         <li onClick={handleNotificationsMenu}>
           <Notifications />
         </li>

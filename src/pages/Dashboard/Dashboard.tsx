@@ -6,13 +6,8 @@ import TransferMoney from "./transferMoney/component";
 import TransactionsHistory from "./transactionsHistory/component";
 import ReceviersHistory from "./ReceviersHistory/ReceviersHistory";
 import AccountCard from "./AccountCard/AccountCard";
-import { useParams, useHistory, useLocation } from "react-router";
 
 const Dashboard = () => {
-  const params = useParams();
-  const {} = useHistory();
-  const { search, key } = useLocation();
-  console.log(params);
   const dispatch = useDispatch();
   // when component mount
   useEffect(() => {
@@ -21,11 +16,15 @@ const Dashboard = () => {
   // return the ui
   return (
     <div className={styles.DashBoard}>
+      {/* to show account balance */}
       <AccountCard />
+      {/* panel to quick send money */}
       <TransferMoney />
       {/* visble on mobile */}
       <p className={styles.trxHisTitle}>Trx. History</p>
+      {/* component to show all transactions that made by user */}
       <TransactionsHistory />
+      {/* show recents receivers */}
       <ReceviersHistory />
     </div>
   );

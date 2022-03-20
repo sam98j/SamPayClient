@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./signup.module.scss";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/all";
-import { LoginState, SignUpProps } from "./interface";
+import { SignUpProps, SignUpState } from "./interface";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp, signUpWithGoogle } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
@@ -20,10 +20,11 @@ const SignUp = () => {
   // react router hooks
   const { push } = useHistory();
   // Componet State
-  const [state, setState] = useState<LoginState>({
+  const [state, setState] = useState<SignUpState>({
     clientCredentioal: {
-      name: "",
+      username: "",
       password: "",
+      email: "",
     },
     isLoading: false,
   });
@@ -76,7 +77,7 @@ const SignUp = () => {
   const handleSubmition = (e: React.FormEvent): void => {
     e.preventDefault();
     // form falidation
-    if (state.clientCredentioal!.name && state.clientCredentioal!.password) {
+    if (state.clientCredentioal!.email && state.clientCredentioal!.password) {
       dispatch(signUp(state.clientCredentioal!));
       setState({
         ...state,
@@ -128,12 +129,28 @@ const SignUp = () => {
           <p className={styles.seperator}>Or</p>
           {/* input field */}
           <div className={styles.inputArea}>
-            <label htmlFor="">E-mail</label>
+            <label htmlFor="email">E-mail</label>
+            <input
+              type="email"
+              checked
+              required
+              id="email"
+              onChange={handleChange}
+              value={state.clientCredentioal!.email!}
+              name="email"
+            />
+          </div>
+          {/* input field */}
+          <div className={styles.inputArea}>
+            <label htmlFor="username">User Name</label>
             <input
               type="text"
+              checked
+              required
+              id="username"
               onChange={handleChange}
-              value={state.clientCredentioal!.name!}
-              name="name"
+              value={state.clientCredentioal!.username!}
+              name="username"
             />
           </div>
           {/* input field */}

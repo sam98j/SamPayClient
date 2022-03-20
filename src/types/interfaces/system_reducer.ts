@@ -1,4 +1,4 @@
-import { Devices } from "../enums/system";
+import { Devices, TransferMethods } from "../enums/system";
 import { DetailedSingleTrans, ReceiversHistoryEle } from "./system_api";
 import { ReceiveMoneyNotification } from "./trans_apis";
 
@@ -9,5 +9,7 @@ export interface SystemReducerState {
     receiversHistory: ReceiversHistoryEle[];
     detailedSingleTrans: null | DetailedSingleTrans,
     incomingTransAlert: ReceiveMoneyNotification | null,
-    device: Devices
+    device: Devices,
+    transferMethod: TransferMethods,
+    getReceiverErr: string | null
 }

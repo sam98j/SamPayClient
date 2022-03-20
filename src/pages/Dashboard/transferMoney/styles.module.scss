@@ -2,8 +2,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 0 3px 2px lightgray;
+  background-color: #f7f7f7;
   // box-shadow: 0 0 2px 2px lightgrey;
   backdrop-filter: blur(10px);
   border-radius: 10px;
@@ -22,6 +21,7 @@
     // Single Transfer type
     li {
       flex-grow: 1;
+      cursor: pointer;
       padding: 10px;
       text-align: center;
       border-radius: 10px;
@@ -35,61 +35,14 @@
   }
   .transferBtn {
     border: none;
-    background-color: dodgerblue;
+    background-color: rgb(0, 131, 0);
     color: white;
     border-radius: 7px;
     padding: 10px 0;
     cursor: pointer;
     &:disabled {
       cursor: not-allowed;
-      background-color: rgba(30, 143, 255, 0.74);
-    }
-  }
-  .TransferWithPhone {
-    background-color: rgba(228, 228, 228, 0.822);
-    margin: 10px 0;
-    border-radius: 10px;
-    display: flex;
-    padding: 10px 5px;
-    gap: 5px;
-    align-items: center;
-    // here the user can select the country of the his receiver
-    .Country {
-      display: flex;
-      align-items: center;
-      // styles of the country flag
-      span:first-child {
-        display: block;
-        height: 15px;
-        width: 25px;
-        background-color: lightskyblue;
-        margin-right: 5px;
-      }
-    }
-    // user enter his receiver phone number
-    .Phone {
-      text-align: left;
-      flex-grow: 1;
-      height: 100%;
-      input {
-        display: block;
-        border: none;
-        height: 100%;
-        background-color: rgb(255, 255, 255);
-        border-radius: 5px;
-        padding: 0 2px;
-        &:focus {
-          outline: none;
-        }
-      }
-    }
-    // receiver image or avatar
-    .Img {
-      height: 25px;
-      display: inline-block;
-      min-width: 25px;
-      border-radius: 50%;
-      background-color: lightsalmon;
+      background-color: rgba(0, 131, 0, 0.623);
     }
   }
 }

@@ -1,7 +1,7 @@
 import { Client } from "./store";
 // is requir when client want to loggin
 export interface ClientCredentioal {
-  name: string;
+  email: string;
   password: string;
 }
 // data come from the serve if token sent is valid

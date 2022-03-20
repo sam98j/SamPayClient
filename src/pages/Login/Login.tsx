@@ -19,7 +19,7 @@ import AuthErrAlert from "../SignUp/AuthErrAlert/AuthErrAlert";
 const Login = () => {
   const [state, setState] = useState<LoginState>({
     clientCredentioal: {
-      name: "",
+      email: "",
       password: "",
     },
     isLoading: false,
@@ -63,7 +63,7 @@ const Login = () => {
   // handle form submition
   const handleSubmition = (e: React.FormEvent): void => {
     e.preventDefault();
-    if (state.clientCredentioal!.name && state.clientCredentioal!.password) {
+    if (state.clientCredentioal!.email && state.clientCredentioal!.password) {
       dispatch(LoginClient(state.clientCredentioal!));
       setState({
         ...state,
@@ -120,12 +120,13 @@ const Login = () => {
           {/* input field */}
           {/* input field */}
           <div>
-            <label htmlFor="">E-mail</label>
+            <label htmlFor="email">E-mail</label>
             <input
-              type="text"
+              type="email"
               onChange={handleChange}
-              value={state.clientCredentioal!.name!}
-              name="name"
+              value={state.clientCredentioal!.email!}
+              name="email"
+              id="email"
             />
           </div>
           {/* input field */}

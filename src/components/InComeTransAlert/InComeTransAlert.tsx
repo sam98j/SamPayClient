@@ -10,13 +10,14 @@ import { motion } from "framer-motion";
 
 const InComeTransAlert = () => {
   const dispatch = useDispatch();
+  // the incoming message
   const { incomingTransAlert } = useSelector<AppState, IncomingTransAlertProps>(
     ({ system }) => ({ incomingTransAlert: system.incomingTransAlert })
   );
   useEffect(() => {
+    // hide notification message after 3 seconds
     setTimeout(() => {
       dispatch(hideIncomingTransAlert());
-      console.log("disappear");
     }, 3000);
   });
   return (
