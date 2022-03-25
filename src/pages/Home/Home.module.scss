@@ -5,6 +5,7 @@
   display: flex;
   overflow: hidden;
   gap: 10px;
+  // home page mobile styles
   @media (max-width: 500px) {
     flex-direction: column;
     padding: 0;
@@ -19,9 +20,8 @@
     overflow-y: hidden;
     @media (max-width: 500px) {
       box-shadow: none;
-      padding: 0 25px;
+      padding: 25px;
       overflow-y: scroll;
     }
-    // margin: 10px;
   }
 }

@@ -20,8 +20,6 @@ const Dashboard = () => {
       <AccountCard />
       {/* panel to quick send money */}
       <TransferMoney />
-      {/* visble on mobile */}
-      <p className={styles.trxHisTitle}>Trx. History</p>
       {/* component to show all transactions that made by user */}
       <TransactionsHistory />
       {/* show recents receivers */}

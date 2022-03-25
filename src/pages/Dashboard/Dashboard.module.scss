@@ -3,14 +3,4 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5%;
-  .trxHisTitle {
-    display: none;
-    @media (max-width: 500px) {
-      display: block;
-    }
-  }
-  // grid-template-columns: 60% 35%;
-  // grid-template-rows: auto auto;
-  // grid-column-gap: 5%;
-  // grid-row-gap: 10px;
 }

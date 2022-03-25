@@ -9,15 +9,18 @@
   padding: 5px 10px;
   position: relative;
   color: var(--main-text-color);
+  // hide desktop navbar on mobile
   @media (max-width: 500px) {
     display: none !important;
   }
+  // navbar tools
   .AppCenter {
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 10px;
+    // indvisual tool
     li {
       margin: 0 5px;
       display: flex;

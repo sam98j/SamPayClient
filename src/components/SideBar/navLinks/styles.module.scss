@@ -1,4 +1,4 @@
-.navLinks {
+@mixin navLinksMobileStyles {
   @media (max-width: 500px) {
     transition: all 0.8s ease-in-out;
     position: absolute;
@@ -11,6 +11,11 @@
     height: 0;
     overflow-y: hidden;
   }
+}
+
+.navLinks {
+  // mobile styles
+  @include navLinksMobileStyles();
   ul {
     margin-top: 40px;
     margin-left: -15px;

@@ -2,11 +2,13 @@
   display: none;
   @media (max-width: 500px) {
     background-color: #f7f7f7;
+    border-bottom: 1px solid lightgray;
     height: 57px;
     width: 100%;
     display: flex;
     align-items: center;
     padding: 0 25px;
+    // app name
     p {
       flex-grow: 1;
       text-align: center;

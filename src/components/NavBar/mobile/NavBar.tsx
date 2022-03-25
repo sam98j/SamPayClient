@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-// import AppIcon from "../../../assets/vectors/wallet.png";
 import MenuIcon from "../../../assets/icons/menu-svgrepo-com.svg";
 import NavLinks from "../../SideBar/navLinks/NavLinks";
 import AppIcon from "../../AppIcon/AppIcon";
