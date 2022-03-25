@@ -1,6 +1,7 @@
 // transferWithEmail
 .transferWithEmail {
-  background-color: rgba(228, 228, 228, 0.822);
+  background-color: var(--alt-bg-color);
+  border: var(--main-border);
   margin: 10px 0;
   border-radius: 10px;
   display: flex;
@@ -17,7 +18,7 @@
       width: 100%;
       border: none;
       height: 100%;
-      background-color: rgb(255, 255, 255);
+      background-color: transparent;
       border-radius: 5px;
       padding: 0 10px;
       &:focus {

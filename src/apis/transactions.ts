@@ -1,6 +1,7 @@
 import { GetReceiverBody, 
         GetReceiverParms, 
         ReceiveMoneyNotification, 
+        Receiver, 
         SubmitTransferRes, 
         SubmitTransParms 
     } from "../types/interfaces/trans_apis";
@@ -50,8 +51,10 @@ export const getReceiver = (receiverContact: GetReceiverParms) => async (dispatc
       return
     }
     // Parse the Response
-    const receiver = await response.json() as Client;
-    dispatch({type: SET_TRANSACTION, payload: receiver})
+    const {name, avatar, phone, _id} = await response.json() as Client;
+    // create receiver
+    const receievr = {name, avatar, _id, phone, contact: receiverContact} as Receiver
+    dispatch({type: SET_TRANSACTION, payload: receievr})
 }
 // submit the transaction
 export const submitTransfer = (data: SubmitTransParms) => async (dispatch: Function) => {

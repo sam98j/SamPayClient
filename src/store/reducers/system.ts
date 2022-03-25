@@ -1,12 +1,17 @@
 import { AuthTypes } from "../../types/enums/auth";
-import { Devices, SystemActionsTypes, TransferMethods } from "../../types/enums/system";
+import { Devices, SystemActionsTypes, ThemeColor, TransferMethods } from "../../types/enums/system";
 import { TransTypes } from "../../types/enums/transactions";
 import { DetailedSingleTrans, ReceiversHistoryEle } from "../../types/interfaces/system_api";
 import { SystemReducerState } from "../../types/interfaces/system_reducer";
 import { ReceiveMoneyNotification } from "../../types/interfaces/trans_apis";
 
+// receiverHistory
 const receiversHis = localStorage.getItem("receiverHis");
+// notificatioins
 const notificationRecord = localStorage.getItem("notifications");
+// theme color
+const themeColor = localStorage.getItem("themeColor");
+// reducer state
 const initState = {
     currentRoute: "",
     notifications: notificationRecord ? [...JSON.parse(notificationRecord)] : [],
@@ -15,7 +20,9 @@ const initState = {
     incomingTransAlert: null,
     transferMethod: TransferMethods.VIA_EMAIL,
     getReceiverErr: null,
-    device: Devices.DESKTOP
+    device: Devices.DESKTOP,
+    themeColor: themeColor ? themeColor : ThemeColor.LIGHT,
+    transferMoneyMobile: false
 } as SystemReducerState
 
 const systemReducer = (state = initState, action: {type: string, payload: any}): SystemReducerState => {
@@ -29,7 +36,9 @@ const systemReducer = (state = initState, action: {type: string, payload: any}):
         HIDE_INCOMING_TRANS_ALERT,
         SET_DEVICE_TYPE,
         SELECT_TRANSFER_METHOD,
-        HIDE_GET_RECEIVER_ERR_MSG
+        HIDE_GET_RECEIVER_ERR_MSG,
+        SET_THEME_COLOR,
+        TRANSFER_MONEY_MOBILE
     } = SystemActionsTypes;
     // transactions actions types
     const {RECEIVE_MONEY, SERVER_ERR, GET_RECEIVER_ERR} = TransTypes;
@@ -142,6 +151,22 @@ const systemReducer = (state = initState, action: {type: string, payload: any}):
             return {
                 ...state,
                 getReceiverErr: null
+            }
+        }
+        // set theme color
+        case SET_THEME_COLOR: {
+            const themeColor = action.payload as ThemeColor;
+            return {
+                ...state,
+                themeColor
+            }
+        }
+        // transfer moeny in mobile device
+        case TRANSFER_MONEY_MOBILE: {
+            const status = action.payload as boolean;
+            return {
+                ...state,
+                transferMoneyMobile: status
             }
         }
         // hide submit transfer modal

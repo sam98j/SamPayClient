@@ -2,14 +2,15 @@
   height: 200px;
   width: 500px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.74);
-  box-shadow: 0 0 10px lightgray;
+  background-color: var(--detailedTrx-bg-color);
+  box-shadow: var(--main-box-shadow);
   backdrop-filter: blur(10px);
   position: absolute;
   bottom: 20px;
   left: 20px;
   z-index: 5;
   transition: all 2s ease;
+  color: var(--main-text-color);
   // header
   .header {
     display: flex;

@@ -50,12 +50,18 @@ const SingleTransaction: React.FC<SingleTransProps> = (props) => {
       onMouseEnter={handleMouseOver}
       onMouseLeave={handleMouseLeave}
     >
-      <div className={styles.img}></div>
+      <div className={styles.img}>
+        {Boolean(receiver.avatar) ? (
+          <img src={receiver.avatar} />
+        ) : (
+          <p>{receiver.name[0]}</p>
+        )}
+      </div>
       <div className={styles.container}>
-        <h3>Transfer To {receiver.name}</h3>
+        <p>Transfer To {receiver.name}</p>
         <p className={styles.discription}>{moment(date).format("h:mm a")}</p>
       </div>
-      <h4>${amount}</h4>
+      <p className={styles.amount}>${amount}</p>
     </div>
   );
 };

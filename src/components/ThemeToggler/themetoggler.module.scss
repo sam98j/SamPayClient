@@ -1,0 +1,19 @@
+.themetoggler {
+  height: 24px;
+  width: 50px;
+  border: var(--main-border);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  // toggler
+  .toggler {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

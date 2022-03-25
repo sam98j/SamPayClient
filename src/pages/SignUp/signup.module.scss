@@ -1,12 +1,19 @@
 .signUp {
   height: 100%;
   overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.973);
-  backdrop-filter: blur(15px);
+  background-color: rgb(247, 247, 247);
   display: flex;
   font-size: 0.7rem;
+  // styles on mobile
+  @media (max-width: 500px) {
+    background-color: white;
+  }
   // form container
   .signUpForm {
+    // styles on moblie
+    @media (max-width: 500px) {
+      width: 100%;
+    }
     width: 50%;
     height: 100%;
     display: flex;
@@ -17,7 +24,11 @@
   }
   // form
   .signUpForm form {
-    border: 1px solid gray;
+    // styles on mobile devices
+    @media (max-width: 500px) {
+      box-shadow: none;
+    }
+    box-shadow: var(--main-box-shadow);
     font-weight: bold;
     width: 350px;
     display: flex;
@@ -91,10 +102,9 @@
   }
   // form footer
   form .formFooter {
-    // background-color: violet;
     display: flex;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 20px;
     flex-wrap: wrap;
     // forget password link
     .ForgetPassword {
@@ -140,11 +150,16 @@
   .VectorsArea {
     flex-grow: 1;
     height: 100%;
-    // background-image: url("../../assets/BGs/bg1.jpg");
-    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // styles on mobile device
+    @media (max-width: 500px) {
+      display: none;
+    }
     img {
-      height: 100%;
-      width: 100%;
+      height: 70%;
+      width: 70%;
     }
   }
 }

@@ -1,5 +1,7 @@
 import { TransferStatus, TransTypes } from "../../types/enums/transactions"
 import { Client } from "../../types/interfaces/store";
+import { Receiver } from "../../types/interfaces/trans_apis";
+// import { GetReceiverRes } from "../../types/interfaces/trans_apis";
 import { TransState } from "../../types/interfaces/trans_reducer";
 
 const initState = {
@@ -38,7 +40,7 @@ const transactionsReducer = (state = initState, action: {type: string, payload: 
         }
         // after successfuly geting the client 
         case SET_TRANSACTION: {
-            const receiver = action.payload as Client;
+            const receiver = action.payload as Receiver;
             return {
                 ...state,
                 currentTransfer: receiver

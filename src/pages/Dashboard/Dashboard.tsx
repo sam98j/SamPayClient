@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { SetCurrentRoute } from "../../apis/system";
 import styles from "./Dashboard.module.scss";
-import TransferMoney from "./transferMoney/component";
-import TransactionsHistory from "./transactionsHistory/component";
+import TransferMoney from "./TransferMoney/TransferMoney";
+import TransactionsHistory from "./TransactionsHistory/TransactionsHistory";
 import ReceviersHistory from "./ReceviersHistory/ReceviersHistory";
 import AccountCard from "./AccountCard/AccountCard";
 

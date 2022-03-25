@@ -11,12 +11,15 @@ const NotificationsMenu = () => {
   );
   return (
     <div className={styles.notifications}>
-      <p>Notifications</p>
-      {/* if no notifications */}
-      {notifications.length ? "" : <p>No notifications right now</p>}
-      {notifications.map((ele) => (
-        <NotificationEle notificationEle={ele} />
-      ))}
+      <p className={styles.sectionname}>Notifications</p>
+      {/* notification scrollable are */}
+      <div className={styles.notificationsarea}>
+        {/* if no notifications */}
+        {notifications.length ? "" : <p>No notifications right now</p>}
+        {notifications.map((ele) => (
+          <NotificationEle notificationEle={ele} />
+        ))}
+      </div>
     </div>
   );
 };

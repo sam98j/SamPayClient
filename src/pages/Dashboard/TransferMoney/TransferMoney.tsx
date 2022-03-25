@@ -85,18 +85,24 @@ function TransferMoney() {
   }, [currentTransfer]);
   return (
     <div className={styles.MakeTransaction}>
-      <h4 className={styles.sectionName}>Quick Transfer</h4>
+      <p className={styles.sectionName}>Quick Transfer</p>
       {/* select transfer type */}
       <ul className={styles.transferTypesContainer}>
         <li
           onClick={selectTransferMethodHandler}
           value={TransferMethods.VIA_EMAIL}
+          data-active={
+            transferMethod === TransferMethods.VIA_EMAIL ? "true" : "false"
+          }
         >
           Via Email
         </li>
         <li
           onClick={selectTransferMethodHandler}
           value={TransferMethods.VIA_MOBILE_NO}
+          data-active={
+            transferMethod === TransferMethods.VIA_EMAIL ? "false" : "true"
+          }
         >
           Via Mobile No
         </li>

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Switch, useParams } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { InitateClient } from "./apis/auth";
@@ -8,21 +8,19 @@ import Loading from "./components/Loading/Loading";
 import styles from "./App.module.scss";
 import { AppState } from "./types/interfaces/store";
 import Welcome from "./pages/Welcome/Welcome";
-import ConfirmTransfer from "./pages/Dashboard/SubmitTransfer/component";
+import ConfirmTransfer from "./pages/Dashboard/SubmitTransfer/SubmitTransfer";
 import { TransferStatus } from "./types/enums/transactions";
 import { connect } from "socket.io-client";
 import { receiveMoney } from "./apis/transactions";
 import { ReceiveMoneyNotification } from "./types/interfaces/trans_apis";
 import { useLocation, useHistory } from "react-router-dom";
 import DetailedSingleTransaction from "./components/DetailedSingleTrans/DetailedSingleTrans";
-import SendMoneyMobile from "./components/SendMoneyMobile/SendMoneyMobile";
-import SendMoneyPanel from "./components/SendMoneyPanel/SendMoneyPanel";
+import TransferMoneyPanel from "./components/TransferMoneyPanel/TransferMoneyPanel";
 import { checkDeviceScreen } from "./utils/system";
 import { setDeviceType } from "./apis/system";
 import { Devices } from "./types/enums/system";
 
 function App() {
-  const { search } = useLocation();
   // use dispatch to send action to the store, change the state of the store
   const dispatch = useDispatch();
   // redirect user
@@ -30,14 +28,23 @@ function App() {
   // the current route
   const { pathname } = useLocation();
   // get state from redux store
-  const { isLogged, currentTransfer, client_id, detailedSingleTrans, device } =
-    useSelector<AppState, CompoProps>((state) => ({
-      isLogged: state.auth.isLogged,
-      currentTransfer: state.transactions.currentTransfer,
-      client_id: state.auth.client?._id!,
-      detailedSingleTrans: state.system.detailedSingleTrans,
-      device: state.system.device,
-    }));
+  const {
+    isLogged,
+    currentTransfer,
+    client_id,
+    detailedSingleTrans,
+    device,
+    themeColor,
+    transferMoneyMobile,
+  } = useSelector<AppState, CompoProps>((state) => ({
+    isLogged: state.auth.isLogged,
+    currentTransfer: state.transactions.currentTransfer,
+    client_id: state.auth.client?._id!,
+    detailedSingleTrans: state.system.detailedSingleTrans,
+    device: state.system.device,
+    themeColor: state.system.themeColor,
+    transferMoneyMobile: state.system.transferMoneyMobile,
+  }));
   // play notification sound
   const playNotificationSound = () => {
     const tone = new Audio("/sounds/swiftly-610.mp3");
@@ -87,13 +94,14 @@ function App() {
       <ConfirmTransfer />
     );
   return (
-    <div className={styles.App}>
+    <div className={styles.App} data-theme={themeColor}>
+      {/* component to show transaction details */}
       {detailedSingleTrans ? <DetailedSingleTransaction /> : ""}
       {/* submit transfer modal */}
       {device === Devices.DESKTOP ? SubmitTransferModal : ""}
       {/* send money mobile */}
       {/* SendMoney Mobile Pannel */}
-      {Boolean(search) ? <SendMoneyPanel /> : ""}
+      {transferMoneyMobile ? <TransferMoneyPanel /> : ""}
       {/* render Home page or Welcome page */}
       <Switch>
         <Route component={component} path="/" />

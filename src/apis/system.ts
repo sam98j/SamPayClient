@@ -1,10 +1,10 @@
-import { Devices, SystemActionsTypes, TransferMethods } from "../types/enums/system";
+import { Devices, SystemActionsTypes, ThemeColor, TransferMethods } from "../types/enums/system";
 import { DetailedSingleTrans, ReceiversHistoryEle } from "../types/interfaces/system_api";
 import moment from "moment";
 import { ReceiveMoneyNotification } from "../types/interfaces/trans_apis";
 import { addReceiverToLocalStorage } from "../utils/system";
 
-const {SELECT_TRANSFER_METHOD} = SystemActionsTypes;
+const {SELECT_TRANSFER_METHOD, SET_THEME_COLOR, TRANSFER_MONEY_MOBILE} = SystemActionsTypes;
 export const SetCurrentRoute = (routeName: string) => (dispatch: Function) => {
   const {SET_CURRENT_ROUTE} = SystemActionsTypes;
   dispatch({ type: SET_CURRENT_ROUTE, payload: routeName });
@@ -74,4 +74,15 @@ export const selectTransferMehod = (method: TransferMethods) => (dispatch: Funct
 // hide getReceiverErr Message
 export const hideGetReceiverErrMsg = () => (dispatch: Function) => {
   dispatch({type: SystemActionsTypes.HIDE_GET_RECEIVER_ERR_MSG})
+}
+// set theme color
+export const setThemeColor = (color: ThemeColor) => (dispatch: Function) => {
+  // set the themeColor in local storage
+  localStorage.setItem("themeColor", color)
+  // send the themeColor to reducer
+  dispatch({type: SET_THEME_COLOR, payload: color})
+}
+// send money in mobile device
+export const transferMoneyMobie = (status: boolean) => (dispatch: Function) => {
+  dispatch({type: TRANSFER_MONEY_MOBILE, payload: status})
 }

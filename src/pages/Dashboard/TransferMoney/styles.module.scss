@@ -2,20 +2,24 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  background-color: #f7f7f7;
-  // box-shadow: 0 0 2px 2px lightgrey;
-  backdrop-filter: blur(10px);
+  background-color: var(--main-bg-color);
+  box-shadow: var(--main-box-shadow);
   border-radius: 10px;
   width: 35% !important;
   @media (max-width: 500px) {
     display: none;
+  }
+  // section name Quick Transfer
+  .sectionName {
+    color: var(--main-text-color);
   }
   // the styles of the section that user can select transfer type
   .transferTypesContainer {
     display: flex;
     margin-top: 10px;
     align-items: center;
-    background-color: rgba(228, 228, 228, 0.822);
+    background-color: var(alt-bg-color);
+    border: var(--main-border);
     border-radius: 10px;
     padding: 5px;
     // Single Transfer type
@@ -25,24 +29,31 @@
       padding: 10px;
       text-align: center;
       border-radius: 10px;
-      // First Transfer Type
-      &:first-child {
-        background-color: dodgerblue;
-        margin-right: 10px;
+      color: var(--main-text-color);
+      &[data-active="true"] {
+        background-color: var(--primarybtn-main-color);
         color: white;
       }
+      // First Transfer Type
+      // &:first-child {
+      //   background-color: dodgerblue;
+      //   margin-right: 10px;
+      //   color: white;
+      // }
     }
   }
+  // transfer money Btn
   .transferBtn {
     border: none;
-    background-color: rgb(0, 131, 0);
+    background-color: var(--main-green-color);
     color: white;
     border-radius: 7px;
     padding: 10px 0;
     cursor: pointer;
+    // btn disabled
     &:disabled {
       cursor: not-allowed;
-      background-color: rgba(0, 131, 0, 0.623);
+      background-color: var(--alt-green-color);
     }
   }
 }

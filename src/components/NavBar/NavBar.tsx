@@ -7,6 +7,7 @@ import Notifications from "../Notifications/Notifications";
 import NotificationsMenu from "../../pages/NotificationsMenu/NotificationsMenu";
 import { useDispatch } from "react-redux";
 import { seeNotifications } from "../../apis/system";
+import ThemeToggler from "../ThemeToggler/ThemeToggler";
 
 const NavBar = () => {
   // dispatch store action
@@ -42,6 +43,8 @@ const NavBar = () => {
       {state.isOpen ? <NotificationsMenu /> : ""}
       {/* navbar search and notification icons */}
       <ul className={styles.AppCenter}>
+        {/* theme toggler */}
+        <ThemeToggler />
         {/* search bar */}
         <li>
           <Link to="">

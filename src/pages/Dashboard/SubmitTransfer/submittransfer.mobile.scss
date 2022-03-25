@@ -1,0 +1,13 @@
+// SubmitTransfer Container
+@mixin submitTransferContainerMobile {
+  @media (max-width: 500px) {
+    background-color: transparent;
+  }
+}
+// Container
+@mixin containerMobileStyles {
+  @media (max-width: 500px) {
+    height: 90%;
+    width: 330px;
+  }
+}

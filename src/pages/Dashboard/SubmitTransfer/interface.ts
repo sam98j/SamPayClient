@@ -1,4 +1,5 @@
 import { Client } from "../../../types/interfaces/store";
+import { Receiver } from "../../../types/interfaces/trans_apis";
 
 // local state of component
 export interface SubmitTransState {
@@ -7,6 +8,6 @@ export interface SubmitTransState {
 }
 // component props
 export interface SubmitTransProps {
-    currentTransfer: Client,
+    currentTransfer: Receiver,
     isTransaferSubmited: boolean
 }

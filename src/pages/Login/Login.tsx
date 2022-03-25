@@ -5,16 +5,16 @@ import { LoginState, LoginProps } from "./login.interface";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginClient, LoginWithGoogle } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
-import vectorsImg from "../../assets/vectors/bgOne.jpg";
+import vectorsImg from "../../assets/vectors/hugo-payment-processed.png";
 import TransLoading from "../../components/TransLoading/TransLoading";
 import { Link } from "react-router-dom";
 import GoogleLogin, {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from "react-google-login";
-import Wallet from "../../assets/vectors/wallet.png";
 import { AnimatePresence } from "framer-motion";
 import AuthErrAlert from "../SignUp/AuthErrAlert/AuthErrAlert";
+import AppIcon from "../../components/AppIcon/AppIcon";
 
 const Login = () => {
   const [state, setState] = useState<LoginState>({
@@ -102,7 +102,7 @@ const Login = () => {
           </AnimatePresence>
           {/* logo */}
           <div className={styles.logo}>
-            <img src={Wallet} alt="" />
+            <AppIcon />
           </div>
           {/* form name */}
           <h2>Login To Your Account !!</h2>

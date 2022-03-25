@@ -47,6 +47,9 @@ function TransactionsHistory() {
   // transactions History
   return (
     <section className={styles.Transactions}>
+      {/* section name */}
+      <p className={styles.sectionname}>Transactions History</p>
+      {/* transactions */}
       {trxSortedByDate.sortiedByDate.map((ele) => (
         <div>
           <h4 className={styles.TransactionsDate}>{ele.title}</h4>

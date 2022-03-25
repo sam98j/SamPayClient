@@ -2,7 +2,7 @@ import { Client, SingleTrans } from "./store";
 
 // submit Transfer method paramtars
 export interface SubmitTransParms {
-    receiverPhone: string;
+    receiverContact: string;
     amount: number
 }
 export interface SubmitTransferRes {
@@ -14,8 +14,12 @@ export interface GetReceiverBody {
     receiverContact: string
 }
 // response of post request to get receiver client
-export interface GetReceiverRes {
-    receiver: Client
+export interface Receiver {
+    name: string,
+    _id: string,
+    avatar: string,
+    phone: string,
+    contact: string
 }
 // getReceiverMethod Params
 export type GetReceiverParms = string

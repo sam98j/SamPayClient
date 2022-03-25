@@ -5,16 +5,16 @@ import { SignUpProps, SignUpState } from "./interface";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp, signUpWithGoogle } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
-import vectorsImg from "../../assets/vectors/bgOne.jpg";
 import TransLoading from "../../components/TransLoading/TransLoading";
 import { Link, useHistory } from "react-router-dom";
 import GoogleLogin, {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from "react-google-login";
-import Wallet from "../../assets/vectors/wallet.png";
+import VectorArt from "../../assets/vectors/hugo-payment-processed.png";
 import AuthErrAlert from "./AuthErrAlert/AuthErrAlert";
 import { AnimatePresence } from "framer-motion";
+import AppIcon from "../../components/AppIcon/AppIcon";
 
 const SignUp = () => {
   // react router hooks
@@ -112,7 +112,7 @@ const SignUp = () => {
           </AnimatePresence>
           {/* logo */}
           <div className={styles.logo}>
-            <img src={Wallet} alt="" />
+            <AppIcon />
           </div>
           {/* form name */}
           <h2>Sign Up to samPay</h2>
@@ -195,7 +195,7 @@ const SignUp = () => {
       {/* end of signUp form section */}
       {/* vecotr */}
       <section className={styles.VectorsArea}>
-        <img src={vectorsImg} alt="" />
+        <img src={VectorArt} alt="" />
       </section>
       {/* end vector area */}
     </section>

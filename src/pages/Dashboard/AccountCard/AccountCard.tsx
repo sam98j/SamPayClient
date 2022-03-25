@@ -1,33 +1,28 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppState, Client } from "../../../types/interfaces/store";
 import styles from "./accountcard.module.scss";
-import SendIcon from "../../../assets/icons/send-svgrepo-com.svg";
-import { useHistory, useParams } from "react-router";
+import { transferMoneyMobie } from "../../../apis/system";
 
 const AccountCard = () => {
-  // const myparams = useParams();
-  const { push } = useHistory();
-  // console.log(myparams);
-  // get data from redux store
-  const params = new URLSearchParams();
+  // dispatch store method
+  const dispatch = useDispatch();
+  // get data from store
   const { account, _id } = useSelector<AppState, Client>(
     ({ auth }) => auth.client!
   );
+  // send money Handler
+  const sendMoneyMobileHandler = () => {
+    dispatch(transferMoneyMobie(true));
+  };
   // return template
   return (
     <div className={styles.accountCard}>
-      <h6>Your Balance</h6>
+      <p>Your Balance</p>
       <p className={styles.Balance}>{`\$${account.balance}`}</p>
       <p className={styles.Account}>{`Saving A/C ${_id}`}</p>
       {/* mobile screens, send moeny btn */}
-      <div
-        className={styles.sendMoneyBtn}
-        onClick={() => {
-          params.append("trx", "true");
-          push({ search: params.toString() });
-        }}
-      >
+      <div className={styles.sendMoneyBtn} onClick={sendMoneyMobileHandler}>
         <svg
           width="24px"
           height="24px"

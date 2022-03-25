@@ -1,4 +1,4 @@
-import { Devices, TransferMethods } from "../enums/system";
+import { Devices, ThemeColor, TransferMethods } from "../enums/system";
 import { DetailedSingleTrans, ReceiversHistoryEle } from "./system_api";
 import { ReceiveMoneyNotification } from "./trans_apis";
 
@@ -11,5 +11,7 @@ export interface SystemReducerState {
     incomingTransAlert: ReceiveMoneyNotification | null,
     device: Devices,
     transferMethod: TransferMethods,
-    getReceiverErr: string | null
+    getReceiverErr: string | null,
+    themeColor: ThemeColor,
+    transferMoneyMobile: boolean
 }

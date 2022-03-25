@@ -11,15 +11,15 @@
   .profile {
     position: absolute;
     bottom: 30px;
-    background-color: white;
-    box-shadow: 0 0 5px 2px lightgray;
+    background-color: var(--alt-bg-color);
+    border: var(--main-border);
     height: 60px;
     width: 80%;
-    border-radius: 20px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
+    color: var(--main-text-color);
     padding: 0px 20px;
     h4 {
       display: flex;

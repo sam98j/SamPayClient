@@ -1,6 +1,6 @@
 .Home {
   height: 100%;
-  background-color: #f7f7f7;
+  background-color: var(--main-bg-color);
   padding: 5px;
   display: flex;
   overflow: hidden;
@@ -14,7 +14,7 @@
     flex-direction: column;
     border-radius: 10px;
     flex-grow: 1;
-    background-color: white;
+    background-color: var(--alt-bg-color);
     padding: 10px 50px;
     overflow-y: hidden;
     @media (max-width: 500px) {

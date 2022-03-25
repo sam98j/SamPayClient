@@ -9,7 +9,9 @@ export enum SystemActionsTypes {
     HIDE_INCOMING_TRANS_ALERT = "HIDE_INCOMING_TRANS_ALERT",
     SET_DEVICE_TYPE = "SET_DEVICE_TYPE",
     SELECT_TRANSFER_METHOD = "SELECT_TRANSFER_METHOD",
-    HIDE_GET_RECEIVER_ERR_MSG = "HIDE_GET_RECEIVER_ERR_MSG"
+    HIDE_GET_RECEIVER_ERR_MSG = "HIDE_GET_RECEIVER_ERR_MSG",
+    SET_THEME_COLOR = "SET_THEME_COLOR",
+    TRANSFER_MONEY_MOBILE = "TRANSFER_MONEY_MOBILE"
 }
 
 export enum Devices {
@@ -20,4 +22,9 @@ export enum Devices {
 export enum TransferMethods {
     VIA_MOBILE_NO,
     VIA_EMAIL
+}
+// theme
+export enum ThemeColor {
+    DARK = "dark",
+    LIGHT = "light"
 }

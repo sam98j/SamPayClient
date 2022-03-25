@@ -3,11 +3,8 @@
   overflow: hidden;
   display: flex;
   font-size: 0.7rem;
-  @media (min-width: 300px) {
-    padding: 0 20px;
-  }
   .LoginForm {
-    @media (min-width: 300px) {
+    @media (max-width: 500px) {
       width: 100%;
     }
     width: 50%;
@@ -25,6 +22,10 @@
   }
   // form
   .LoginForm form {
+    // form style in mobile device
+    @media (max-width: 500px) {
+      border: none;
+    }
     font-weight: bold;
     width: 350px;
     border: 1px solid gray;
@@ -136,10 +137,9 @@
   .VectorsArea {
     width: 50%;
     height: 100%;
-    @media (min-width: 300px) {
+    @media (max-width: 500px) {
       display: none;
     }
-    background-size: cover;
     img {
       height: 100%;
       width: 100%;

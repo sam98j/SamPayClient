@@ -1,10 +1,9 @@
 .notifications {
   display: flex;
   align-items: center;
+  gap: 5px;
   .notificationsCount {
-    // background-color: red;
     color: red;
-    padding: 0 5px;
     border-radius: 5px;
   }
 }

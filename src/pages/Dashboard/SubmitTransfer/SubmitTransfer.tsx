@@ -9,15 +9,16 @@ import {
   submitTransfer,
 } from "../../../apis/transactions";
 import { SubmitTransProps, SubmitTransState } from "./interface";
-import { AppState, Client } from "../../../types/interfaces/store";
-import { TransferStatus } from "../../../types/enums/transactions";
-import { SubmitTransParms } from "../../../types/interfaces/trans_apis";
+import { AppState } from "../../../types/interfaces/store";
+import {
+  Receiver,
+  SubmitTransParms,
+} from "../../../types/interfaces/trans_apis";
 import TransLoading from "../../../components/TransLoading/TransLoading";
 import { addReceiverToHistory } from "../../../apis/system";
 import { useHistory } from "react-router";
-// import DoneIcon from "../../../../public/icons/ok-1.1s-200px.svg";
 
-const SubmitTrans = () => {
+const SubmitTransfer = () => {
   const { push } = useHistory();
   // the component state
   const [state, setState] = useState<SubmitTransState>({
@@ -31,7 +32,7 @@ const SubmitTrans = () => {
     AppState,
     SubmitTransProps
   >(({ transactions }) => ({
-    currentTransfer: transactions.currentTransfer as Client,
+    currentTransfer: transactions.currentTransfer as Receiver,
     isTransaferSubmited: transactions.submitTransfer,
   }));
   // handle user inputs
@@ -56,7 +57,7 @@ const SubmitTrans = () => {
     });
     // complete the transfer proccess by calling the api
     const transaction = {
-      receiverPhone: currentTransfer!.phone,
+      receiverContact: currentTransfer!.contact,
       amount: Number(state.amount),
     } as SubmitTransParms;
     // call the api and dispatch an action to the redux store
@@ -65,7 +66,7 @@ const SubmitTrans = () => {
     dispatch(
       addReceiverToHistory({
         name: currentTransfer.name,
-        phoneNo: currentTransfer.phone as number,
+        phoneNo: Number(currentTransfer.phone),
         _id: currentTransfer._id,
         img: currentTransfer.avatar,
       })
@@ -85,6 +86,7 @@ const SubmitTrans = () => {
   }, [isTransaferSubmited]);
   return (
     <section className={styles.ConfirmTransfer}>
+      {/* Main Container */}
       <div className={styles.Container}>
         {state.isLoading ? (
           ""
@@ -97,13 +99,19 @@ const SubmitTrans = () => {
           ""
         )}
         <div className={styles.Header}>
-          <div className={styles.IMG}></div>
+          {/* client avatar */}
+          <div className={styles.IMG}>
+            <img src={currentTransfer.avatar} alt="" />
+          </div>
+          {/* Client Name */}
           <h3 className={styles.Name}>
             <span className={styles.firstName}>{currentTransfer.name}</span>
             <span className={styles.lastName}>Mustafa</span>
           </h3>
         </div>
+        {/* Client Details */}
         <div className={styles.Details}>
+          {/* Details Container */}
           <div className={styles.DetailsContainer}>
             <span>
               <FontAwesomeIcon icon={faUniversity} />
@@ -117,6 +125,7 @@ const SubmitTrans = () => {
             <h4>{currentTransfer!.phone}</h4>
           </div>
         </div>
+        {/* Submit Btn */}
         <div className={styles.Submit}>
           <input
             type="number"
@@ -140,4 +149,4 @@ const SubmitTrans = () => {
 };
 
 // export component and connect it to store
-export default SubmitTrans;
+export default SubmitTransfer;

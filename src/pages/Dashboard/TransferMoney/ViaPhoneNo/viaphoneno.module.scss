@@ -1,5 +1,6 @@
 .TransferWithPhone {
-  background-color: rgba(228, 228, 228, 0.822);
+  background-color: var(--alt-bg-color);
+  border: var(--main-border);
   margin: 10px 0;
   border-radius: 10px;
   display: flex;
@@ -10,6 +11,9 @@
   .Country {
     display: flex;
     align-items: center;
+    border-right: 1px solid lightgray;
+    padding: 0 5px;
+    line-height: 2px;
     // styles of the country flag
     span:first-child {
       display: block;
@@ -29,7 +33,7 @@
       border: none;
       height: 100%;
       width: 100%;
-      background-color: rgb(255, 255, 255);
+      background-color: transparent;
       border-radius: 5px;
       padding: 0 2px;
       &:focus {

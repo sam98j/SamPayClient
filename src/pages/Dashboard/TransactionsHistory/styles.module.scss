@@ -1,20 +1,25 @@
 .Transactions {
-  background: none;
   overflow-y: scroll;
   height: 400px;
   padding: 30px;
   width: 60%;
   margin-top: -5%;
-  background-color: #f7f7f7;
-  // box-shadow: 0 0 2px 2px lightgrey;
+  background-color: var(--main-bg-color);
+  box-shadow: var(--main-box-shadow);
   border-radius: 10px;
   position: relative;
   @media (max-width: 500px) {
     width: 100%;
   }
+  // sectionname
+  .sectionname {
+    color: var(--main-text-color);
+    margin-bottom: 20px;
+  }
   // transaction date
   .TransactionsDate {
     margin-top: 25px;
+    color: var(--main-text-color);
   }
   // remove margin-top from the first child
   .TransactionsDate:first-child {
@@ -24,11 +29,10 @@
   &::-webkit-scrollbar {
     width: 5px;
     position: absolute;
-    left: 90px;
+    right: 90px;
   }
   // scrollbar itself
   &::-webkit-scrollbar-thumb {
-    background-color: rgb(224, 224, 224);
-    border-radius: 20px;
+    background-color: var(--main-scrollbar-color);
   }
 }
