@@ -29,7 +29,7 @@ const SideBar = () => {
   return (
     <aside className={styles.SideBar}>
       <AppName />
-      <NavLinks height={"inital"} />
+      <NavLinks isOpened={true} />
       <Link to="/profile">
         <div className={styles.profile}>
           <div className={styles.img}>

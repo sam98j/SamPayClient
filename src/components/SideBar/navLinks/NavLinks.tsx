@@ -10,13 +10,19 @@ import {
 import { useSelector } from "react-redux";
 import { AppState } from "../../../types/interfaces/store";
 import { Link } from "react-router-dom";
+import ThemeToggler from "../../ThemeToggler/ThemeToggler";
+import { Devices } from "../../../types/enums/system";
 
-const NavLinks: FC<{ height: string | number }> = ({ height }) => {
-  const currentRoute = useSelector<AppState, string>(
-    ({ system }) => system.currentRoute
-  );
+const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
+  const { currentRoute, device } = useSelector<
+    AppState,
+    { currentRoute: string; device: Devices }
+  >(({ system }) => ({
+    currentRoute: system.currentRoute,
+    device: system.device,
+  }));
   return (
-    <div className={styles.navLinks} style={{ height: `${height}` }}>
+    <div className={styles.navLinks} data-menu-open={isOpened}>
       <ul>
         <li
           style={{
@@ -104,6 +110,9 @@ const NavLinks: FC<{ height: string | number }> = ({ height }) => {
           </Link>
         </li>
       </ul>
+      {/* ThemeToggler */}
+      {/* show theme toggler with navLinks on mobile */}
+      {device === Devices.MOBILE ? <ThemeToggler /> : ""}
     </div>
   );
 };

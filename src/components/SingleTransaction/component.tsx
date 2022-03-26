@@ -58,7 +58,8 @@ const SingleTransaction: React.FC<SingleTransProps> = (props) => {
         )}
       </div>
       <div className={styles.container}>
-        <p>Transfer To {receiver.name}</p>
+        {/* receiver name */}
+        <p className={styles.receivername}>Transfer To {receiver.name}</p>
         <p className={styles.discription}>{moment(date).format("h:mm a")}</p>
       </div>
       <p className={styles.amount}>${amount}</p>

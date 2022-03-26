@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     height: 40px;
-    width: 40px;
+    min-width: 40px;
     border-radius: 50%;
     background-color: dodgerblue;
     color: white;
@@ -26,6 +26,10 @@
   .details {
     flex-grow: 1;
     padding: 0 10px;
+    // receiver name
+    .name {
+      color: var(--main-text-color);
+    }
     // date
     .date {
       font-size: 0.8rem;

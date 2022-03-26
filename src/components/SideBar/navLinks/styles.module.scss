@@ -1,15 +1,24 @@
 @mixin navLinksMobileStyles {
   @media (max-width: 500px) {
-    transition: all 0.8s ease-in-out;
     position: absolute;
     left: 0;
     top: 57px;
     z-index: 3;
-    background-color: #f7f7f7;
+    background-color: var(--main-bg-color);
     width: 100%;
-    padding: 0 25px;
     height: 0;
+    &[data-menu-open="true"] {
+      height: initial;
+      padding: 25px;
+    }
     overflow-y: hidden;
+    border-bottom: 1px solid lightgray;
+  }
+}
+
+@mixin navLinksUlMobileStyles {
+  @media (max-width: 500px) {
+    margin-top: 0px;
   }
 }
 
@@ -17,6 +26,7 @@
   // mobile styles
   @include navLinksMobileStyles();
   ul {
+    @include navLinksUlMobileStyles();
     margin-top: 40px;
     margin-left: -15px;
   }

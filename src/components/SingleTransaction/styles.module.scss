@@ -13,7 +13,7 @@
   // the image
   .img {
     height: 40px;
-    width: 40px;
+    min-width: 40px;
     background-color: greenyellow;
     margin-right: 20px;
     border-radius: 50%;
@@ -33,6 +33,10 @@
   // transaction details container
   .container {
     flex-grow: 1;
+    // receiver name
+    .receivername {
+      color: var(--main-text-color);
+    }
     // trans discription
     .discription {
       color: gray;
