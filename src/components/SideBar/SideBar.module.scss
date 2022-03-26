@@ -8,37 +8,4 @@
   @media (max-width: 500px) {
     display: none !important;
   }
-  .profile {
-    position: absolute;
-    bottom: 30px;
-    background-color: var(--alt-bg-color);
-    border: var(--main-border);
-    height: 60px;
-    width: 80%;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--main-text-color);
-    padding: 0px 20px;
-    h4 {
-      display: flex;
-      align-items: center;
-      span {
-        margin-right: 10px;
-      }
-    }
-    .img {
-      height: 35px;
-      min-width: 35px;
-      border-radius: 50%;
-      background-color: yellow;
-      margin-right: 10px;
-      img {
-        height: 100%;
-        width: 100%;
-        border-radius: 50%;
-      }
-    }
-  }
 }

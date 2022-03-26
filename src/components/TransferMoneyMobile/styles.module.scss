@@ -12,6 +12,10 @@
   justify-content: space-evenly;
   position: relative;
   flex-direction: column;
+  // section name
+  p {
+    color: var(--main-text-color);
+  }
   .inputArea {
     display: flex;
     gap: 10px;
@@ -25,11 +29,11 @@
       background-color: #0596ff;
     }
     input {
-      border: none;
+      border: var(--main-border);
       height: 44px;
       flex-grow: 1;
       border-radius: 10px;
-      background-color: #e5e5e5;
+      background-color: var(--main-bg-color);
       padding: 0 20px;
     }
   }

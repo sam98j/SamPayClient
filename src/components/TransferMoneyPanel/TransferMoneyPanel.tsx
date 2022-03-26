@@ -10,6 +10,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import styles from "./styles.module.scss";
 import { useHistory } from "react-router";
 import { transferMoneyMobie } from "../../apis/system";
+import AppIcon from "../AppIcon/AppIcon";
 
 function SendMoneyPanel() {
   // dispatch store method
@@ -45,6 +46,11 @@ function SendMoneyPanel() {
           onClick={handleCloseIconClick}
         />
       </IconContext.Provider>
+      {/* logo */}
+      <div className={styles.brandsection}>
+        <AppIcon />
+        <p>SamPay</p>
+      </div>
       {/* if current trx is ready then show submitTrans Component */}
       {isTrxReady ? <SubmitTransfer /> : <TransferMoneyMobile />}
     </div>

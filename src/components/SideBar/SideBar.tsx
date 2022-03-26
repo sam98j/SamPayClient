@@ -7,6 +7,7 @@ import { IoIosArrowForward } from "react-icons/all";
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/interfaces/store";
 import NavLinks from "./navLinks/NavLinks";
+import ProfileBtn from "../ProfileBtn/ProfileBtn";
 
 interface SideBarProps {
   currentRoute: string;
@@ -30,19 +31,8 @@ const SideBar = () => {
     <aside className={styles.SideBar}>
       <AppName />
       <NavLinks isOpened={true} />
-      <Link to="/profile">
-        <div className={styles.profile}>
-          <div className={styles.img}>
-            <img src={client.avatar} alt="" />
-          </div>
-          <h4>
-            <span>{client.name}</span>
-            <IconContext.Provider value={{ color: "gray" }}>
-              <IoIosArrowForward />
-            </IconContext.Provider>
-          </h4>
-        </div>
-      </Link>
+      {/* profile btn */}
+      <ProfileBtn />
     </aside>
   );
 };

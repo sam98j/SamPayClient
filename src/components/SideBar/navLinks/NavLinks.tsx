@@ -12,6 +12,7 @@ import { AppState } from "../../../types/interfaces/store";
 import { Link } from "react-router-dom";
 import ThemeToggler from "../../ThemeToggler/ThemeToggler";
 import { Devices } from "../../../types/enums/system";
+import ProfileBtn from "../../ProfileBtn/ProfileBtn";
 
 const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
   const { currentRoute, device } = useSelector<
@@ -110,9 +111,14 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
           </Link>
         </li>
       </ul>
-      {/* ThemeToggler */}
-      {/* show theme toggler with navLinks on mobile */}
-      {device === Devices.MOBILE ? <ThemeToggler /> : ""}
+      {/* menu tools */}
+      <div className={styles.menutools}>
+        {/* Profile Btn */}
+        {device === Devices.MOBILE ? <ProfileBtn /> : ""}
+        {/* ThemeToggler */}
+        {/* show theme toggler with navLinks on mobile */}
+        {device === Devices.MOBILE ? <ThemeToggler /> : ""}
+      </div>
     </div>
   );
 };
