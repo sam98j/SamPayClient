@@ -12,6 +12,7 @@
   --app-accent-color: #1e90ff;
   --main-text-color: gray;
   --primarybtn-main-color: var(--app-accent-color);
+  --mobile-navbar-height: 60px;
 }
 
 [data-theme="dark"] {

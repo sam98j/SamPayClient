@@ -6,15 +6,14 @@
   position: relative;
   overflow-y: scroll;
   width: 35%;
+  @media (max-width: 500px) {
+    width: 100%;
+    padding: 15px;
+  }
   // section title
   .recentBeneficiaries {
     margin-bottom: 1rem;
     color: var(--main-text-color);
-  }
-  @media (max-width: 500px) {
-    // display: none;
-    width: 100%;
-    // height: 100px;
   }
   // redesign the scrollbar track
   &::-webkit-scrollbar {
