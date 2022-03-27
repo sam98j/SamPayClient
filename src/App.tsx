@@ -18,7 +18,7 @@ import DetailedSingleTransaction from "./components/DetailedSingleTrans/Detailed
 import TransferMoneyPanel from "./components/TransferMoneyPanel/TransferMoneyPanel";
 import { checkDeviceScreen } from "./utils/system";
 import { setDeviceType } from "./apis/system";
-import { Devices } from "./types/enums/system";
+import { Devices, ThemeColor } from "./types/enums/system";
 
 function App() {
   // use dispatch to send action to the store, change the state of the store
@@ -83,8 +83,13 @@ function App() {
   }, []);
   // listen to theme color change
   useEffect(() => {
+    if (themeColor === ThemeColor.LIGHT) {
+      const docElement = document.querySelector("meta[name=theme-color]");
+      docElement?.setAttribute("content", "#f7f7f7");
+      return;
+    }
     const docElement = document.querySelector("meta[name=theme-color]");
-    docElement?.setAttribute("content", themeColor);
+    docElement?.setAttribute("content", "#3a3b3c");
   }, [themeColor]);
   // decide which component will be rendered
   // null -> loading, false -> Welcome screen, true -> Home page
