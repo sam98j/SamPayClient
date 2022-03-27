@@ -81,6 +81,11 @@ function App() {
     // apis call to decide if user is logged in or not
     dispatch(InitateClient());
   }, []);
+  // listen to theme color change
+  useEffect(() => {
+    const docElement = document.querySelector("meta[name=theme-color]");
+    docElement?.setAttribute("content", themeColor);
+  }, [themeColor]);
   // decide which component will be rendered
   // null -> loading, false -> Welcome screen, true -> Home page
   const component = isLogged === null ? Loading : isLogged ? Home : Welcome;
