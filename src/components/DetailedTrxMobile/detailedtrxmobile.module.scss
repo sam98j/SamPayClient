@@ -1,0 +1,72 @@
+.detailedtrxmobile {
+  position: absolute;
+  padding: 0 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  background-color: var(--main-bg-color);
+  border-radius: 10px 10px 0 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  // header
+  .header {
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    padding: 10px 0;
+    align-items: center;
+    // section name
+    .section_name {
+      flex-grow: 1;
+    }
+    // close icon
+    .closeicon {
+      background-color: lightgray;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+  }
+  // trx amount
+  .amount {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+    gap: 5px;
+    // trx amount
+    .trxamount {
+      font-size: 2.5rem;
+      color: red;
+    }
+    // trx status
+    .trxstatus {
+      color: seagreen;
+    }
+  }
+  // trx body
+  .body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    // data container
+    .datacontainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    // data name
+    .dataname {
+      color: lightgray;
+    }
+    // data value
+    .datavalue {
+      color: gray;
+    }
+  }
+}

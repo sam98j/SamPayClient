@@ -19,6 +19,7 @@ import TransferMoneyPanel from "./components/TransferMoneyPanel/TransferMoneyPan
 import { checkDeviceScreen } from "./utils/system";
 import { setDeviceType } from "./apis/system";
 import { Devices, ThemeColor } from "./types/enums/system";
+import DetailedTrxMobile from "./components/DetailedTrxMobile/DetailedTrxMobile";
 
 function App() {
   // use dispatch to send action to the store, change the state of the store
@@ -106,7 +107,18 @@ function App() {
   return (
     <div className={styles.App} data-theme={themeColor}>
       {/* component to show transaction details */}
-      {detailedSingleTrans ? <DetailedSingleTransaction /> : ""}
+      {/* show it in mobile version only */}
+      {device === Devices.DESKTOP ? (
+        detailedSingleTrans ? (
+          <DetailedSingleTransaction />
+        ) : (
+          ""
+        )
+      ) : detailedSingleTrans ? (
+        <DetailedTrxMobile />
+      ) : (
+        ""
+      )}
       {/* submit transfer modal */}
       {device === Devices.DESKTOP ? SubmitTransferModal : ""}
       {/* send money mobile */}

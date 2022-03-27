@@ -69,6 +69,7 @@ const SubmitTransfer = () => {
         phoneNo: Number(currentTransfer.phone),
         _id: currentTransfer._id,
         img: currentTransfer.avatar,
+        email: currentTransfer.contact,
       })
     );
   };

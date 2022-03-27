@@ -10,7 +10,7 @@ export const SetCurrentRoute = (routeName: string) => (dispatch: Function) => {
   dispatch({ type: SET_CURRENT_ROUTE, payload: routeName });
 };
 // add receiver to the history
-export const addReceiverToHistory = ({name, phoneNo, _id, img}: ReceiversHistoryEle) => (dispatch: Function) => {
+export const addReceiverToHistory = ({name, phoneNo, _id, img, email}: ReceiversHistoryEle) => (dispatch: Function) => {
   const { ADD_RECEIVER_TO_HISTORY} = SystemActionsTypes;
   // history ele date
   const date = moment().format("YYYY-MMM-DD, h:mm a")
@@ -19,7 +19,8 @@ export const addReceiverToHistory = ({name, phoneNo, _id, img}: ReceiversHistory
     date,
     name,
     phoneNo,
-    _id
+    _id,
+    email
   } as ReceiversHistoryEle;
   // add history ele to local storage
   const updatedReceiversHis = addReceiverToLocalStorage(historyEle);

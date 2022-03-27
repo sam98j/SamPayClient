@@ -3,7 +3,8 @@ export interface ReceiversHistoryEle {
     date?: string;
     name: string,
     phoneNo: number,
-    _id: string
+    _id: string,
+    email: string
 }
 // Detailed single trans
 export interface DetailedSingleTrans {

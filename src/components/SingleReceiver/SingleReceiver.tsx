@@ -6,7 +6,7 @@ import { SingleReceiverProps } from "./interface";
 import styles from "./singlereceiver.module.scss";
 
 const SingleReceiver: React.FC<SingleReceiverProps> = (props) => {
-  const { date: oldDate, name, phoneNo, img } = props.element;
+  const { date: oldDate, name, phoneNo, img, email } = props.element;
   // client avatar alternatve
   const [clientAvatarAlt, setClientAvatarAlt] = useState<string>();
   const dispatch = useDispatch();
@@ -16,7 +16,15 @@ const SingleReceiver: React.FC<SingleReceiverProps> = (props) => {
   });
   // send money
   const sendMoney = () => {
-    dispatch(getReceiver(phoneNo as unknown as string));
+    // validate the receiver Contact
+    if (!phoneNo && !email) {
+      return new Error("no receiver contact");
+    }
+    // detect the receiver contact
+    const receiverContact = phoneNo ? phoneNo : email;
+    console.log(receiverContact);
+    // get the receiver
+    dispatch(getReceiver(receiverContact as string));
   };
   // when component did mount
   useEffect(() => {
