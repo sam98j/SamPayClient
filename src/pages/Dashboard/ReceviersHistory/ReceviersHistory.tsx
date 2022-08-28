@@ -11,7 +11,7 @@ const ReceviersHistory = () => {
   return (
     <div className={styles.receviershistory}>
       <p className={styles.recentBeneficiaries}>Recent Beneficiaries</p>
-      {receiversHistory.map((ele) => {
+      {receiversHistory!.map((ele) => {
         return <SingleReceiver element={ele} />;
       })}
       {receiversHistory.length === 0 ? (

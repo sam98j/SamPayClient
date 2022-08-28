@@ -27,7 +27,7 @@ export const addReceiverToLocalStorage = (receiver: ReceiversHistoryEle) => {
     // if receiver His is empty
     const updatedReceiversHis = JSON.stringify([receiver]);
     localStorage.setItem("receiverHis", updatedReceiversHis);
-    return updatedReceiversHis
+    return JSON.parse(updatedReceiversHis) as ReceiversHistoryEle[]
 }
 // check for device screen
 export const checkDeviceScreen = () => {
