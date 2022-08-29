@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./signup.module.scss";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/all";
-import { SignUpProps, SignUpState } from "./interface";
+import {
+  NewClientRegestrationData,
+  SignUpProps,
+  SignUpState,
+} from "./interface";
 import { useDispatch, useSelector } from "react-redux";
 import { signUp, signUpWithGoogle } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
@@ -15,6 +19,7 @@ import VectorArt from "../../assets/vectors/hugo-payment-processed.png";
 import AuthErrAlert from "./AuthErrAlert/AuthErrAlert";
 import { AnimatePresence } from "framer-motion";
 import AppIcon from "../../components/AppIcon/AppIcon";
+import { uploadProfileImg } from "../../apis/filesUplaod";
 
 const SignUp = () => {
   // react router hooks
@@ -25,9 +30,12 @@ const SignUp = () => {
       username: "",
       password: "",
       email: "",
+      profile_img_url: "",
     },
+    profile_img: "",
     isLoading: false,
   });
+  const [profile_img, setProfileImg] = useState<File>();
   // dispatch
   const dispatch = useDispatch();
   // Component Props
@@ -74,16 +82,28 @@ const SignUp = () => {
     });
   };
   // handle form submition
-  const handleSubmition = (e: React.FormEvent): void => {
+  const handleSubmition = async (e: React.FormEvent) => {
     e.preventDefault();
     // form falidation
     if (state.clientCredentioal!.email && state.clientCredentioal!.password) {
-      dispatch(signUp(state.clientCredentioal!));
+      const formData = new FormData();
+      formData.append("profile_img", profile_img!);
+      const data = {
+        ...state.clientCredentioal,
+        profile_img_url: formData,
+      } as NewClientRegestrationData;
+      dispatch(signUp(data));
       setState({
         ...state,
         isLoading: true,
       });
     }
+  };
+  // handle profile pic selection
+  const handleChoseProfileImg = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // e.target.files![0];
+    e.preventDefault();
+    setProfileImg(e.target.files![0]);
   };
   // handleLogin
   const handleSignUpWithGoogle = (
@@ -138,6 +158,17 @@ const SignUp = () => {
               onChange={handleChange}
               value={state.clientCredentioal!.email!}
               name="email"
+            />
+          </div>
+          {/* input field */}
+          <div className={styles.inputArea}>
+            <label htmlFor="email">E-mail</label>
+            <input
+              type="file"
+              id="profile_img"
+              onChange={handleChoseProfileImg}
+              name="profile_img"
+              accept="image/png image/jpg"
             />
           </div>
           {/* input field */}
