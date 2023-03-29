@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./detailedsingletrans.module.scss";
 import { IconContext } from "react-icons";
-import { BiCommentDetail, AiOutlineNumber } from "react-icons/all";
+import { BiCommentDetail } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/interfaces/store";
 import { DetailedSingleTrans } from "../../types/interfaces/system_api";
@@ -42,7 +42,7 @@ const DetailedSingleTransaction = () => {
           {/* icon */}
           <span className={styles.icon}>
             <IconContext.Provider value={{ color: "black" }}>
-              <AiOutlineNumber />
+              {/* <AiOutlineNumber /> */}
             </IconContext.Provider>
           </span>
           {/* text */}

@@ -33,6 +33,12 @@
     padding: 10px;
     // border: var(--main-border);
     box-shadow: var(--main-box-shadow);
+    // nightModeContainer 
+    .nightModeContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
   }
 }
 

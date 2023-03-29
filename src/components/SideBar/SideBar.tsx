@@ -3,7 +3,7 @@ import styles from "./SideBar.module.scss";
 import AppName from "../AppName/AppName";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons";
-import { IoIosArrowForward } from "react-icons/all";
+import { IoIosArrowForward } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/interfaces/store";
 import NavLinks from "./navLinks/NavLinks";

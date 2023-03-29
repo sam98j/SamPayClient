@@ -2,11 +2,11 @@ import React, { FC } from "react";
 import styles from "./styles.module.scss";
 import { IconContext } from "react-icons";
 import {
-  BsCreditCard,
-  RiDashboardLine,
+  IoIosCard,
+  IoIosCog,
   IoIosContacts,
-  IoMdAnalytics,
-} from "react-icons/all";
+  IoIosAnalytics,
+} from "react-icons/io";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../types/interfaces/store";
 import { Link } from "react-router-dom";
@@ -43,7 +43,7 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
                 size: "20px",
               }}
             >
-              <RiDashboardLine />
+              <IoIosCog />
             </IconContext.Provider>
             <span>Dashboard</span>
           </Link>
@@ -64,7 +64,7 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
                 size: "20px",
               }}
             >
-              <IoMdAnalytics />
+              <IoIosAnalytics />
             </IconContext.Provider>
             <span>Reports</span>
           </Link>
@@ -84,7 +84,7 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
                 size: "20px",
               }}
             >
-              <BsCreditCard />
+              <IoIosCard />
             </IconContext.Provider>
             <span>Cards</span>
           </Link>
@@ -117,7 +117,13 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
         {device === Devices.MOBILE ? <ProfileBtn /> : ""}
         {/* ThemeToggler */}
         {/* show theme toggler with navLinks on mobile */}
-        {device === Devices.MOBILE ? <ThemeToggler /> : ""}
+        {device === Devices.MOBILE ? (
+          <div className={styles.nightModeContainer}>
+            <span>Night Mode</span> <ThemeToggler />
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

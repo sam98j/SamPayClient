@@ -1,6 +1,6 @@
 import React from "react";
 import { IconContext } from "react-icons";
-import { IoIosArrowForward } from "react-icons/io";
+import { BsArrowRight } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AppState, Client } from "../../types/interfaces/store";
@@ -20,7 +20,7 @@ const ProfileBtn = () => {
         <h4>
           <span className={styles.name}>{name}</span>
           <IconContext.Provider value={{ color: "gray" }}>
-            <IoIosArrowForward />
+            <BsArrowRight />
           </IconContext.Provider>
         </h4>
       </div>

@@ -126,19 +126,20 @@ export const clearAuthErrMsg = () => (dispatch: Function) => {
 }
 // login client method
 export const signUp = (data: NewClientRegestrationData) => async (dispatch: Function) => {
-
   const {LOGIN_SUCCESS, LOGIN_FAILD} = AuthTypes;
   // request configuration 
-  const config = {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
   try {
     const profile_img_url = await uploadProfileImg(data.profile_img_url);
+    // add the profile img url to the data
     data.profile_img_url = profile_img_url;
+    // api config object
+    const config = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
     // sending data to the server
     const response = await fetch(`${api_url}/auth/signup`, config);
     // check for status code

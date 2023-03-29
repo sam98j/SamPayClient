@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Login.module.scss";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/all";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { LoginState, LoginProps } from "./login.interface";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginClient, LoginWithGoogle } from "../../apis/auth";

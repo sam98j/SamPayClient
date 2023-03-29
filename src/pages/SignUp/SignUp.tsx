@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./signup.module.scss";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/all";
+import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import {
   NewClientRegestrationData,
   SignUpProps,
@@ -19,7 +19,6 @@ import VectorArt from "../../assets/vectors/hugo-payment-processed.png";
 import AuthErrAlert from "./AuthErrAlert/AuthErrAlert";
 import { AnimatePresence } from "framer-motion";
 import AppIcon from "../../components/AppIcon/AppIcon";
-import { uploadProfileImg } from "../../apis/filesUplaod";
 
 const SignUp = () => {
   // react router hooks
@@ -35,10 +34,11 @@ const SignUp = () => {
     profile_img: "",
     isLoading: false,
   });
+  // profile img state
   const [profile_img, setProfileImg] = useState<File>();
   // dispatch
   const dispatch = useDispatch();
-  // Component Props
+  // map a pace of app state to component props
   const { isAuthorized, errMsg, isLoggedIn } = useSelector<
     AppState,
     SignUpProps
@@ -47,7 +47,7 @@ const SignUp = () => {
     errMsg: auth.errMsg,
     isLoggedIn: auth.isLogged,
   }));
-  // component did mount
+  // stop loading when user is logged in
   useEffect(() => {
     if (isAuthorized) {
       setState({
@@ -57,17 +57,15 @@ const SignUp = () => {
     }
     // LogginClient();
     if (Boolean(errMsg)) {
-      console.log(errMsg);
       setState({
         ...state,
         isLoading: false,
       });
     }
   }, [isAuthorized, errMsg]);
-  // useEffect
+  // push user to dashboard when he is logged in
   useEffect(() => {
     return function cleanUp() {
-      console.log("compoent un mount");
       push("/dashboard");
     };
   }, []);
@@ -84,15 +82,18 @@ const SignUp = () => {
   // handle form submition
   const handleSubmition = async (e: React.FormEvent) => {
     e.preventDefault();
-    // form falidation
+    // check for empty fields
     if (state.clientCredentioal!.email && state.clientCredentioal!.password) {
       const formData = new FormData();
       formData.append("profile_img", profile_img!);
+      // signUP user data
       const data = {
         ...state.clientCredentioal,
         profile_img_url: formData,
       } as NewClientRegestrationData;
+      // dispatch signUp action
       dispatch(signUp(data));
+      // set loading state to true
       setState({
         ...state,
         isLoading: true,
@@ -162,7 +163,7 @@ const SignUp = () => {
           </div>
           {/* input field */}
           <div className={styles.inputArea}>
-            <label htmlFor="email">E-mail</label>
+            <label htmlFor="email">Profile Img</label>
             <input
               type="file"
               id="profile_img"
