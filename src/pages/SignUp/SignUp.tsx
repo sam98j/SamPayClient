@@ -15,7 +15,7 @@ import GoogleLogin, {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from "react-google-login";
-import VectorArt from "../../assets/vectors/hugo-payment-processed.png";
+import VectorArt from "../../assets/vectors/Transactional-SMS.svg";
 import AuthErrAlert from "./AuthErrAlert/AuthErrAlert";
 import { AnimatePresence } from "framer-motion";
 import AppIcon from "../../components/AppIcon/AppIcon";

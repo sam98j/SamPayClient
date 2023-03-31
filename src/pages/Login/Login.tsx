@@ -5,7 +5,7 @@ import { LoginState, LoginProps } from "./login.interface";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginClient, LoginWithGoogle } from "../../apis/auth";
 import { AppState } from "../../types/interfaces/store";
-import vectorsImg from "../../assets/vectors/hugo-payment-processed.png";
+import vectorsImg from "../../assets/vectors/Transactional-SMS.svg";
 import TransLoading from "../../components/TransLoading/TransLoading";
 import { Link } from "react-router-dom";
 import GoogleLogin, {
@@ -84,9 +84,6 @@ const Login = () => {
       {/* login form */}
       <section className={styles.LoginForm}>
         {/* signUp Link */}
-        <Link to="/signup" className={styles.signupLink}>
-          Don't have an account? signup
-        </Link>
         <form onSubmit={handleSubmition}>
           {/* error message */}
           <AnimatePresence>
@@ -149,6 +146,9 @@ const Login = () => {
             <a href="" className={styles.ForgetPassword}>
               Forget Password
             </a>
+            <Link to="/signup" className={styles.signupLink}>
+              Don't have an account? signup
+            </Link>
           </div>
           {/* social media links */}
           <div className={styles.SocialMedia}>

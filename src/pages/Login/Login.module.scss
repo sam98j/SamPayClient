@@ -1,34 +1,35 @@
 .Login {
+  // the whole page styels
   height: 100%;
   overflow: hidden;
   display: flex;
   font-size: 0.7rem;
+  // the login form area styles
   .LoginForm {
-    @media (max-width: 500px) {
-      width: 100%;
-    }
+    background-color: rgb(247, 247, 247);
     width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    @media (max-width: 500px) {
+      width: 100%;
+    }
   }
   // signUp Link
   .LoginForm .signupLink {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    color: blue;
+    padding: 20px 0;
   }
   // form
   .LoginForm form {
-    // form style in mobile device
-    @media (max-width: 500px) {
-      border: none;
-    }
+    background-color: white;
+    box-shadow: var(--main-box-shadow);
     font-weight: bold;
     width: 350px;
-    border: 1px solid gray;
+    height: 95%;
+    // border: 1px solid gray;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -48,6 +49,10 @@
         outline: none;
         border-color: white;
       }
+    }
+    // form style in mobile device
+    @media (max-width: 500px) {
+      border: none;
     }
   }
   // app logo
@@ -73,7 +78,7 @@
     justify-content: center !important;
     color: black !important;
     box-shadow: none !important;
-    border: 2px solid black !important;
+    border: 2px solid gray !important;
     div {
       border-radius: 20px !important;
     }
@@ -89,7 +94,7 @@
       height: 1px;
       width: 45%;
       display: inline-block;
-      background-color: black;
+      background-color: gray;
     }
   }
   // form footer
@@ -125,24 +130,30 @@
     a {
       font-size: 20px;
       margin: 10px;
-      color: black;
+      color: gray;
     }
   }
   // copy rights
   form .copyRight {
+    color: gray;
     display: flex;
     justify-content: center;
     gap: 10px;
   }
+  // the vector image area styles
   .VectorsArea {
     width: 50%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 70%;
+      width: 70%;
+    }
+    // the vector image styles on mobile device
     @media (max-width: 500px) {
       display: none;
-    }
-    img {
-      height: 100%;
-      width: 100%;
     }
   }
 }

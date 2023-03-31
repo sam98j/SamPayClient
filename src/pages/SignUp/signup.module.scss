@@ -1,15 +1,15 @@
 .signUp {
   height: 100%;
   overflow: hidden;
-  background-color: rgb(247, 247, 247);
   display: flex;
   font-size: 0.7rem;
-  // styles on mobile
+  // the whole signup screen styles on mobile
   @media (max-width: 500px) {
     background-color: white;
   }
   // form container
   .signUpForm {
+    background-color: rgb(247, 247, 247);
     // styles on moblie
     @media (max-width: 500px) {
       width: 100%;
@@ -24,13 +24,11 @@
   }
   // form
   .signUpForm form {
-    // styles on mobile devices
-    @media (max-width: 500px) {
-      box-shadow: none;
-    }
+    // main form styles
     box-shadow: var(--main-box-shadow);
     font-weight: bold;
     width: 350px;
+    height: 95%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,50 +36,11 @@
     overflow-y: hidden;
     padding: 20px;
     border-radius: 10px;
-    gap: 20px;
+    gap: 10px;
     color: black;
     position: relative;
-    // logo
-    .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      img {
-        width: 40px;
-        height: 40px;
-      }
-    }
     h2 {
       text-align: center;
-    }
-    // sign up with google button
-    .googleLogin {
-      border-radius: 10px !important;
-      margin-top: 20px !important;
-      width: 100% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      color: black !important;
-      box-shadow: none !important;
-      border: 2px solid black !important;
-      div {
-        border-radius: 20px !important;
-      }
-    }
-    // seperator
-    .seperator {
-      // background-color: yellowgreen;
-      text-align: center;
-      line-height: 100%;
-      &::before,
-      &::after {
-        content: "";
-        height: 1px;
-        width: 45%;
-        display: inline-block;
-        background-color: black;
-      }
     }
     label {
       color: black;
@@ -97,6 +56,49 @@
       &:focus {
         outline: none;
         border-color: white;
+      }
+    }
+    // styles on mobile devices
+    @media (max-width: 500px) {
+      box-shadow: none;
+    }
+    // logo
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    // sign up with google button
+    .googleLogin {
+      border-radius: 10px !important;
+      margin-top: 20px !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: black !important;
+      box-shadow: none !important;
+      border: 2px solid gray !important;
+      div {
+        border-radius: 20px !important;
+      }
+    }
+    // seperator
+    .seperator {
+      // background-color: yellowgreen;
+      text-align: center;
+      line-height: 100%;
+      &::before,
+      &::after {
+        content: "";
+        height: 1px;
+        width: 45%;
+        display: inline-block;
+        background-color: gray;
       }
     }
   }
@@ -137,11 +139,12 @@
     a {
       display: inline-block;
       font-size: 20px;
-      color: black;
+      color: gray;
     }
   }
   // copy rights
   form .copyRight {
+    color: gray;
     display: flex;
     justify-content: center;
     gap: 10px;
