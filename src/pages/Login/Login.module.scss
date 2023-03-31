@@ -29,7 +29,6 @@
     font-weight: bold;
     width: 350px;
     height: 95%;
-    // border: 1px solid gray;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -52,6 +51,9 @@
     }
     // form style in mobile device
     @media (max-width: 500px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       border: none;
     }
   }
@@ -107,6 +109,7 @@
     .ForgetPassword {
       flex-grow: 1;
       text-align: right;
+      color: blue;
     }
     // botton
     button {
