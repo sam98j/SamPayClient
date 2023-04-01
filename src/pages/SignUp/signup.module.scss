@@ -11,9 +11,6 @@
   .signUpForm {
     background-color: rgb(247, 247, 247);
     // styles on moblie
-    @media (max-width: 500px) {
-      width: 100%;
-    }
     width: 50%;
     height: 100%;
     display: flex;
@@ -21,6 +18,10 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    @media (max-width: 500px) {
+      background-color: white;
+      width: 100%;
+    }
   }
   // form
   .signUpForm form {
