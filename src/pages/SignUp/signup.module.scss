@@ -10,6 +10,7 @@
   // form container
   .signUpForm {
     background-color: rgb(247, 247, 247);
+    background: url("../../assets/BGs/interlaced.png");
     // styles on moblie
     width: 50%;
     height: 100%;
@@ -68,9 +69,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 10px;
       img {
         width: 40px;
         height: 40px;
+      }
+      p {
+        font-size: 1.5rem;
       }
     }
     // sign up with google button

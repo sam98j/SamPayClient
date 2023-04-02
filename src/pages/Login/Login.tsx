@@ -99,7 +99,7 @@ const Login = () => {
           </AnimatePresence>
           {/* logo */}
           <div className={styles.logo}>
-            <AppIcon />
+            <AppIcon /> <p>SamPay</p>
           </div>
           {/* form name */}
           <h2>Login To Your Account !!</h2>

@@ -133,7 +133,7 @@ const SignUp = () => {
           </AnimatePresence>
           {/* logo */}
           <div className={styles.logo}>
-            <AppIcon />
+            <AppIcon /> <p>SamPay</p>
           </div>
           {/* form name */}
           <h2>Sign Up to samPay</h2>
