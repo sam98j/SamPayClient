@@ -15,8 +15,13 @@ import GoogleLogin, {
 import { AnimatePresence } from "framer-motion";
 import AuthErrAlert from "../SignUp/AuthErrAlert/AuthErrAlert";
 import AppIcon from "../../components/AppIcon/AppIcon";
+import { useTranslation } from "react-i18next";
+import SwitchLang from "../../components/SwitchLang/SwitchLang";
 
 const Login = () => {
+  // t function hook
+  const { t } = useTranslation();
+  // component state
   const [state, setState] = useState<LoginState>({
     clientCredentioal: {
       email: "",
@@ -102,11 +107,11 @@ const Login = () => {
             <AppIcon /> <p>SamPay</p>
           </div>
           {/* form name */}
-          <h2>Login To Your Account !!</h2>
+          <h2>{t("LOGIN_PAGE.Login_with_goole")}</h2>
           {/* google login */}
           <GoogleLogin
             clientId={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID!}
-            buttonText="Login With Google"
+            buttonText={t("login_with_google") as string}
             onSuccess={handleLoginWithGoogle}
             onFailure={handleLoginWithGoogle}
             cookiePolicy={"single_host_origin"}
@@ -173,6 +178,7 @@ const Login = () => {
       </section>
       {/* vecotr */}
       <section className={styles.VectorsArea}>
+        <SwitchLang />
         <img src={vectorsImg} alt="" />
       </section>
     </section>
