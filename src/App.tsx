@@ -20,6 +20,7 @@ import { checkDeviceScreen } from "./utils/system";
 import { setDeviceType } from "./apis/system";
 import { Devices, ThemeColor } from "./types/enums/system";
 import DetailedTrxMobile from "./components/DetailedTrxMobile/DetailedTrxMobile";
+import { log } from "console";
 
 function App() {
   // use dispatch to send action to the store, change the state of the store
@@ -36,6 +37,7 @@ function App() {
     detailedSingleTrans,
     device,
     themeColor,
+    systemLang,
     transferMoneyMobile,
   } = useSelector<AppState, CompoProps>((state) => ({
     isLogged: state.auth.isLogged,
@@ -45,6 +47,7 @@ function App() {
     device: state.system.device,
     themeColor: state.system.themeColor,
     transferMoneyMobile: state.system.transferMoneyMobile,
+    systemLang: state.system.currentLang,
   }));
   // play notification sound
   const playNotificationSound = () => {
@@ -53,6 +56,12 @@ function App() {
   };
   // componet did update
   useEffect(() => {
+    // set Apss Elements Direction
+    (function setAppsElementsDir() {
+      systemLang === "ar"
+        ? document.getElementsByTagName("html")[0].setAttribute("dir", "rtl")
+        : document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
+    })();
     // listen for isLoggedIn to redirect the user
     if (isLogged && pathname === "/") {
       push("/dashboard");
@@ -75,9 +84,15 @@ function App() {
       // play notification sound
       playNotificationSound();
     });
-  }, [client_id, isLogged]);
+  }, [client_id, isLogged, systemLang]);
   // component did mount
   useEffect(() => {
+    // set inital system lang
+    (function setInitalSystemLang() {
+      systemLang === "ar"
+        ? document.getElementsByTagName("html")[0].setAttribute("dir", "rtl")
+        : console.log("system lang is en");
+    })();
     dispatch(setDeviceType(checkDeviceScreen()));
     // apis call to decide if user is logged in or not
     dispatch(InitateClient());

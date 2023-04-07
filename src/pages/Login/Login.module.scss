@@ -4,6 +4,7 @@
   overflow: hidden;
   display: flex;
   font-size: 0.7rem;
+  position: relative;
   // the login form area styles
   .LoginForm {
     background-color: rgb(247, 247, 247);
@@ -115,7 +116,6 @@
     // forget password link
     .ForgetPassword {
       flex-grow: 1;
-      text-align: right;
       color: dodgerblue;
     }
     // botton

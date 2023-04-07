@@ -1,0 +1,9 @@
+export enum loginPageContent {
+    PAGE_NAME = "PAGE_NAME",
+    OATH_BTN_TEXT = "OATH_BTN_TEXT",
+    EMAIL_FIELD = "EMAIL_FIELD",
+    PASS_FIELD = "PASS_FIELD",
+    LOGIN_BTN = "PASS_BTN",
+    FORGET_PASS_LINK = "FORGET_PASS_LINK",
+    SGINUP_LINK = "SGINUP_LINK"
+}

@@ -4,7 +4,13 @@ import moment from "moment";
 import { ReceiveMoneyNotification } from "../types/interfaces/trans_apis";
 import { addReceiverToLocalStorage } from "../utils/system";
 
-const {SELECT_TRANSFER_METHOD, SET_THEME_COLOR, TRANSFER_MONEY_MOBILE} = SystemActionsTypes;
+const {
+  SELECT_TRANSFER_METHOD, 
+  SET_THEME_COLOR, 
+  TRANSFER_MONEY_MOBILE,
+  SET_CURRENT_LANG
+} = SystemActionsTypes;
+// set curreent route
 export const SetCurrentRoute = (routeName: string) => (dispatch: Function) => {
   const {SET_CURRENT_ROUTE} = SystemActionsTypes;
   dispatch({ type: SET_CURRENT_ROUTE, payload: routeName });
@@ -86,4 +92,8 @@ export const setThemeColor = (color: ThemeColor) => (dispatch: Function) => {
 // send money in mobile device
 export const transferMoneyMobie = (status: boolean) => (dispatch: Function) => {
   dispatch({type: TRANSFER_MONEY_MOBILE, payload: status})
+}
+// change current language
+export const changeCurrentLang = (lang: string) => (dispatch: Function) => {
+  dispatch({type: SET_CURRENT_LANG, payload: lang})
 }

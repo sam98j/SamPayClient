@@ -1,19 +1,20 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LOGIN_AR from '../locales/ar/login.json'
-import LOGIN_EN from '../locales/en/login.json'
+import {loginPageArContent} from '../locales/ar/login'
+import {loginPageEnContent} from '../locales/en/login'
+import {PagesNames} from '../types/enums/locales/PagesNames';
+
+const {LOGIN_PAGE} = PagesNames;
 
 const resources = {
     en: { 
         translation: { 
-            LOGIN_PAGE: LOGIN_AR,
-            login_with_google: "Login with Google",
+            [LOGIN_PAGE]: loginPageEnContent,
         }
     },
     ar: { 
         translation: {
-            login_with_google: "تسجيل الدخول بحساب جوجل",
-            login: "تسجيل الدخول الى حسابك"
+            [LOGIN_PAGE]: loginPageArContent
         }
     }
 }

@@ -17,6 +17,8 @@ import AuthErrAlert from "../SignUp/AuthErrAlert/AuthErrAlert";
 import AppIcon from "../../components/AppIcon/AppIcon";
 import { useTranslation } from "react-i18next";
 import SwitchLang from "../../components/SwitchLang/SwitchLang";
+import { PagesNames } from "../../types/enums/locales/PagesNames";
+import { loginPageContent } from "../../types/enums/locales/LoginPageContent";
 
 const Login = () => {
   // t function hook
@@ -86,6 +88,7 @@ const Login = () => {
   };
   return (
     <section className={styles.Login}>
+      <SwitchLang />
       {/* login form */}
       <section className={styles.LoginForm}>
         {/* signUp Link */}
@@ -107,11 +110,15 @@ const Login = () => {
             <AppIcon /> <p>SamPay</p>
           </div>
           {/* form name */}
-          <h2>{t("LOGIN_PAGE.Login_with_goole")}</h2>
+          <h2>{t(`${PagesNames.LOGIN_PAGE}.${loginPageContent.PAGE_NAME}`)}</h2>
           {/* google login */}
           <GoogleLogin
             clientId={process.env.REACT_APP_GOOGLE_AUTH_CLIENT_ID!}
-            buttonText={t("login_with_google") as string}
+            buttonText={
+              t(
+                `${PagesNames.LOGIN_PAGE}.${loginPageContent.OATH_BTN_TEXT}`
+              ) as string
+            }
             onSuccess={handleLoginWithGoogle}
             onFailure={handleLoginWithGoogle}
             cookiePolicy={"single_host_origin"}
@@ -122,7 +129,9 @@ const Login = () => {
           {/* input field */}
           {/* input field */}
           <div>
-            <label htmlFor="email">E-mail</label>
+            <label htmlFor="email">
+              {t(`${PagesNames.LOGIN_PAGE}.${loginPageContent.EMAIL_FIELD}`)}
+            </label>
             <input
               type="email"
               onChange={handleChange}
@@ -133,7 +142,9 @@ const Login = () => {
           </div>
           {/* input field */}
           <div>
-            <label htmlFor="">Password</label>
+            <label htmlFor="">
+              {t(`${PagesNames.LOGIN_PAGE}.${loginPageContent.PASS_FIELD}`)}
+            </label>
             <input
               type="password"
               onChange={handleChange}
@@ -145,14 +156,20 @@ const Login = () => {
           <div className={styles.formFooter}>
             {/* button */}
             <button type="submit">
-              {state.isLoading ? <TransLoading /> : "Login"}
+              {state.isLoading ? (
+                <TransLoading />
+              ) : (
+                t(`${PagesNames.LOGIN_PAGE}.${loginPageContent.LOGIN_BTN}`)
+              )}
             </button>
             {/* forget password link */}
             <a href="" className={styles.ForgetPassword}>
-              Forget Password
+              {t(
+                `${PagesNames.LOGIN_PAGE}.${loginPageContent.FORGET_PASS_LINK}`
+              )}
             </a>
             <Link to="/signup" className={styles.signupLink}>
-              Don't have an account? signup
+              {t(`${PagesNames.LOGIN_PAGE}.${loginPageContent.SGINUP_LINK}`)}
             </Link>
           </div>
           {/* social media links */}
@@ -178,7 +195,6 @@ const Login = () => {
       </section>
       {/* vecotr */}
       <section className={styles.VectorsArea}>
-        <SwitchLang />
         <img src={vectorsImg} alt="" />
       </section>
     </section>

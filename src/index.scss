@@ -1,15 +1,15 @@
 @import "./_variables.css";
 
 @font-face {
-  font-family: "Arabic UI Text";
-  src: url("./assets/sf_web/sfprotext-medium-webfont.woff"),
-    url("./assets/sf_web/sfprotext-medium-webfont.woff2");
+  font-family: "SF Pro Text";
+  src: url("./assets/sf_semi/SFProText-Semibold.woff"),
+    url("./assets/sf_semi/SFProText-Semibold.woff2");
   font-weight: normal;
 }
 
 body {
   margin: 0;
-  font-family: "Arabic UI Text", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  font-family: "SF Pro Text", "Roboto", "Oxygen", "Ubuntu", "Cantarell" ,
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

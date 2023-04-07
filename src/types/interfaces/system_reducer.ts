@@ -13,5 +13,6 @@ export interface SystemReducerState {
     transferMethod: TransferMethods,
     getReceiverErr: string | null,
     themeColor: ThemeColor,
-    transferMoneyMobile: boolean
+    transferMoneyMobile: boolean,
+    currentLang: string,
 }

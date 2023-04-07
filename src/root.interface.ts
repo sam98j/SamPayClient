@@ -11,4 +11,5 @@ export interface CompoProps {
   device: Devices,
   themeColor: ThemeColor,
   transferMoneyMobile: boolean;
+  systemLang: string
 }

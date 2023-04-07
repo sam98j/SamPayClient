@@ -22,7 +22,8 @@ const initState = {
     getReceiverErr: null,
     device: Devices.DESKTOP,
     themeColor: themeColor ? themeColor : ThemeColor.LIGHT,
-    transferMoneyMobile: false
+    transferMoneyMobile: false,
+    currentLang: "en"
 } as SystemReducerState
 
 const systemReducer = (state = initState, action: {type: string, payload: any}): SystemReducerState => {
@@ -38,12 +39,21 @@ const systemReducer = (state = initState, action: {type: string, payload: any}):
         SELECT_TRANSFER_METHOD,
         HIDE_GET_RECEIVER_ERR_MSG,
         SET_THEME_COLOR,
-        TRANSFER_MONEY_MOBILE
+        TRANSFER_MONEY_MOBILE,
+        SET_CURRENT_LANG
     } = SystemActionsTypes;
     // transactions actions types
     const {RECEIVE_MONEY, SERVER_ERR, GET_RECEIVER_ERR} = TransTypes;
     const {SIGN_OUT} = AuthTypes
     switch (action.type) {
+        // set current lang
+        case SET_CURRENT_LANG: { 
+            const currentLang = action.payload as string;
+            return {
+                ...state,
+                currentLang
+            }
+        }
         // set device type
         case SET_DEVICE_TYPE: {
             const deviceType = action.payload as Devices;
