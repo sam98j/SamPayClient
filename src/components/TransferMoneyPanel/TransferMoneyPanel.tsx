@@ -39,13 +39,17 @@ function SendMoneyPanel() {
   };
   return (
     <div className={styles.sendMoneyPanel}>
-      {/* Close Pannel Icon */}
-      <IconContext.Provider value={{ color: "gray" }}>
-        <AiOutlineClose
-          className={styles.icon}
-          onClick={handleCloseIconClick}
-        />
-      </IconContext.Provider>
+      {/* section head */}
+      <div className={styles.sectionHead}>
+        {/* Close Pannel Icon */}
+        <IconContext.Provider value={{ color: "gray" }}>
+          <AiOutlineClose
+            className={styles.icon}
+            onClick={handleCloseIconClick}
+          />
+        </IconContext.Provider>
+        <p>Send Money</p>
+      </div>
       {/* logo */}
       <div className={styles.brandsection}>
         <AppIcon />

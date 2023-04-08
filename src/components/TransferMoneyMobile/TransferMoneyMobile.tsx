@@ -22,7 +22,6 @@ const SendMoneyMobile = () => {
   return (
     <div className={styles.sendMoneyMobile}>
       {/* section name */}
-      <p>Send Money</p>
       <div className={styles.inputArea}>
         <input
           type="email"
@@ -31,7 +30,7 @@ const SendMoneyMobile = () => {
           onChange={inputHandler}
         />
         <button type="submit" onClick={submitHandler}>
-          Send
+          Send Now
         </button>
       </div>
     </div>

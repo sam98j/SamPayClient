@@ -10,10 +10,29 @@
   background-color: var(--alt-bg-color);
   backdrop-filter: blur(10px);
   z-index: 3;
+  .sectionHead {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    position: relative;
+    p {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      text-align: center;
+      flex-grow: 1;
+      color: gray;
+      // background-color: aqua;
+    }
+  }
   .icon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    // position: absolute;
+    // top: 10px;
+    // right: 10px;
+    margin: 10px;
+    background-color: rgb(207, 207, 207);
+    border-radius: 50%;
+    // padding: 5px;
   }
   @media (max-width: 500px) {
     display: flex;

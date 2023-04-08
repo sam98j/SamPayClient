@@ -15,18 +15,22 @@
   // section name
   p {
     color: var(--main-text-color);
+    text-align: center;
+    padding-bottom: 10px;
   }
   .inputArea {
     display: flex;
+    flex-direction: column;
     gap: 10px;
     button {
       border: none;
-      border-radius: 50%;
-      display: block;
-      width: 44px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 44px;
       color: white;
-      background-color: #0596ff;
+      background-color: #54B435;
     }
     input {
       border: var(--main-border);
