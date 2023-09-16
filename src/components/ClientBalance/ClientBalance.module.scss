@@ -1,0 +1,55 @@
+.ClientBalance {
+    width: 100%;
+    height: 190px;
+    background-color:  #f3f3f3;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 15px;
+    // Widget Name
+    .WidgetName {
+        // background-color: aqua;
+        color: #003153;
+    }
+    // Balance Amount
+    .BalanceAmount {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: space-between;
+        // Main Balance
+        p:nth-child(1) {
+            color: rgb(22, 22, 46);
+            font-size: 2rem;
+        }
+        p:nth-child(2), p:nth-child(3) {
+            font-size: 1.2rem;
+        }
+        p:nth-child(2) {
+            color: green;
+        }
+        p:nth-child(3) {
+            color: red;
+        }
+    }
+    // Widget Footer
+    .WidgetFooter {
+        // background-color: red;
+        border-top: 1px solid gainsboro;
+        display: flex;
+        padding: 5px 0;
+        justify-content: space-between;
+        span p {
+            margin: 5px 0;
+        }
+        // title
+        span p:first-child {
+            color: gray;
+        }
+        span p:last-child {
+            color: rgb(22, 22, 46);    
+        }
+    }
+}

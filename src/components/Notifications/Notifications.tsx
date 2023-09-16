@@ -1,5 +1,5 @@
 import React from "react";
-import { RiNotification2Line } from "react-icons/ri";
+import { IoNotificationsOutline } from "react-icons/io5";
 import { IconContext } from "react-icons/lib";
 import styles from "./notifications.module.scss";
 import { useSelector } from "react-redux";
@@ -15,8 +15,8 @@ const Notifications = () => {
   return (
     <span className={styles.notifications}>
       <span className={styles.notificationsCount}>{notifications}</span>
-      <IconContext.Provider value={{ color: "black" }}>
-        <RiNotification2Line />
+      <IconContext.Provider value={{ color: "black", size: "20px" }}>
+        <IoNotificationsOutline />
       </IconContext.Provider>
     </span>
   );

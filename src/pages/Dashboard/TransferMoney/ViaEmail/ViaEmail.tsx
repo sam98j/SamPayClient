@@ -1,6 +1,10 @@
 import React, { FC } from "react";
+import { PagesNames } from "../../../../types/enums/locales/PagesNames";
 import { GetReceiverComState } from "../interface";
+import { TransferMoneyStrings } from "../Locales/interface";
 import styles from "./viaemail.module.scss";
+// @ts-ignore
+import { t } from "i18next";
 
 interface ViaEmailProps {
   onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -19,7 +23,11 @@ const ViaEmail: FC<ViaEmailProps> = ({
           type="email"
           name="receiverEmail"
           value={transferMoneyState.receiverEmail}
-          placeholder="Enter your email"
+          placeholder={
+            t(
+              `${PagesNames.QUICK_TRASFER_WIDGET}.${TransferMoneyStrings.EMAIL_FIELD_PLACEHOLDER}`
+            ) as string
+          }
           onChange={onChangeHandler}
         />
       </div>

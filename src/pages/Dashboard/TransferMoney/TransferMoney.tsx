@@ -3,14 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTransferMehod } from "../../../apis/system";
 import { getReceiver } from "../../../apis/transactions";
 import TransLoading from "../../../components/TransLoading/TransLoading";
+import { PagesNames } from "../../../types/enums/locales/PagesNames";
 import { TransferMethods } from "../../../types/enums/system";
 import { TransferStatus } from "../../../types/enums/transactions";
 import { AppState } from "../../../types/interfaces/store";
 import { CurrentTransfer } from "../../../types/interfaces/trans_reducer";
 import { GetReceiverComState } from "./interface";
+import { TransferMoneyStrings } from "./Locales/interface";
+// @ts-ignore
+import { t } from "i18next";
 import styles from "./styles.module.scss";
 import ViaEmail from "./ViaEmail/ViaEmail";
 import ViaPhoneNo from "./ViaPhoneNo/ViaPhoneNo";
+import ReceviersHistory from "../ReceviersHistory/ReceviersHistory";
 
 function TransferMoney() {
   // local state of component
@@ -85,7 +90,14 @@ function TransferMoney() {
   }, [currentTransfer]);
   return (
     <div className={styles.MakeTransaction}>
-      <p className={styles.sectionName}>Quick Transfer</p>
+      {/* Widget Name */}
+      <p className={styles.sectionName}>
+        {t(
+          `${PagesNames.QUICK_TRASFER_WIDGET}.${TransferMoneyStrings.WIDGET_TITLE}`
+        )}
+      </p>
+      {/* Recent Recivers */}
+      <ReceviersHistory />
       {/* select transfer type */}
       <ul className={styles.transferTypesContainer}>
         <li
@@ -95,7 +107,9 @@ function TransferMoney() {
             transferMethod === TransferMethods.VIA_EMAIL ? "true" : "false"
           }
         >
-          Via Email
+          {t(
+            `${PagesNames.QUICK_TRASFER_WIDGET}.${TransferMoneyStrings.TRANSFER_VIA_EMAIL}`
+          )}
         </li>
         <li
           onClick={selectTransferMethodHandler}
@@ -104,7 +118,9 @@ function TransferMoney() {
             transferMethod === TransferMethods.VIA_EMAIL ? "false" : "true"
           }
         >
-          Via Mobile No
+          {t(
+            `${PagesNames.QUICK_TRASFER_WIDGET}.${TransferMoneyStrings.TRANSFER_VIA_PHONE}`
+          )}
         </li>
       </ul>
       {/* determine transferMethod */}
@@ -115,7 +131,13 @@ function TransferMoney() {
       )}
       {/* Do tranfer btn */}
       <button onClick={Transfer} ref={btnRef} className={styles.transferBtn}>
-        {state.isLoading ? <TransLoading /> : "Make Transfer"}
+        {state.isLoading ? (
+          <TransLoading />
+        ) : (
+          t(
+            `${PagesNames.QUICK_TRASFER_WIDGET}.${TransferMoneyStrings.WIDGET_TITLE}`
+          )
+        )}
       </button>
     </div>
   );

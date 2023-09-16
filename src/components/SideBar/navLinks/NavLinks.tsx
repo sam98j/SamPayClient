@@ -13,6 +13,10 @@ import { Link } from "react-router-dom";
 import ThemeToggler from "../../ThemeToggler/ThemeToggler";
 import { Devices } from "../../../types/enums/system";
 import ProfileBtn from "../../ProfileBtn/ProfileBtn";
+import { PagesNames } from "../../../types/enums/locales/PagesNames";
+// @ts-ignore
+import { t } from "i18next";
+import { SideBarLinksStrings } from "../Locales/interface";
 
 const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
   const { currentRoute, device } = useSelector<
@@ -45,7 +49,9 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
             >
               <IoIosCog />
             </IconContext.Provider>
-            <span>Dashboard</span>
+            <span>
+              {t(`${PagesNames.SIDEBARLINKS}.${SideBarLinksStrings.DASHBOARD}`)}
+            </span>
           </Link>
         </li>
         <li
@@ -66,7 +72,9 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
             >
               <IoIosAnalytics />
             </IconContext.Provider>
-            <span>Reports</span>
+            <span>
+              {t(`${PagesNames.SIDEBARLINKS}.${SideBarLinksStrings.REPORTS}`)}
+            </span>
           </Link>
         </li>
         <li
@@ -86,7 +94,9 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
             >
               <IoIosCard />
             </IconContext.Provider>
-            <span>Cards</span>
+            <span>
+              {t(`${PagesNames.SIDEBARLINKS}.${SideBarLinksStrings.CARDS}`)}
+            </span>
           </Link>
         </li>
         <li
@@ -107,7 +117,9 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
             >
               <IoIosContacts />
             </IconContext.Provider>
-            <span>Support</span>
+            <span>
+              {t(`${PagesNames.SIDEBARLINKS}.${SideBarLinksStrings.SUPPORT}`)}
+            </span>
           </Link>
         </li>
       </ul>

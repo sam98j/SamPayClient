@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppState, Client } from "../../../types/interfaces/store";
 import styles from "./accountcard.module.scss";
 import { transferMoneyMobie } from "../../../apis/system";
+import { PagesNames } from "../../../types/enums/locales/PagesNames";
+import { CardStrings } from "./Locales/interface";
+// @ts-ignore
+import { t } from "i18next";
 
 const AccountCard = () => {
   // dispatch store method
@@ -18,7 +22,7 @@ const AccountCard = () => {
   // return template
   return (
     <div className={styles.accountCard}>
-      <p>Your Balance</p>
+      <p>{t(`${PagesNames.ACCOUNT_CARD}.${CardStrings.CURRENT_BALANCE}`)}</p>
       <p className={styles.Balance}>{`\$${account.balance}`}</p>
       <p className={styles.Account}>{`Saving A/C ${_id}`}</p>
       {/* mobile screens, send moeny btn */}

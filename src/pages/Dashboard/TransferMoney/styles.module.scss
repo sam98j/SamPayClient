@@ -1,11 +1,12 @@
 .MakeTransaction {
-  padding: 20px;
+  padding: 10px;
   display: flex;
+  height: 220px;
   flex-direction: column;
   background-color: var(--main-bg-color);
   box-shadow: var(--main-box-shadow);
   border-radius: 10px;
-  width: 35% !important;
+  width: 100% !important;
   @media (max-width: 500px) {
     display: none;
   }
@@ -16,17 +17,22 @@
   // the styles of the section that user can select transfer type
   .transferTypesContainer {
     display: flex;
-    margin-top: 10px;
+    max-height: 40px;
+    min-height: 40px;
+    font-size: .8rem;
     align-items: center;
     background-color: var(alt-bg-color);
     border: var(--main-border);
     border-radius: 10px;
-    padding: 5px;
+    padding: 2px;
     // Single Transfer type
     li {
       flex-grow: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      padding: 10px;
       text-align: center;
       border-radius: 10px;
       color: var(--main-text-color);

@@ -2,5 +2,19 @@
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 5%;
+  column-gap: 5%;
+  // Big Area Styes
+  .BigArea {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  // Small Area Styles
+  .SmallArea {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
 }

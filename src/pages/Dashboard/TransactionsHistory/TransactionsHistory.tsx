@@ -6,6 +6,10 @@ import { TransHisProps } from "./interface";
 import styles from "./styles.module.scss";
 import DetailedSingleTrans from "../../../components/DetailedSingleTrans/DetailedSingleTrans";
 import moment from "moment";
+// @ts-ignore
+import { t } from "i18next";
+import { PagesNames } from "../../../types/enums/locales/PagesNames";
+import { TransHistoryStrings } from "./Locales/interface";
 
 interface Section {
   title: string;
@@ -48,7 +52,9 @@ function TransactionsHistory() {
   return (
     <section className={styles.Transactions}>
       {/* section name */}
-      <p className={styles.sectionname}>Transactions History</p>
+      <p className={styles.sectionname}>
+        {t(`${PagesNames.TRANS_HISTORY}.${TransHistoryStrings.SECTION_NAME}`)}
+      </p>
       {/* transactions */}
       {trxSortedByDate.sortiedByDate.map((ele) => (
         <div>

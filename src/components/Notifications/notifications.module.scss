@@ -1,9 +1,22 @@
 .notifications {
   display: flex;
   align-items: center;
-  gap: 5px;
+  position: relative;
+  // gap: 5px;
   .notificationsCount {
-    color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .8rem;
+    position: absolute;
+    background-color: red;
+    // padding: 2px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    left: -5px;
+    top: -5px;
+    color: white;
     border-radius: 5px;
   }
 }

@@ -5,9 +5,13 @@ import {
   hideDetailedSingleTrans,
   showDetailedSingleTrans,
 } from "../../apis/system";
+import { TransHistoryStrings } from "../../pages/Dashboard/TransactionsHistory/Locales/interface";
+import { PagesNames } from "../../types/enums/locales/PagesNames";
 import { AppState, SingleTrans } from "../../types/interfaces/store";
 import { DetailedSingleTrans } from "../../types/interfaces/system_api";
 import { SingleTransProps } from "./interface";
+// @ts-ignore
+import { t } from "i18next";
 import styles from "./styles.module.scss";
 
 const SingleTransaction: React.FC<SingleTransProps> = (props) => {
@@ -59,7 +63,10 @@ const SingleTransaction: React.FC<SingleTransProps> = (props) => {
       </div>
       <div className={styles.container}>
         {/* receiver name */}
-        <p className={styles.receivername}>Transfer To {receiver.name}</p>
+        <p className={styles.receivername}>
+          {t(`${PagesNames.TRANS_HISTORY}.${TransHistoryStrings.TRANSFER_TO}`)}{" "}
+          {receiver.name}
+        </p>
         <p className={styles.discription}>{moment(date).format("h:mm a")}</p>
       </div>
       <p className={styles.amount}>${amount}</p>

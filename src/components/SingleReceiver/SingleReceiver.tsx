@@ -34,17 +34,12 @@ const SingleReceiver: React.FC<SingleReceiverProps> = (props) => {
     <div className={styles.singleReceiver}>
       {/* receiver img */}
       <span className={styles.img}>
-        {Boolean(img) ? <img src={img} alt="" /> : <p>{clientAvatarAlt}</p>}
+        {Boolean(img) ? (
+          <img src={img} alt="" onClick={sendMoney} />
+        ) : (
+          <p>{clientAvatarAlt}</p>
+        )}
       </span>
-      {/* receiver name and date*/}
-      <span className={styles.details}>
-        <p className={styles.name}>{name}</p>
-        <p className={styles.date}>last paid on {newDate.date}</p>
-      </span>
-      {/* send again button */}
-      <button className={styles.sendBtn} onClick={sendMoney}>
-        send
-      </button>
     </div>
   );
 };

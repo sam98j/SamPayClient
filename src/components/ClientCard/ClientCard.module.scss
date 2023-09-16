@@ -1,0 +1,41 @@
+.ClientCard {
+    height: 100px;
+    width: 100%;
+    background-color: dodgerblue;
+    border-radius: 20px;
+    height: 195px;
+    padding: 25px 30px;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: space-around;
+    // card Header
+    .CardHeader {
+        display: flex;
+        align-items: center;
+        span {
+            display: block;
+            height: 30px;
+            width: 30px;
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+        // card title
+        p {
+            flex-grow: 1;
+            text-align: right;
+            color: white;
+        }
+    }
+    // card number
+    // .CardNumber {}
+    // card footer
+    .CardFooter {
+        display: flex;
+        .CardHolderName {
+            flex-grow: 1;
+        }
+    }
+}

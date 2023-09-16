@@ -8,6 +8,7 @@ import NotificationsMenu from "../../pages/NotificationsMenu/NotificationsMenu";
 import { useDispatch } from "react-redux";
 import { seeNotifications } from "../../apis/system";
 import ThemeToggler from "../ThemeToggler/ThemeToggler";
+import SwitchLang from "../SwitchLang/SwitchLang";
 
 const NavBar = () => {
   // dispatch store action
@@ -45,6 +46,8 @@ const NavBar = () => {
       <ul className={styles.AppCenter}>
         {/* theme toggler */}
         <ThemeToggler />
+        {/* language changer */}
+        <SwitchLang />
         {/* search bar */}
         <li>
           <Link to="">
