@@ -1,6 +1,6 @@
-import React from "react";
-import { NotificationEleProps } from "./interface";
-import styles from "./notificationele.module.scss";
+import React from 'react';
+import { NotificationEleProps } from './interface';
+import styles from './notificationele.module.scss';
 
 const NotificationEle: React.FC<NotificationEleProps> = (props) => {
   const { sender, transAmount } = props.notificationEle;
@@ -9,9 +9,7 @@ const NotificationEle: React.FC<NotificationEleProps> = (props) => {
       {/* avatar */}
       <span className={styles.avatar}></span>
       {/* notification message */}
-      <p className={styles.message}>
-        {`You received $${transAmount} from ${sender}`}
-      </p>
+      <p className={styles.message}>{`You received $${transAmount} from ${sender}`}</p>
     </div>
   );
 };

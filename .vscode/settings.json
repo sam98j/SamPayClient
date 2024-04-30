@@ -1,0 +1,11 @@
+{
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 150,
+  "prettier.bracketSameLine": false,
+  "editor.renderWhitespace": "boundary",
+  "workbench.colorCustomizations": {
+    "editorWhitespace.foreground": "#ffffff41"
+  },
+  "whitespacepp.renderEOF": false
+}

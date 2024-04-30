@@ -1,9 +1,9 @@
-import { ClientCredentioal } from "../../types/interfaces/auth_apis";
+import { ClientCredentioal } from '../../types/interfaces/auth_apis';
 // data come to component from outside
-export interface LoginProps  {
-  isAuthorized: Boolean,
-  isLoggedIn: boolean | null,
-  errMsg: null | string
+export interface LoginProps {
+  isAuthorized: Boolean;
+  isLoggedIn: boolean | null;
+  errMsg: null | string;
 }
 // local state of component memebers
 export interface LoginState {

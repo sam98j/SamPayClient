@@ -1,24 +1,16 @@
-import React, { FC } from "react";
-import styles from "./styles.module.scss";
-import { IconContext } from "react-icons";
-import {
-  IoIosCard,
-  IoIosCog,
-  IoIosContacts,
-  IoIosAnalytics,
-} from "react-icons/io";
-import { useSelector } from "react-redux";
-import { AppState } from "../../../types/interfaces/store";
-import { Link } from "react-router-dom";
-import ThemeToggler from "../../ThemeToggler/ThemeToggler";
-import { Devices } from "../../../types/enums/system";
-import ProfileBtn from "../../ProfileBtn/ProfileBtn";
+import React, { FC } from 'react';
+import styles from './styles.module.scss';
+import { IconContext } from 'react-icons';
+import { IoIosCard, IoIosCog, IoIosContacts, IoIosAnalytics } from 'react-icons/io';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../../types/interfaces/store';
+import { Link } from 'react-router-dom';
+import ThemeToggler from '../../ThemeToggler/ThemeToggler';
+import { Devices } from '../../../types/enums/system';
+import ProfileBtn from '../../ProfileBtn/ProfileBtn';
 
 const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
-  const { currentRoute, device } = useSelector<
-    AppState,
-    { currentRoute: string; device: Devices }
-  >(({ system }) => ({
+  const { currentRoute, device } = useSelector<AppState, { currentRoute: string; device: Devices }>(({ system }) => ({
     currentRoute: system.currentRoute,
     device: system.device,
   }));
@@ -27,20 +19,19 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
       <ul>
         <li
           style={{
-            borderLeftColor:
-              currentRoute === "DashBoard" ? "blue" : "transparent",
+            borderLeftColor: currentRoute === 'DashBoard' ? 'blue' : 'transparent',
           }}
         >
           <Link
             to="/dashboard"
             style={{
-              color: currentRoute === "DashBoard" ? "blue" : "gray",
+              color: currentRoute === 'DashBoard' ? 'blue' : 'gray',
             }}
           >
             <IconContext.Provider
               value={{
-                color: currentRoute === "DashBoard" ? "blue" : "gray",
-                size: "20px",
+                color: currentRoute === 'DashBoard' ? 'blue' : 'gray',
+                size: '20px',
               }}
             >
               <IoIosCog />
@@ -50,18 +41,14 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
         </li>
         <li
           style={{
-            borderLeftColor:
-              currentRoute === "Reports" ? "blue" : "transparent",
+            borderLeftColor: currentRoute === 'Reports' ? 'blue' : 'transparent',
           }}
         >
-          <Link
-            to="/reports"
-            style={{ color: currentRoute === "Reports" ? "blue" : "gray" }}
-          >
+          <Link to="/reports" style={{ color: currentRoute === 'Reports' ? 'blue' : 'gray' }}>
             <IconContext.Provider
               value={{
-                color: currentRoute === "Reports" ? "blue" : "gray",
-                size: "20px",
+                color: currentRoute === 'Reports' ? 'blue' : 'gray',
+                size: '20px',
               }}
             >
               <IoIosAnalytics />
@@ -71,17 +58,14 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
         </li>
         <li
           style={{
-            borderLeftColor: currentRoute === "Cards" ? "blue" : "transparent",
+            borderLeftColor: currentRoute === 'Cards' ? 'blue' : 'transparent',
           }}
         >
-          <Link
-            to="/cards"
-            style={{ color: currentRoute === "Cards" ? "blue" : "gray" }}
-          >
+          <Link to="/cards" style={{ color: currentRoute === 'Cards' ? 'blue' : 'gray' }}>
             <IconContext.Provider
               value={{
-                color: currentRoute === "Cards" ? "blue" : "gray",
-                size: "20px",
+                color: currentRoute === 'Cards' ? 'blue' : 'gray',
+                size: '20px',
               }}
             >
               <IoIosCard />
@@ -91,18 +75,14 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
         </li>
         <li
           style={{
-            borderLeftColor:
-              currentRoute === "Support" ? "blue" : "transparent",
+            borderLeftColor: currentRoute === 'Support' ? 'blue' : 'transparent',
           }}
         >
-          <Link
-            to="/support"
-            style={{ color: currentRoute === "Support" ? "blue" : "gray" }}
-          >
+          <Link to="/support" style={{ color: currentRoute === 'Support' ? 'blue' : 'gray' }}>
             <IconContext.Provider
               value={{
-                color: currentRoute === "Support" ? "blue" : "gray",
-                size: "20px",
+                color: currentRoute === 'Support' ? 'blue' : 'gray',
+                size: '20px',
               }}
             >
               <IoIosContacts />
@@ -114,7 +94,7 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
       {/* menu tools */}
       <div className={styles.menutools}>
         {/* Profile Btn */}
-        {device === Devices.MOBILE ? <ProfileBtn /> : ""}
+        {device === Devices.MOBILE ? <ProfileBtn /> : ''}
         {/* ThemeToggler */}
         {/* show theme toggler with navLinks on mobile */}
         {device === Devices.MOBILE ? (
@@ -122,7 +102,7 @@ const NavLinks: FC<{ isOpened: boolean }> = ({ isOpened }) => {
             <span>Night Mode</span> <ThemeToggler />
           </div>
         ) : (
-          ""
+          ''
         )}
       </div>
     </div>

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { AppState, SingleTrans } from "../../../types/interfaces/store";
-import SingleTransaction from "../../../components/SingleTransaction/component";
-import { TransHisProps } from "./interface";
-import styles from "./styles.module.scss";
-import DetailedSingleTrans from "../../../components/DetailedSingleTrans/DetailedSingleTrans";
-import moment from "moment";
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { AppState, SingleTrans } from '../../../types/interfaces/store';
+import SingleTransaction from '../../../components/SingleTransaction/component';
+import { TransHisProps } from './interface';
+import styles from './styles.module.scss';
+import DetailedSingleTrans from '../../../components/DetailedSingleTrans/DetailedSingleTrans';
+import moment from 'moment';
 
 interface Section {
   title: string;
@@ -13,10 +13,7 @@ interface Section {
 }
 
 function TransactionsHistory() {
-  const { transHistory, detailedsingletrans } = useSelector<
-    AppState,
-    TransHisProps
-  >(({ auth, system }) => ({
+  const { transHistory, detailedsingletrans } = useSelector<AppState, TransHisProps>(({ auth, system }) => ({
     transHistory: auth.client?.transactionsHistory!,
     detailedsingletrans: system.detailedSingleTrans,
   }));
@@ -26,13 +23,11 @@ function TransactionsHistory() {
   }>({ sortiedByDate: [] });
   // transactions dates
   const sortTrxsHisByDate = () => {
-    const datesArray = Array.from(
-      new Set(transHistory.map((trx) => moment(trx.date).format("YYYY-MMM-DD")))
-    );
+    const datesArray = Array.from(new Set(transHistory.map((trx) => moment(trx.date).format('YYYY-MMM-DD'))));
     let sections: Section[] = datesArray.map((date) => ({
       title: date,
       trxs: transHistory.filter((trx) => {
-        const trxDate = moment(trx.date).format("YYYY-MMM-DD"); // 21
+        const trxDate = moment(trx.date).format('YYYY-MMM-DD'); // 21
         if (trxDate === date) {
           return true;
         }

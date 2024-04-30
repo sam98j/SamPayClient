@@ -1,19 +1,18 @@
-import React, { useEffect } from "react";
-import { SetCurrentRoute } from "../../apis/system";
-import { connect } from "react-redux";
+import React, { useEffect } from 'react';
+import { SetCurrentRoute } from '../../apis/system';
+import { connect } from 'react-redux';
 
 const Support = (props: { setCurrentRoute: any }) => {
   useEffect(() => {
     const { setCurrentRoute } = props;
-    setCurrentRoute("Support");
+    setCurrentRoute('Support');
   }, []);
   return <div className="">Support</div>;
 };
 
 const mapDispatch = (dispatch: Function) => {
   return {
-    setCurrentRoute: (routeName: string) =>
-      dispatch(SetCurrentRoute(routeName)),
+    setCurrentRoute: (routeName: string) => dispatch(SetCurrentRoute(routeName)),
   };
 };
 

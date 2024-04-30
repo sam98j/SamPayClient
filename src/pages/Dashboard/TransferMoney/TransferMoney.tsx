@@ -1,34 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectTransferMehod } from "../../../apis/system";
-import { getReceiver } from "../../../apis/transactions";
-import TransLoading from "../../../components/TransLoading/TransLoading";
-import { TransferMethods } from "../../../types/enums/system";
-import { TransferStatus } from "../../../types/enums/transactions";
-import { AppState } from "../../../types/interfaces/store";
-import { CurrentTransfer } from "../../../types/interfaces/trans_reducer";
-import { GetReceiverComState } from "./interface";
-import styles from "./styles.module.scss";
-import ViaEmail from "./ViaEmail/ViaEmail";
-import ViaPhoneNo from "./ViaPhoneNo/ViaPhoneNo";
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTransferMehod } from '../../../apis/system';
+import { getReceiver } from '../../../apis/transactions';
+import TransLoading from '../../../components/TransLoading/TransLoading';
+import { TransferMethods } from '../../../types/enums/system';
+import { TransferStatus } from '../../../types/enums/transactions';
+import { AppState } from '../../../types/interfaces/store';
+import { CurrentTransfer } from '../../../types/interfaces/trans_reducer';
+import { GetReceiverComState } from './interface';
+import styles from './styles.module.scss';
+import ViaEmail from './ViaEmail/ViaEmail';
+import ViaPhoneNo from './ViaPhoneNo/ViaPhoneNo';
 
 function TransferMoney() {
   // local state of component
   const [state, setState] = useState<GetReceiverComState>({
-    receiverPhone: "",
+    receiverPhone: '',
     isLoading: false,
-    receiverEmail: "",
+    receiverEmail: '',
   });
   // ref
   const btnRef = useRef<HTMLButtonElement>(null);
   // get TransferMethod from the store
-  const transferMethod = useSelector<AppState, TransferMethods>(
-    (state) => state.system.transferMethod
-  );
+  const transferMethod = useSelector<AppState, TransferMethods>((state) => state.system.transferMethod);
   // get data from the store
-  const currentTransfer = useSelector<AppState, CurrentTransfer>(
-    ({ transactions }) => transactions.currentTransfer
-  );
+  const currentTransfer = useSelector<AppState, CurrentTransfer>(({ transactions }) => transactions.currentTransfer);
   // dispatch store function
   const dispatch = useDispatch();
   // handle inputs of user
@@ -53,13 +49,10 @@ function TransferMoney() {
     e.preventDefault();
     // check
     if (!state.receiverPhone && !state.receiverEmail) {
-      console.log(new Error("no phone entered"));
+      console.log(new Error('no phone entered'));
       return;
     }
-    const receiverContact =
-      transferMethod === TransferMethods.VIA_EMAIL
-        ? state.receiverEmail
-        : state.receiverPhone;
+    const receiverContact = transferMethod === TransferMethods.VIA_EMAIL ? state.receiverEmail : state.receiverPhone;
     // get the receiver form the server
     dispatch(getReceiver(receiverContact));
     // run the loading
@@ -91,18 +84,14 @@ function TransferMoney() {
         <li
           onClick={selectTransferMethodHandler}
           value={TransferMethods.VIA_EMAIL}
-          data-active={
-            transferMethod === TransferMethods.VIA_EMAIL ? "true" : "false"
-          }
+          data-active={transferMethod === TransferMethods.VIA_EMAIL ? 'true' : 'false'}
         >
           Via Email
         </li>
         <li
           onClick={selectTransferMethodHandler}
           value={TransferMethods.VIA_MOBILE_NO}
-          data-active={
-            transferMethod === TransferMethods.VIA_EMAIL ? "false" : "true"
-          }
+          data-active={transferMethod === TransferMethods.VIA_EMAIL ? 'false' : 'true'}
         >
           Via Mobile No
         </li>
@@ -115,7 +104,7 @@ function TransferMoney() {
       )}
       {/* Do tranfer btn */}
       <button onClick={Transfer} ref={btnRef} className={styles.transferBtn}>
-        {state.isLoading ? <TransLoading /> : "Make Transfer"}
+        {state.isLoading ? <TransLoading /> : 'Make Transfer'}
       </button>
     </div>
   );

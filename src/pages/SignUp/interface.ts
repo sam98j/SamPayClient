@@ -1,8 +1,8 @@
 // data come to component from outside
-export interface SignUpProps  {
-  isAuthorized: Boolean,
-  errMsg: string | null,
-  isLoggedIn: Boolean | null
+export interface SignUpProps {
+  isAuthorized: Boolean;
+  errMsg: string | null;
+  isLoggedIn: Boolean | null;
 }
 // local state of component memebers
 export interface SignUpState {
@@ -14,6 +14,6 @@ export interface SignUpState {
 export interface NewClientRegestrationData {
   email: string;
   username: string;
-  password: string,
-  profile_img_url: any
+  password: string;
+  profile_img_url: any;
 }

@@ -1,17 +1,14 @@
-import React from "react";
-import styles from "./detailedsingletrans.module.scss";
-import { IconContext } from "react-icons";
-import { BiCommentDetail } from "react-icons/bi";
-import { useSelector } from "react-redux";
-import { AppState } from "../../types/interfaces/store";
-import { DetailedSingleTrans } from "../../types/interfaces/system_api";
+import React from 'react';
+import styles from './detailedsingletrans.module.scss';
+import { IconContext } from 'react-icons';
+import { BiCommentDetail } from 'react-icons/bi';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../types/interfaces/store';
+import { DetailedSingleTrans } from '../../types/interfaces/system_api';
 
 const DetailedSingleTransaction = () => {
   // get data from store
-  const { amount, date, name, note } = useSelector<
-    AppState,
-    DetailedSingleTrans
-  >(({ system }) => system.detailedSingleTrans!);
+  const { amount, date, name, note } = useSelector<AppState, DetailedSingleTrans>(({ system }) => system.detailedSingleTrans!);
   return (
     <div className={styles.detailedsingletrans}>
       {/* header container */}
@@ -31,7 +28,7 @@ const DetailedSingleTransaction = () => {
         {/* transaction note */}
         <p className={styles.note}>
           <span className={styles.icon}>
-            <IconContext.Provider value={{ color: "black" }}>
+            <IconContext.Provider value={{ color: 'black' }}>
               <BiCommentDetail />
             </IconContext.Provider>
           </span>
@@ -41,9 +38,7 @@ const DetailedSingleTransaction = () => {
         <p className={styles.transId}>
           {/* icon */}
           <span className={styles.icon}>
-            <IconContext.Provider value={{ color: "black" }}>
-              {/* <AiOutlineNumber /> */}
-            </IconContext.Provider>
+            <IconContext.Provider value={{ color: 'black' }}>{/* <AiOutlineNumber /> */}</IconContext.Provider>
           </span>
           {/* text */}
           <span className={styles.text}>uuid_trans90349$io34</span>

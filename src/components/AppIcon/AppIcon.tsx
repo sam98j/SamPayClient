@@ -1,14 +1,12 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { ThemeColor } from "../../types/enums/system";
-import { AppState } from "../../types/interfaces/store";
-import styles from "./appicon.module.scss";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { ThemeColor } from '../../types/enums/system';
+import { AppState } from '../../types/interfaces/store';
+import styles from './appicon.module.scss';
 
 const AppIcon = () => {
   // get themeColor from the store
-  const themeColor = useSelector<AppState, ThemeColor>(
-    ({ system }) => system.themeColor
-  );
+  const themeColor = useSelector<AppState, ThemeColor>(({ system }) => system.themeColor);
   return (
     <svg
       version="1.1"

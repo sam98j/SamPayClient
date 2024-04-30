@@ -1,6 +1,6 @@
-import { SingleTrans } from "../../types/interfaces/store";
+import { SingleTrans } from '../../types/interfaces/store';
 
 // component props
 export interface SingleTransProps {
-    transaction: SingleTrans
+  transaction: SingleTrans;
 }

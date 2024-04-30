@@ -1,3 +1,3 @@
 export interface AuthErrAlertProps {
-    msg: string
+  msg: string;
 }

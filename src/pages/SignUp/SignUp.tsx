@@ -1,24 +1,17 @@
-import React, { useEffect, useState } from "react";
-import styles from "./signup.module.scss";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
-import {
-  NewClientRegestrationData,
-  SignUpProps,
-  SignUpState,
-} from "./interface";
-import { useDispatch, useSelector } from "react-redux";
-import { signUp, signUpWithGoogle } from "../../apis/auth";
-import { AppState } from "../../types/interfaces/store";
-import TransLoading from "../../components/TransLoading/TransLoading";
-import { Link, useHistory } from "react-router-dom";
-import GoogleLogin, {
-  GoogleLoginResponse,
-  GoogleLoginResponseOffline,
-} from "react-google-login";
-import VectorArt from "../../assets/vectors/Transactional-SMS.svg";
-import AuthErrAlert from "./AuthErrAlert/AuthErrAlert";
-import { AnimatePresence } from "framer-motion";
-import AppIcon from "../../components/AppIcon/AppIcon";
+import React, { useEffect, useState } from 'react';
+import styles from './signup.module.scss';
+import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { NewClientRegestrationData, SignUpProps, SignUpState } from './interface';
+import { useDispatch, useSelector } from 'react-redux';
+import { signUp, signUpWithGoogle } from '../../apis/auth';
+import { AppState } from '../../types/interfaces/store';
+import TransLoading from '../../components/TransLoading/TransLoading';
+import { Link, useHistory } from 'react-router-dom';
+import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
+import VectorArt from '../../assets/vectors/Transactional-SMS.svg';
+import AuthErrAlert from './AuthErrAlert/AuthErrAlert';
+import { AnimatePresence } from 'framer-motion';
+import AppIcon from '../../components/AppIcon/AppIcon';
 
 const SignUp = () => {
   // react router hooks
@@ -26,12 +19,12 @@ const SignUp = () => {
   // Componet State
   const [state, setState] = useState<SignUpState>({
     clientCredentioal: {
-      username: "",
-      password: "",
-      email: "",
-      profile_img_url: "",
+      username: '',
+      password: '',
+      email: '',
+      profile_img_url: '',
     },
-    profile_img: "",
+    profile_img: '',
     isLoading: false,
   });
   // profile img state
@@ -39,10 +32,7 @@ const SignUp = () => {
   // dispatch
   const dispatch = useDispatch();
   // map a pace of app state to component props
-  const { isAuthorized, errMsg, isLoggedIn } = useSelector<
-    AppState,
-    SignUpProps
-  >(({ auth }) => ({
+  const { isAuthorized, errMsg, isLoggedIn } = useSelector<AppState, SignUpProps>(({ auth }) => ({
     isAuthorized: Boolean(auth.client),
     errMsg: auth.errMsg,
     isLoggedIn: auth.isLogged,
@@ -66,7 +56,7 @@ const SignUp = () => {
   // push user to dashboard when he is logged in
   useEffect(() => {
     return function cleanUp() {
-      push("/dashboard");
+      push('/dashboard');
     };
   }, []);
   // handle from change
@@ -85,7 +75,7 @@ const SignUp = () => {
     // check for empty fields
     if (state.clientCredentioal!.email && state.clientCredentioal!.password) {
       const formData = new FormData();
-      formData.append("profile_img", profile_img!);
+      formData.append('profile_img', profile_img!);
       // signUP user data
       const data = {
         ...state.clientCredentioal,
@@ -107,9 +97,7 @@ const SignUp = () => {
     setProfileImg(e.target.files![0]);
   };
   // handleLogin
-  const handleSignUpWithGoogle = (
-    googleData: GoogleLoginResponse | GoogleLoginResponseOffline
-  ) => {
+  const handleSignUpWithGoogle = (googleData: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     const googleOauthData = googleData as GoogleLoginResponse;
     // send the tokenId to api to handle SignUpWithGoogle
     dispatch(signUpWithGoogle({ googleTokenId: googleOauthData.tokenId }));
@@ -120,17 +108,7 @@ const SignUp = () => {
       <section className={styles.signUpForm}>
         <form onSubmit={handleSubmition}>
           {/* error message */}
-          <AnimatePresence>
-            {isLoggedIn === false ? (
-              errMsg ? (
-                <AuthErrAlert msg={errMsg} />
-              ) : (
-                ""
-              )
-            ) : (
-              ""
-            )}
-          </AnimatePresence>
+          <AnimatePresence>{isLoggedIn === false ? errMsg ? <AuthErrAlert msg={errMsg} /> : '' : ''}</AnimatePresence>
           {/* logo */}
           <div className={styles.logo}>
             <AppIcon /> <p>SamPay</p>
@@ -143,7 +121,7 @@ const SignUp = () => {
             buttonText="SignUp With Google"
             onSuccess={handleSignUpWithGoogle}
             onFailure={handleSignUpWithGoogle}
-            cookiePolicy={"single_host_origin"}
+            cookiePolicy={'single_host_origin'}
             className={styles.googleLogin}
           />
           {/* seperator */}
@@ -151,56 +129,27 @@ const SignUp = () => {
           {/* input field */}
           <div className={styles.inputArea}>
             <label htmlFor="email">E-mail</label>
-            <input
-              type="email"
-              checked
-              required
-              id="email"
-              onChange={handleChange}
-              value={state.clientCredentioal!.email!}
-              name="email"
-            />
+            <input type="email" checked required id="email" onChange={handleChange} value={state.clientCredentioal!.email!} name="email" />
           </div>
           {/* input field */}
           <div className={styles.inputArea}>
             <label htmlFor="email">Profile Img</label>
-            <input
-              type="file"
-              id="profile_img"
-              onChange={handleChoseProfileImg}
-              name="profile_img"
-              accept="image/png image/jpg"
-            />
+            <input type="file" id="profile_img" onChange={handleChoseProfileImg} name="profile_img" accept="image/png image/jpg" />
           </div>
           {/* input field */}
           <div className={styles.inputArea}>
             <label htmlFor="username">User Name</label>
-            <input
-              type="text"
-              checked
-              required
-              id="username"
-              onChange={handleChange}
-              value={state.clientCredentioal!.username!}
-              name="username"
-            />
+            <input type="text" checked required id="username" onChange={handleChange} value={state.clientCredentioal!.username!} name="username" />
           </div>
           {/* input field */}
           <div className={styles.inputArea}>
             <label htmlFor="">Password</label>
-            <input
-              type="password"
-              onChange={handleChange}
-              name="password"
-              value={state.clientCredentioal!.password}
-            />
+            <input type="password" onChange={handleChange} name="password" value={state.clientCredentioal!.password} />
           </div>
           {/* bottom are */}
           <div className={styles.formFooter}>
             {/* button */}
-            <button type="submit">
-              {state.isLoading ? <TransLoading /> : "Sign Up"}
-            </button>
+            <button type="submit">{state.isLoading ? <TransLoading /> : 'Sign Up'}</button>
           </div>
           {/* end of buttom area */}
           {/* social media links */}

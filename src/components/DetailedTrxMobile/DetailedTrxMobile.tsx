@@ -1,21 +1,18 @@
-import React from "react";
-import { IconContext } from "react-icons";
-import { AiOutlineClose } from "react-icons/ai";
-import { useDispatch, useSelector } from "react-redux";
-import { hideDetailedSingleTrans } from "../../apis/system";
-import { AppState } from "../../types/interfaces/store";
-import { DetailedSingleTrans } from "../../types/interfaces/system_api";
-import AppIcon from "../AppIcon/AppIcon";
-import styles from "./detailedtrxmobile.module.scss";
-import { motion } from "framer-motion";
+import React from 'react';
+import { IconContext } from 'react-icons';
+import { AiOutlineClose } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { hideDetailedSingleTrans } from '../../apis/system';
+import { AppState } from '../../types/interfaces/store';
+import { DetailedSingleTrans } from '../../types/interfaces/system_api';
+import AppIcon from '../AppIcon/AppIcon';
+import styles from './detailedtrxmobile.module.scss';
+import { motion } from 'framer-motion';
 
 const DetailedTrxMobile = () => {
   const dispatch = useDispatch();
   // get data from store
-  const { amount, date, transId, name } = useSelector<
-    AppState,
-    DetailedSingleTrans
-  >(({ system }) => system.detailedSingleTrans!);
+  const { amount, date, transId, name } = useSelector<AppState, DetailedSingleTrans>(({ system }) => system.detailedSingleTrans!);
   // handle close menu click
   const closePanelHandler = () => {
     dispatch(hideDetailedSingleTrans());
@@ -28,7 +25,7 @@ const DetailedTrxMobile = () => {
         <p className={styles.section_name}>Trx. Details</p>
         {/* close icon */}
         <p className={styles.closeicon} onClick={closePanelHandler}>
-          <IconContext.Provider value={{ color: "lighgray" }}>
+          <IconContext.Provider value={{ color: 'lighgray' }}>
             <AiOutlineClose />
           </IconContext.Provider>
         </p>

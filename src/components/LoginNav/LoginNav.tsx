@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./LoginNav.module.scss";
-import AppName from "../AppName/AppName";
+import React from 'react';
+import styles from './LoginNav.module.scss';
+import AppName from '../AppName/AppName';
 
 const LoginNav = () => {
   return (

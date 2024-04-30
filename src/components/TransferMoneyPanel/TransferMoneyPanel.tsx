@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import SubmitTransfer from "../../pages/Dashboard/SubmitTransfer/SubmitTransfer";
-import { TransferStatus } from "../../types/enums/transactions";
-import { AppState } from "../../types/interfaces/store";
-import { CurrentTransfer } from "../../types/interfaces/trans_reducer";
-import TransferMoneyMobile from "../TransferMoneyMobile/TransferMoneyMobile";
-import { IconContext } from "react-icons";
-import { AiOutlineClose } from "react-icons/ai";
-import styles from "./styles.module.scss";
-import { useHistory } from "react-router";
-import { transferMoneyMobie } from "../../apis/system";
-import AppIcon from "../AppIcon/AppIcon";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import SubmitTransfer from '../../pages/Dashboard/SubmitTransfer/SubmitTransfer';
+import { TransferStatus } from '../../types/enums/transactions';
+import { AppState } from '../../types/interfaces/store';
+import { CurrentTransfer } from '../../types/interfaces/trans_reducer';
+import TransferMoneyMobile from '../TransferMoneyMobile/TransferMoneyMobile';
+import { IconContext } from 'react-icons';
+import { AiOutlineClose } from 'react-icons/ai';
+import styles from './styles.module.scss';
+import { transferMoneyMobie } from '../../apis/system';
+import AppIcon from '../AppIcon/AppIcon';
 
 function SendMoneyPanel() {
   // dispatch store method
   const dispatch = useDispatch();
   // data from store
-  const { currentTransfer } = useSelector<
-    AppState,
-    { currentTransfer: CurrentTransfer }
-  >(({ transactions }) => ({
+  const { currentTransfer } = useSelector<AppState, { currentTransfer: CurrentTransfer }>(({ transactions }) => ({
     currentTransfer: transactions.currentTransfer,
   }));
   const [isTrxReady, setIsTrxReady] = useState<boolean>(false);
@@ -40,11 +36,8 @@ function SendMoneyPanel() {
   return (
     <div className={styles.sendMoneyPanel}>
       {/* Close Pannel Icon */}
-      <IconContext.Provider value={{ color: "gray" }}>
-        <AiOutlineClose
-          className={styles.icon}
-          onClick={handleCloseIconClick}
-        />
+      <IconContext.Provider value={{ color: 'gray' }}>
+        <AiOutlineClose className={styles.icon} onClick={handleCloseIconClick} />
       </IconContext.Provider>
       {/* logo */}
       <div className={styles.brandsection}>

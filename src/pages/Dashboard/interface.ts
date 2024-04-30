@@ -1,5 +1,5 @@
-import { Client } from "../../types/interfaces/store";
+import { Client } from '../../types/interfaces/store';
 
 export interface DashProps {
-    client: Client | null
+  client: Client | null;
 }

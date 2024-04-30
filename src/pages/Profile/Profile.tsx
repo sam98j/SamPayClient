@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { SignOut } from "../../apis/auth";
-import styles from "./Profile.module.scss";
-import { SetCurrentRoute } from "../../apis/system";
-import { Route, useHistory } from "react-router";
-import Settings from "./Settings/Settings";
-import AccountDetails from "./AccountDetails/AccountDetails";
-import Liabilites from "./Liabilites/Liabilites";
-import PersonalDetails from "./PersonalDetails/PersonalDetails";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { SignOut } from '../../apis/auth';
+import styles from './Profile.module.scss';
+import { SetCurrentRoute } from '../../apis/system';
+import { Route, useHistory } from 'react-router-dom';
+import Settings from './Settings/Settings';
+import AccountDetails from './AccountDetails/AccountDetails';
+import Liabilites from './Liabilites/Liabilites';
+import PersonalDetails from './PersonalDetails/PersonalDetails';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   // use dispatch
@@ -23,13 +23,13 @@ const Profile = () => {
   // when component mount
   useEffect(() => {
     // dispatch an action to redux store
-    dispatch(SetCurrentRoute("Profile"));
+    dispatch(SetCurrentRoute('Profile'));
   }, []);
   // component did update
   useEffect(() => {
     return () => {
       // check if the user is logged in
-      push("/");
+      push('/');
     };
   }, []);
   // return template

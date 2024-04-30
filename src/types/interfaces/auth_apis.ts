@@ -1,4 +1,4 @@
-import { Client } from "./store";
+import { Client } from './store';
 // is requir when client want to loggin
 export interface ClientCredentioal {
   email: string;
@@ -8,7 +8,7 @@ export interface ClientCredentioal {
 export interface AuthSuccess {
   data: {
     currentClient: Client;
-  }
+  };
 }
 // data if the token is not valid or loggin is faild
 export interface AuthFaild {

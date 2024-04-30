@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "./Welcome.module.scss";
-import { Route } from "react-router-dom";
-import Login from "../Login/Login";
-import SignUp from "../SignUp/SignUp";
+import React from 'react';
+import styles from './Welcome.module.scss';
+import { Route } from 'react-router-dom';
+import Login from '../Login/Login';
+import SignUp from '../SignUp/SignUp';
 
 const Welcome = () => {
   return (

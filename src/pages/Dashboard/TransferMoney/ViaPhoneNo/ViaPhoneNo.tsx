@@ -1,16 +1,13 @@
-import React, { FC } from "react";
-import { GetReceiverComState } from "../interface";
-import styles from "./viaphoneno.module.scss";
+import React, { FC } from 'react';
+import { GetReceiverComState } from '../interface';
+import styles from './viaphoneno.module.scss';
 
 interface ViaPhoneNoProps {
   onChangeHandler: (e: React.ChangeEvent<HTMLInputElement>) => void;
   transferMoneyState: GetReceiverComState;
 }
 
-const ViaPhoneNo: FC<ViaPhoneNoProps> = ({
-  onChangeHandler,
-  transferMoneyState,
-}) => {
+const ViaPhoneNo: FC<ViaPhoneNoProps> = ({ onChangeHandler, transferMoneyState }) => {
   return (
     <div className={styles.TransferWithPhone}>
       {/* select country */}

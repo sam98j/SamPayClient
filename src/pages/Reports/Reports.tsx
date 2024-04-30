@@ -1,59 +1,49 @@
-import React, { useEffect } from "react";
-import { SetCurrentRoute } from "../../apis/system";
-import { connect } from "react-redux";
-import styles from "./reports.module.scss";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import React, { useEffect } from 'react';
+import { SetCurrentRoute } from '../../apis/system';
+import { connect } from 'react-redux';
+import styles from './reports.module.scss';
+import { Area, AreaChart, CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 
 const Reports = (props: { setCurrentRoute: any }) => {
   const data = [
     {
-      name: "Jan",
+      name: 'Jan',
       Expenses: 40,
       Income: 50,
       // amt: 2400,
     },
     {
-      name: "Feb",
+      name: 'Feb',
       Expenses: 30,
       Income: 60,
       // amt: 2210,
     },
     {
-      name: "Mar",
+      name: 'Mar',
       Expenses: 20,
       Income: 98,
       // amt: 2290,
     },
     {
-      name: "Apr",
+      name: 'Apr',
       Expenses: 27,
       Income: 39,
       // amt: 2000,
     },
     {
-      name: "May",
+      name: 'May',
       Expenses: 90,
       Income: 480,
       // amt: 2181,
     },
     {
-      name: "June",
+      name: 'June',
       Expenses: 23,
       Income: 38,
       // amt: 2500,
     },
     {
-      name: "July",
+      name: 'July',
       Expenses: 34,
       Income: 430,
       // amt: 2100,
@@ -61,16 +51,11 @@ const Reports = (props: { setCurrentRoute: any }) => {
   ];
   useEffect(() => {
     const { setCurrentRoute } = props;
-    setCurrentRoute("Reports");
+    setCurrentRoute('Reports');
   }, []);
   return (
     <div className={styles.reports}>
-      <LineChart
-        width={800}
-        height={420}
-        data={data}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-      >
+      <LineChart width={800} height={420} data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -80,12 +65,7 @@ const Reports = (props: { setCurrentRoute: any }) => {
         <Line type="monotone" dataKey="Expenses" stroke="red" />
       </LineChart>
       {/* another line chart */}
-      <LineChart
-        width={800}
-        height={420}
-        data={data}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-      >
+      <LineChart width={800} height={420} data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -100,8 +80,7 @@ const Reports = (props: { setCurrentRoute: any }) => {
 
 const mapDispatch = (dispatch: Function) => {
   return {
-    setCurrentRoute: (routeName: string) =>
-      dispatch(SetCurrentRoute(routeName)),
+    setCurrentRoute: (routeName: string) => dispatch(SetCurrentRoute(routeName)),
   };
 };
 

@@ -1,4 +1,4 @@
-@import "./accountcard.mobile.scss";
+@import './accountcard.mobile.scss';
 .accountCard {
   padding: 30px;
   width: 60% !important;
@@ -6,11 +6,10 @@
   height: 200px;
   justify-content: center;
   flex-direction: column;
-  background-color: var(--main-bg-color);
-  border-radius: 10px;
+  // background-color: var(--main-bg-color);
+  // border-radius: 10px;
   backdrop-filter: blur(10px);
   color: var(--main-text-color);
-  box-shadow: var(--main-box-shadow);
   // mobile styles
   @include accountCardMobileStyles();
   // account balance

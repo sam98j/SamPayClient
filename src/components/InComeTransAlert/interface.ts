@@ -1,5 +1,5 @@
-import { ReceiveMoneyNotification } from "../../types/interfaces/trans_apis";
+import { ReceiveMoneyNotification } from '../../types/interfaces/trans_apis';
 
 export interface IncomingTransAlertProps {
-    incomingTransAlert: null | ReceiveMoneyNotification
+  incomingTransAlert: null | ReceiveMoneyNotification;
 }

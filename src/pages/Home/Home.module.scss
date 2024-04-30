@@ -1,6 +1,6 @@
 .Home {
   height: 100%;
-  background-color: var(--main-bg-color);
+  // background-color: var(--main-bg-color);
   padding: 5px;
   display: flex;
   overflow: hidden;
@@ -21,7 +21,7 @@
     overflow-y: hidden;
     @media (max-width: 500px) {
       box-shadow: none;
-      padding: 25px;
+      padding: 1rem;
       overflow-y: scroll;
     }
   }
