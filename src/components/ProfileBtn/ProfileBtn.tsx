@@ -11,7 +11,7 @@ const ProfileBtn = () => {
   const { avatar, name } = useSelector<AppState, Client>(({ auth }) => auth.client!);
   return (
     <Link to="/profile">
-      <div className={`${styles.profile} rounded-2xl shadow-main`}>
+      <div className={`${styles.profile} rounded-2xl py-5 shadow-main`}>
         <div className={styles.img}>
           <img src={avatar} alt="" />
         </div>

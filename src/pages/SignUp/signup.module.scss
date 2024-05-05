@@ -2,7 +2,6 @@
   height: 100%;
   overflow: hidden;
   display: flex;
-  font-size: 0.7rem;
   // the whole signup screen styles on mobile
   @media (max-width: 500px) {
     background-color: white;
@@ -10,7 +9,7 @@
   // form container
   .signUpForm {
     background-color: rgb(247, 247, 247);
-    background: url("../../assets/BGs/interlaced.png");
+    background: url('../../assets/BGs/interlaced.png');
     // styles on moblie
     width: 50%;
     height: 100%;
@@ -26,62 +25,35 @@
   }
   // form
   .signUpForm form {
+    // hide form scroll bar
+    &::-webkit-scrollbar {
+      display: none;
+    }
     // main form styles
     box-shadow: var(--main-box-shadow);
-    font-weight: bold;
     width: 350px;
     height: 95%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: rgb(255, 255, 255);
-    overflow-y: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding: 20px;
     border-radius: 10px;
     gap: 10px;
-    color: black;
+    // color: black;
     position: relative;
     h2 {
       text-align: center;
-    }
-    label {
-      color: black;
-    }
-    input {
-      border: none;
-      background-color: rgb(224, 224, 224);
-      padding: 10px;
-      border-radius: 10px;
-      display: block;
-      width: 100%;
-      margin-top: 10px;
-      &:focus {
-        outline: none;
-        border-color: white;
-      }
     }
     // styles on mobile devices
     @media (max-width: 500px) {
       box-shadow: none;
     }
-    // logo
-    .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      img {
-        width: 40px;
-        height: 40px;
-      }
-      p {
-        font-size: 1.5rem;
-      }
-    }
     // sign up with google button
     .googleLogin {
       border-radius: 10px !important;
-      margin-top: 20px !important;
       width: 100% !important;
       display: flex !important;
       align-items: center !important;
@@ -89,6 +61,7 @@
       color: black !important;
       box-shadow: none !important;
       border: 2px solid gray !important;
+      font-family: inherit !important;
       div {
         border-radius: 20px !important;
       }
@@ -97,14 +70,16 @@
     .seperator {
       // background-color: yellowgreen;
       text-align: center;
+      color: rgba(128, 128, 128, 0.5);
       line-height: 100%;
+      font-size: 0.7rem;
       &::before,
       &::after {
-        content: "";
+        content: '';
         height: 1px;
-        width: 45%;
+        width: 48%;
         display: inline-block;
-        background-color: gray;
+        background-color: rgba(128, 128, 128, 0.5);
       }
     }
   }
@@ -112,26 +87,12 @@
   form .formFooter {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     flex-wrap: wrap;
-    // forget password link
-    .ForgetPassword {
-      color: black;
-      flex-grow: 1;
-      text-align: right;
-    }
-    // botton
-    button {
-      border: none;
-      background: none;
-      background-color: green;
-      height: 40px;
-      width: 80px;
-      color: white;
-      font-weight: bold;
-      border-radius: 5px;
-      outline: none;
-      cursor: pointer;
+    // style sign up button when disable it
+    button[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
   }
   // social links
@@ -150,7 +111,6 @@
   }
   // copy rights
   form .copyRight {
-    color: gray;
     display: flex;
     justify-content: center;
     gap: 10px;

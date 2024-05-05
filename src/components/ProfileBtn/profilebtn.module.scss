@@ -1,17 +1,15 @@
 .profile {
   position: absolute;
   bottom: 30px;
-  height: 60px;
+  // height: 60px;
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--main-text-color);
-  padding: 0px 20px;
+  padding: 20px;
   @media (max-width: 500px) {
-    height: initial;
-    padding: 0px;
-    border: none;
+    padding: 10px;
     justify-content: flex-start;
     background-color: transparent;
     position: initial;

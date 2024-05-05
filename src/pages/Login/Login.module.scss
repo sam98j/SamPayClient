@@ -3,11 +3,10 @@
   height: 100%;
   overflow: hidden;
   display: flex;
-  font-size: 0.7rem;
   // the login form area styles
   .LoginForm {
     background-color: rgb(247, 247, 247);
-    background: url("../../assets/BGs/interlaced.png");
+    background: url('../../assets/BGs/interlaced.png');
     width: 50%;
     height: 100%;
     display: flex;
@@ -19,16 +18,10 @@
       width: 100%;
     }
   }
-  // signUp Link
-  .LoginForm .signupLink {
-    color: dodgerblue;
-    padding: 20px 0;
-  }
   // form
   .LoginForm form {
     background-color: white;
     box-shadow: var(--main-box-shadow);
-    font-weight: bold;
     width: 350px;
     height: 95%;
     display: flex;
@@ -38,19 +31,6 @@
     border-radius: 10px;
     position: relative;
     overflow-y: hidden;
-    input {
-      border: none;
-      background-color: rgb(224, 224, 224);
-      padding: 10px;
-      border-radius: 10px;
-      display: block;
-      width: 100%;
-      margin-top: 10px;
-      &:focus {
-        outline: none;
-        border-color: white;
-      }
-    }
     // form style in mobile device
     @media (max-width: 500px) {
       display: flex;
@@ -70,9 +50,6 @@
       width: 40px;
       height: 40px;
     }
-    p {
-      font-size: 1.5rem;
-    }
   }
   form h2 {
     text-align: center;
@@ -88,6 +65,7 @@
     color: black !important;
     box-shadow: none !important;
     border: 2px solid gray !important;
+    font-family: inherit !important;
     div {
       border-radius: 20px !important;
     }
@@ -99,7 +77,7 @@
     line-height: 100%;
     &::before,
     &::after {
-      content: "";
+      content: '';
       height: 1px;
       width: 45%;
       display: inline-block;
@@ -110,26 +88,23 @@
   form .formFooter {
     display: flex;
     align-items: center;
-    margin-top: 50px;
     flex-wrap: wrap;
+    font-size: 0.9rem;
     // forget password link
     .ForgetPassword {
       flex-grow: 1;
-      text-align: right;
+      display: flex;
+      justify-content: flex-end;
       color: dodgerblue;
     }
-    // botton
-    button {
-      border: none;
-      background: none;
-      background-color: green;
-      height: 40px;
-      width: 80px;
-      color: white;
-      font-weight: bold;
-      border-radius: 5px;
-      outline: none;
-      cursor: pointer;
+    .signupLink {
+      color: dodgerblue;
+      margin-top: 10px;
+    }
+    // login btn
+    button[disabled] {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
   // social media links

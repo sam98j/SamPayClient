@@ -11,8 +11,11 @@ import { GetReceiverComState } from './interface';
 import styles from './styles.module.scss';
 import ViaEmail from './ViaEmail/ViaEmail';
 import ViaPhoneNo from './ViaPhoneNo/ViaPhoneNo';
+import { useTranslation } from 'react-i18next';
 
 function TransferMoney() {
+  // local method
+  const { t } = useTranslation();
   // local state of component
   const [state, setState] = useState<GetReceiverComState>({
     receiverPhone: '',
@@ -78,7 +81,7 @@ function TransferMoney() {
   }, [currentTransfer]);
   return (
     <div className={styles.MakeTransaction}>
-      <p className={styles.sectionName}>Quick Transfer</p>
+      <p className="text-gray-400 text-lg">{t('dashboardPage.quickTransfer')}</p>
       {/* select transfer type */}
       <ul className={styles.transferTypesContainer}>
         <li

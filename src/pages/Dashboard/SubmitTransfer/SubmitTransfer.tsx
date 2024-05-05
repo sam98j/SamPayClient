@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faUniversity } from '@fortawesome/free-solid-svg-icons';
+import { RiBankFill, RiPhoneLine } from 'react-icons/ri';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCurrentTransfer, hideSubmitTransModal, submitTransfer } from '../../../apis/transactions';
 import { SubmitTransProps, SubmitTransState } from './interface';
@@ -10,9 +9,12 @@ import { Receiver, SubmitTransParms } from '../../../types/interfaces/trans_apis
 import TransLoading from '../../../components/TransLoading/TransLoading';
 import { addReceiverToHistory } from '../../../apis/system';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const SubmitTransfer = () => {
   const { push } = useHistory();
+  // localization method
+  const { t } = useTranslation();
   // the component state
   const [state, setState] = useState<SubmitTransState>({
     amount: 0,
@@ -102,19 +104,23 @@ const SubmitTransfer = () => {
         <div className={styles.Details}>
           {/* Details Container */}
           <div className={styles.DetailsContainer}>
-            <span>{/* <FontAwesomeIcon icon={faUniversity} /> */}</span>
+            <RiBankFill />
             <h4>Omdurman Branch</h4>
           </div>
           <div className={styles.DetailsContainer}>
-            <span>{/* <FontAwesomeIcon icon={faPhone} /> */}</span>
-            <h4>{currentTransfer!.phone}</h4>
+            <RiPhoneLine />
+            <h4>0997545755</h4>
           </div>
         </div>
         {/* Submit Btn */}
         <div className={styles.Submit}>
           <input type="number" value={state.amount} name="amount" onChange={handleChange} />
-          <button type="submit" onClick={handleSubmition}>
-            {state.isLoading ? <TransLoading /> : isTransaferSubmited ? 'Done' : 'Send'}
+          <button
+            type="submit"
+            onClick={handleSubmition}
+            className="text-white bg-blue-700 w-full hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 rounded-xl px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            {state.isLoading ? <TransLoading /> : isTransaferSubmited ? 'Done' : t('dashboardPage.transferMoneyMobile.sendBtn')}
           </button>
         </div>
       </div>

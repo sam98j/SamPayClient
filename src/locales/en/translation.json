@@ -1,0 +1,41 @@
+{
+  "appName": "SamPay",
+  "navigations": {
+    "dashboard": "Dashboard",
+    "reports": "Reports",
+    "cards": "Cards",
+    "support": "Support"
+  },
+  "dashboardPage": {
+    "currentBalance": "Your current Balance",
+    "quickTransfer": "Quick Transfer",
+    "transactionsHistory": "Transactions History",
+    "recentBeneficiaries": "Recent Beneficiaries",
+    "transferMoneyMobile": {
+      "sendBtn": "Send",
+      "reciverEmailFieldPlaceHolder": "Enter Reciver Email"
+    }
+  },
+  "loginPage": {
+    "loginToYourAccount": "Login to your account",
+    "loginWithGoogleBtnText": "Login With Google",
+    "orDivider": "or",
+    "emailField": "Email",
+    "passwordField": "Password",
+    "loginBtn": "Login to you account",
+    "forgetPassword": "ForgetPassword",
+    "dontHaveAccount": "Don't have account ? SignUp Now",
+    "writes": "All right Reserved SamPay @2024"
+  },
+  "signUpPage": {
+    "createNewAccount": "SignUp to SamPay",
+    "signUpWithGoogleBtnText": "SignUp With Google",
+    "orDivider": "or",
+    "emailField": "Email",
+    "passwordField": "Password",
+    "userNameField": "User Name",
+    "signUpBtn": "SignUp Now",
+    "chooseYourProfileImg": "Choose your profile image",
+    "writes": "All right Reserved SamPay @2024"
+  }
+}

@@ -6,7 +6,6 @@ export interface LoginProps {
   errMsg: null | string;
 }
 // local state of component memebers
-export interface LoginState {
-  clientCredentioal: ClientCredentioal | null;
+export interface LoginState extends ClientCredentioal {
   isLoading: boolean;
 }

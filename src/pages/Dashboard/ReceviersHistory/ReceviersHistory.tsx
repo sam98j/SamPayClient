@@ -4,11 +4,14 @@ import SingleReceiver from '../../../components/SingleReceiver/SingleReceiver';
 import { AppState } from '../../../types/interfaces/store';
 import { ReceiversHistoryEle } from '../../../types/interfaces/system_api';
 import styles from './receviershistory.module.scss';
+import { useTranslation } from 'react-i18next';
 const ReceviersHistory = () => {
+  // localization method
+  const { t } = useTranslation();
   const receiversHistory = useSelector<AppState, ReceiversHistoryEle[]>(({ system }) => system.receiversHistory);
   return (
     <div className={styles.receviershistory}>
-      <p className={styles.recentBeneficiaries}>Recent Beneficiaries</p>
+      <p className={styles.recentBeneficiaries}>{t('dashboardPage.recentBeneficiaries')}</p>
       {receiversHistory!.map((ele) => {
         return <SingleReceiver element={ele} />;
       })}

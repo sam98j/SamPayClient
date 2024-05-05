@@ -10,9 +10,6 @@
     display: none;
   }
   // section name Quick Transfer
-  .sectionName {
-    color: var(--main-text-color);
-  }
   // the styles of the section that user can select transfer type
   .transferTypesContainer {
     display: flex;
@@ -30,7 +27,7 @@
       text-align: center;
       border-radius: 10px;
       color: var(--main-text-color);
-      &[data-active="true"] {
+      &[data-active='true'] {
         background-color: var(--primarybtn-main-color);
         color: white;
       }

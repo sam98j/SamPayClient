@@ -1,0 +1,41 @@
+{
+  "appName": "سام باي",
+  "navigations": {
+    "dashboard": "لوحة التحكم",
+    "reports": "التقارير",
+    "cards": "البطاقات",
+    "support": "الدعم"
+  },
+  "dashboardPage": {
+    "currentBalance": "رصيدك الحالي",
+    "quickTransfer": "تحويلة سريعة",
+    "transactionsHistory": "سجل المعاملات",
+    "recentBeneficiaries": "آخر المستفيدين",
+    "transferMoneyMobile": {
+      "sendBtn": "إرسال",
+      "reciverEmailFieldPlaceHolder": "أدخل البريد الالكتروني للمستفيد"
+    }
+  },
+  "loginPage": {
+    "loginToYourAccount": "تسجيل الدخول لحسابك",
+    "loginWithGoogleBtnText": "تسجيل الدخول بحساب قوقل",
+    "orDivider": "او",
+    "emailField": "البريد الإلكتروني",
+    "passwordField": "كلمة المرور",
+    "loginBtn": "تسجيل الدخول",
+    "forgetPassword": "نسيت كلمة المرور ؟",
+    "dontHaveAccount": "ليس لديك حساب ؟ قم بإنشاء حساب الآن",
+    "writes": "جميع الحقوق محوظة سام باي @ 2024"
+  },
+  "signUpPage": {
+    "createNewAccount": "قم بإنشاء حساب الآن",
+    "signUpWithGoogleBtnText": "تسجيل بحساب قوقل",
+    "orDivider": "او",
+    "emailField": "البريد الإلكتروني",
+    "passwordField": "كلمة المرور",
+    "userNameField": "إسم المستخدم",
+    "signUpBtn": "إنشاء حساب جديد",
+    "chooseYourProfileImg": "اختيار صور البروفايل",
+    "writes": "جميع الحقوق محوظة سام باي @ 2024"
+  }
+}

@@ -1,24 +1,13 @@
 // send money btn
 @mixin sendMoneyBtn {
   display: none;
-  width: 55px;
-  min-height: 55px;
-  background-color: #0596ff;
-  border-radius: 50%;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   @media (max-width: 500px) {
     display: flex;
-    position: absolute;
-    right: 25px;
   }
 }
-// account mobile styles
-@mixin accountMobileStyles {
-  @media (max-width: 500px) {
-    font-size: 14px;
-  }
-}
+
 // styles of account card on mobile devices
 @mixin accountCardMobileStyles {
   @media (max-width: 500px) {

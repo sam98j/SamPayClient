@@ -6,6 +6,7 @@ import { TransHisProps } from './interface';
 import styles from './styles.module.scss';
 import DetailedSingleTrans from '../../../components/DetailedSingleTrans/DetailedSingleTrans';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 interface Section {
   title: string;
@@ -17,6 +18,8 @@ function TransactionsHistory() {
     transHistory: auth.client?.transactionsHistory!,
     detailedsingletrans: system.detailedSingleTrans,
   }));
+  // localization method
+  const { t } = useTranslation();
   // state
   const [trxSortedByDate, settrxSortedByDate] = useState<{
     sortiedByDate: Section[];
@@ -43,7 +46,7 @@ function TransactionsHistory() {
   return (
     <section className={styles.Transactions}>
       {/* section name */}
-      <p className={styles.sectionname}>Transactions History</p>
+      <p className={styles.sectionname}>{t('dashboardPage.transactionsHistory')}</p>
       {/* transactions */}
       {trxSortedByDate.sortiedByDate.map((ele) => (
         <div>

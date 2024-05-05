@@ -36,7 +36,6 @@ const NavBar = () => {
   };
   return (
     <nav className={`${styles.NavBar}`}>
-      <p style={{ fontWeight: 'bold', fontSize: '1.5rem' }}>DashBoard</p>
       {/* notifications menu */}
       {state.isOpen ? <NotificationsMenu /> : ''}
       {/* navbar search and notification icons */}
@@ -46,9 +45,7 @@ const NavBar = () => {
         {/* search bar */}
         <li>
           <Link to="">
-            <IconContext.Provider value={{ color: 'black' }}>
-              <FiSearch />
-            </IconContext.Provider>
+            <FiSearch />
           </Link>
         </li>
         {/* notification bill */}

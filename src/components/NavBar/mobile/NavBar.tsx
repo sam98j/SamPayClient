@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles.module.scss';
-import NavLinks from '../../SideBar/navLinks/NavLinks';
+import NavLinks from '../../NavLinks/NavLinks';
 import AppIcon from '../../AppIcon/AppIcon';
 import { IconContext } from 'react-icons';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';

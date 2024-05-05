@@ -1,6 +1,4 @@
 .sendMoneyMobile {
-  width: 95%;
-  height: 158px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -8,26 +6,13 @@
   z-index: 4;
   border-radius: 10px;
   padding: 30px;
-  display: flex;
-  justify-content: space-evenly;
   position: relative;
-  flex-direction: column;
   // section name
-  p {
-    color: var(--main-text-color);
-  }
   .inputArea {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
-    button {
-      border: none;
-      border-radius: 50%;
-      display: block;
-      width: 44px;
-      height: 44px;
-      color: white;
-      background-color: #0596ff;
-    }
     input {
       border: var(--main-border);
       height: 44px;

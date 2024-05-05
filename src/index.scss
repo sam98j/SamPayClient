@@ -21,4 +21,18 @@ body {
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+  &::-webkit-scrollbar {
+    width: 3px;
+    position: absolute;
+    left: 90px;
+  }
+  // scrollbar itself
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(224, 224, 224);
+    border-radius: 20px;
+  }
+}
+
+html[lang='ar'] {
+  direction: rtl;
 }
